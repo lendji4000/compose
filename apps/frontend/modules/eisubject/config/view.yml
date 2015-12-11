@@ -1,0 +1,8 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+all: 
+  stylesheets:    [bootstrap-select.min.css,eisubject/eigeneric.css,eisubject/eisubject.css,eideliverysubject/eideliverysubject.css,lightbox.css]
+  javascripts:    [bootstrap-select.min.js,eisubject/eisubject.js,eidelivery/eidelivery.js,eideliverysubject/eideliverysubject.js,eisubject/eibugcontext.js,eicampaign/steps/steps.js,lightbox.js]
+  has_layout:     true
+  layout:         layout

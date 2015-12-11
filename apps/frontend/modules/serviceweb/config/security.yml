@@ -1,0 +1,12 @@
+all:
+  is_secure: false
+#
+#listProjet:
+#  is_secure: false
+#
+#listFonctions:
+#  is_secure: false
+#
+#connexionDistante:
+#  
+#  is_secure: false

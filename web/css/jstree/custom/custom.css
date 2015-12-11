@@ -1,0 +1,18 @@
+.jstree-themeicon-custom{
+    background-size: 16px !important;
+}
+
+.jstree-container-ul{
+    background: url("/css/jstree/custom/backgroundAlternate.png");
+    background-size: auto 48px;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.jstree-container-ul .jstree-node.error .jstree-wholerow{
+    background: #d2322d;
+}
+
+.jstree-container-ul .jstree-node.error a{
+    color: white;
+}

@@ -1,0 +1,18 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    #title:        symfony project
+    #description:  symfony project
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       index, follow
+  stylesheets:    [bootstrap.min.css,jquery.mmenu.css,style.min.css,add-ons.min.css,font-awesome.min.css,fontawesome-new-icons.css,climacons-font.css,/plugins/jquery-ui/css/jquery-ui-1.10.4.min.css,/plugins/fullcalendar/css/fullcalendar.css,/plugins/morris/css/morris.css,/plugins/jvectormap/css/jquery-jvectormap-1.2.2.css, select2.css, cus-icons.css , main.css, eigeneric/eigeneric.css]
+ #  javascripts:    [  ]
+
+  has_layout:     true
+  layout:         layout

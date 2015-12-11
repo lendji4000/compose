@@ -1,0 +1,95 @@
+---
+actAs: [Timestampable]
+options:
+  collate: utf8_general_ci
+  charset: utf8
+  type: InnoDB
+
+EiCampaignExecution:
+  columns:
+      profile_id :  { type: integer(8) }
+      profile_ref :  { type: integer(8) }
+      project_id :  { type: integer(8),  notnull: true  }
+      project_ref :  { type: integer(8),  notnull: true  }
+      author_id :  { type: integer(8),  notnull: true  }
+      campaign_id :  { type: integer(8),  notnull: true  }
+      termine: { type: boolean, notnull : false, default: false }
+      on_error: { type: integer(8), notnull: false }
+  indexes:
+    execution_profile_id_index:
+      fields: [profile_id]
+    execution_profile_ref_index:
+      fields: [profile_ref] 
+    execution_project_id_index:
+      fields: [project_id]
+    execution_project_ref_index:
+      fields: [project_ref]    
+  relations:
+      SfGuardAuthor: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: User }
+      EiCampaign: { onDelete: CASCADE , local: campaign_id , foreign: id, foreignAlias: Campaign }
+      EiBlockType: {onDelete: CASCADE, local: on_error, foreign: id, foreignAlias: errorActionType}
+
+EiCampaignExecutionGraph:
+  columns:
+      execution_id: {type: integer(8), notnull: false}
+      position: { type: integer(8), notnull: false }
+      graph_id :  { type: integer(8), notnull: false }
+      scenario_id :  { type: integer(8) }
+      version_id :  { type: integer(8) }
+      data_set_id :  { type: integer(8) }
+      step_type_id :  { type: integer(8), notnull: true }
+      filename :  { type: string(255) }
+      path :  { type: string(1000)}
+      mime_type :  { type: string(255) }
+      description :  { type: clob()  }
+      state: {type: enum, values: [Blank, Ok ,Ko , Processing, Aborted]}
+      ei_test_set_id: { type: integer(8), notnull: false }
+  indexes:
+    scenario_id_index:
+      fields: [scenario_id]
+    version_id_index:
+      fields: [version_id]
+    data_set_id_index:
+      fields: [data_set_id]
+    step_type_id_index:
+      fields: [step_type_id]
+  relations:
+      EiCampaignGraph: { onDelete: SET NULL, local: graph_id , foreign: id, foreignAlias: graphExecution }
+      EiScenario: { onDelete: SET NULL, local: scenario_id , foreign: id, foreignAlias: graphScenario}
+      EiVersion: { onDelete: SET NULL, local: version_id , foreign: id, foreignAlias: graphVersion}
+      EiDataSet: { onDelete: SET NULL, local: data_set_id , foreign: id, foreignAlias: graphDataSet}
+      EiCampaignGraphType: { onDelete: CASCADE , local: step_type_id , foreign: id, foreignAlias: stepType}
+      EiTestSet: {onDelete: CASCADE, local: ei_test_set_id, foreign: id, foreignAlias: LogExecution }
+
+EiExecutionStack:
+  columns:
+    ei_scenario_id: { type: integer(8), notnull: false }
+    ei_data_set_id: { type: integer(8), notnull: false  }
+    ei_campaign_id: { type: integer(8), notnull: false }
+    project_ref: { type: integer(8), notnull: true }
+    project_id: { type: integer(8), notnull: true }
+    profile_ref: { type: integer(8), notnull: true }
+    profile_id: { type: integer(8), notnull: true }
+    user_id:  { type: integer(8),  notnull: false }
+    start_pos: { type: integer(8), notnull: false }
+    end_pos: { type: integer(8), notnull: false }
+    synchronous: { type: boolean, notnull : true, default: true }
+    status: { type: string(25), notnull: true, default: "NA"}
+    ei_test_set_id: { type: integer(8), notnull: false }
+    ei_campaign_execution_id: { type: integer(8), notnull: false }
+    robot: { type: string(64), notnull: true, default: ""}
+    device: { type: enum, values: [SeleniumIde,Ios,Android,Chrome,Firefox,InternetExplorer,Safari,Raspberry], notnull: true, default: Raspberry }
+    device_id: { type: integer(8), notnull: false }
+    driver_id: { type: integer(8), notnull: false }
+    browser_id: { type: integer(8), notnull: false }
+    expected_date : { type: timestamp , notnull: false ,format : yyyy/MM/dd hh:mm:ss } 
+  relations:
+    EiCampaign: { onDelete: CASCADE, local: ei_campaign_id, foreign: id }
+    EiScenario: { onDelete: CASCADE, local: ei_scenario_id, foreign: id }
+    EiDataSet: { onDelete: CASCADE, local: ei_data_set_id, foreign: id }
+    sfGuardUser: { onDelete: CASCADE , local: user_id , foreign: id, foreignAlias: author}
+    EiTestSet: {onDelete: CASCADE, local: ei_test_set_id, foreign: id }
+    EiCampaignExecution: {onDelete: CASCADE, local: ei_campaign_execution_id, foreign: id }
+    EiDevice: {onDelete: CASCADE, local: device_id, foreign: id }
+    EiDriver: {onDelete: CASCADE, local: driver_id, foreign: id }
+    EiBrowser: {onDelete: CASCADE, local: browser_id, foreign: id }

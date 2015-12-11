@@ -1,0 +1,58 @@
+*  {  margin:0;  padding:0;}
+
+
+/***********************************************
+ * OLD
+ *******************************************************************/
+
+/*body {*/
+/*}*/
+
+/*#corps_bg{*/
+    /*margin-top: 600px;*/
+/*}*/
+/*#corps_bg #connexion-form{*/
+    /*margin-left:230px;*/
+/*}*/
+/*fieldset{*/
+    /*margin-top: 1em;*/
+/*}*/
+
+/*.background_form{*/
+    /*background-image: url('/images/login_bg_form.png');*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: top;*/
+    /*overflow: visible;*/
+/*}*/
+
+/***********************************************
+ * NEW
+ *******************************************************************/
+
+body{
+    background: #04363f;
+}
+
+.logo_signin{
+    margin-bottom: 50px;
+    text-align: center;
+    background: #ffffff;
+    height: 200px;
+    line-height: 200px;
+    vertical-align: middle;
+}
+
+.logo_signin img{
+    max-width: 100%;
+    height: auto;
+    padding: 15px;
+}
+
+#corps_bg{
+    margin-top: 50px;
+}
+
+#connexion-form .control-label{
+    line-height: 35px;
+    vertical-align: middle;
+}

@@ -1,0 +1,69 @@
+addScenarioToExecutionStack:
+  is_secure: false
+
+addCampaignToExecutionStack:
+  is_secure: false
+
+checkConfiguration:
+  is_secure: false
+
+createDataSets:
+  is_secure: false
+
+createDataSetsDir:
+  is_secure: false
+
+deleteDataSetsDir:
+  is_secure: false
+
+getAllProjects:
+  is_secure: false
+
+getAllProjectProfils:
+  is_secure: false
+
+getAllProfilsScenario:
+  is_secure: false
+
+getAllProjectsAndScenarios:
+  is_secure: false
+
+getDataSetTree:
+  is_secure: false
+
+getExcelRequests:
+  is_secure: false
+
+getFunctionDescAndNotice:
+  is_secure: false
+
+getScenarios:
+  is_secure: false
+
+generateTestSet:
+  is_secure: false
+
+registerDevice:
+  is_secure: false
+
+requestStackExecution:
+  is_secure: false
+
+showDataSetOracle:
+  is_secure: false
+
+showOracle:
+  is_secure: false
+
+showScenario:
+  is_secure: false
+
+showTestSetOracle:
+  is_secure: false
+
+showTestSetStatus:
+  is_secure: false
+
+updateDataSetsDir:
+  is_secure: false
+  

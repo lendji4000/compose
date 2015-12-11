@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:48:01
+    Author     : LENINE
+*/
+
+/* Fenetre modale d'ajout des contextes */
+  
+#bugContextForm .control-label {
+  float: left;
+  width: 110px;
+  padding-top: 5px;
+  text-align: left;
+} 
+#bugContextForm .controls  {
+    margin-left: 0px;   
+} 
+#bugContextForm .span6 {
+    margin-left :5px;
+}
+
+#bugContextForm h4{
+    margin-bottom: 5px;
+    margin-top:0px;
+    margin-left: 0px;
+    
+} 
+ 
+ 
+

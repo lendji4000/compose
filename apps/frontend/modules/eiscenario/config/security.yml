@@ -1,0 +1,11 @@
+all:
+  is_secure: true
+  
+download : 
+  is_secure : false
+  
+generateXML : 
+  is_secure : false 
+  
+generateXSL : 
+  is_secure : false 

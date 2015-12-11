@@ -1,0 +1,17 @@
+#cache du module eiscenario
+
+index:
+  enabled:     off
+  with_layout: true
+  
+_list:
+  enabled:     on
+  with_layout: true
+  
+show:
+  enabled : on
+  with_layout : true
+
+_menuScenario:
+  enabled:     on
+  with_layout: true

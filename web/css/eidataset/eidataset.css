@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 déc. 2014, 16:21:15
+    Author     : LENINE
+*/
+.eiPanel .panel-body div.form-group {
+  margin-bottom: 50px;
+}
+.eiPanel .panel-body .popover {
+  margin-left: 10px;
+}
+.or-spacer-vertical {
+  width: 0px;
+  position: relative;
+  padding: 0;
+  z-index: 2;
+  margin-right: 40px;
+}
+.or-spacer-vertical .mask {
+  overflow: hidden;
+  width: 20px;
+  height: 100%;
+}
+.or-spacer-vertical.left .mask:after {
+  content: '';
+  display: block;
+  margin-left: 20px;
+  width: 20px;
+  height: 100%;
+  border-radius: 0.096px;
+  box-shadow: 0 0 8px black;
+}
+.or-spacer-vertical.right .mask:before {
+  content: '';
+  display: block;
+  margin-left: 20px;
+  width: 20px;
+  height: 100%;
+  border-radius: 0.096px;
+  box-shadow: 0 0 8px black;
+}
+.or-spacer-vertical span {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 50%;
+  margin-bottom: -20px;
+  /*margin-left: -25px;*/
+  border-radius: 100%;
+  box-shadow: 0 2px 4px #999;
+  background: white;
+  border: 1px dashed #aaa;
+  cursor: hand;
+}
+.or-spacer-vertical span i {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 0px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 40px;
+  font-style: normal;
+  color: #177b8c;
+}
+#editDataSetStepBoxContent #xsl_helper {
+  margin-left: 0;
+}
+#editDataSetStepBoxContent .or-spacer-vertical {
+  display: none;
+}
+#ei_data_set_content .panel .panel-heading i {
+  width: auto;
+}

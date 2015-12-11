@@ -1,0 +1,257 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:43:55
+    Author     : LENINE
+*/
+/* Couleurs de criticité de fonction */
+/* Css principal du module */
+.fonction_table {
+  text-align: justify;
+}
+.fonction_plus_info {
+  cursor: pointer;
+  display: none;
+}
+.add_fonction,
+.delete_fonction,
+.addFunctionToPack,
+.add_function_in_pack,
+.plus_info_arbo_function,
+.remove_occurence_fonction,
+.fonction_moins_info,
+.desc_kal_moins_info {
+  cursor: pointer;
+}
+.checked_place_to_add {
+  cursor: pointer;
+  background: url("/images/boutons/fleche-insert-empty.png") no-repeat scroll 0 transparent;
+  height: 20px;
+}
+#fonction_list {
+  width: 95%;
+}
+#reception_funct {
+  border: black double 1px;
+}
+.parametres {
+  border: 1px solid black;
+  margin: 1% 1% 1% 1%;
+  padding: 1%;
+  width: 95%;
+}
+.parametres table {
+  width: 100%;
+}
+.parametres td.nom,
+.paramatres td.valeur {
+  width: 20%;
+}
+.detail_projet {
+  width: 50%;
+  margin: 1% 2% 2% 2%;
+}
+.liste_profils {
+  margin: 2% 2% 2% 2%;
+}
+.liste_scenario {
+  margin: 2% 2% 2% 2%;
+}
+.part2 {
+  /*margin-top: 20px;*/
+  width: 15%;
+  float: right;
+  position: relative;
+  border: black solid 1px;
+  background-color: #8899AA;
+  padding: 5px 5px 5px 5px;
+}
+#corps_fonction {
+  width: 75%;
+  float: left;
+  position: relative;
+}
+.fonction_id {
+  visibility: hidden;
+}
+.search_version_name {
+  margin: 10px;
+}
+#menu_fonction {
+  width: 20%;
+  float: right;
+  border: white solid 20px;
+  display: block;
+}
+#menu_fonction ul {
+  display: block;
+}
+#menu_fonction ul li {
+  display: block;
+  text-decoration: none;
+}
+.drag_elt {
+  width: 100%;
+}
+.details_fonction {
+  margin-top: 20px;
+  border-bottom: 20px white solid;
+  border-left: 2px #E6E6FA  solid;
+  border-right: 2px #E6E6FA  solid;
+  background-color: #E6E6FA;
+}
+.params_fonction {
+  color: black;
+  /*    background-color: #EEEEEE;*/
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+.param_fonction {
+  margin-top: 2px;
+}
+.lighter {
+  background: url('/images/boutons/fleche-insert-long.png') no-repeat;
+  height: 20px;
+}
+/*gestion des evenements de l' arbre*/
+.moins_info_arbo_pack,
+.moins_info_arbo_pack_search,
+.moins_info_arbo_function {
+  display: none;
+}
+.arbo_function {
+  text-decoration: none;
+}
+.arbo_function li {
+  text-decoration: none;
+}
+.error_delete_package {
+  background-color: #ffc3c3;
+  border: 1px solid #ffc3c3;
+}
+#errorPackaging {
+  display: none;
+}
+.entete_fonction {
+  margin-bottom: 0px;
+}
+/* Gestion des fonctions de la plate forme script.kalifast */
+.criticity {
+  border-radius: 5px;
+  box-shadow: 0px 0px 1.5px 1px #484848 inset;
+  /*width:80%;*/
+}
+.criticity:hover {
+  background-position: 0px 0px;
+}
+.criticity.criticity-Blank {
+  background-color: #f2f3f0;
+}
+.criticity.criticity-Low {
+  background-color: #9cd727;
+  background-image: -moz-linear-gradient(top, #00ff00, #00ff00);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00ff00), to(#00ff00));
+  background-image: -webkit-linear-gradient(top, #00ff00, #00ff00);
+  background-image: -o-linear-gradient(top, #00ff00, #00ff00);
+}
+.criticity.criticity-Medium {
+  background-color: #d7bf27;
+  background-image: -moz-linear-gradient(top, #ff9900, #ff9900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff9900), to(#ff9900));
+  background-image: -webkit-linear-gradient(top, #ff9900, #ff9900);
+  background-image: -o-linear-gradient(top, #ff9900, #ff9900);
+  color: white;
+}
+.criticity.criticity-High {
+  background-color: #c03000;
+  background-image: -moz-linear-gradient(top, #ff0000, #ff0000);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff0000), to(#ff0000));
+  background-image: -webkit-linear-gradient(top, #ff0000, #ff0000);
+  background-image: -o-linear-gradient(top, #ff0000, #ff0000);
+  color: white;
+}
+.label.label-Blank {
+  background-color: #dcdfe2;
+  color: #484848;
+}
+.label.label-Low {
+  background-color: #9cd727;
+}
+.label.label-Medium {
+  background-color: #d7bf27;
+}
+.label.label-High {
+  background-color: #c03000;
+}
+.button-trash {
+  width: 35px;
+  height: 40px;
+  margin-left: 27%;
+  background-color: red;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border: 5px inset black;
+  box-shadow: 0px 0px 1.5px 1px black inset;
+}
+#pwidget {
+  width: 100%;
+}
+td > #progressbar {
+  width: 100px;
+}
+#progressbar {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border: 1px;
+}
+.indicator {
+  width: 0px;
+  /*border-radius:5px;*/
+  margin: 0;
+  color: black;
+  /*text-indent:120px;*/
+  vertical-align: middle;
+  text-align: center;
+  line-height: 30px;
+  /*	box-shadow: 0px 0px 1.5px 1px black inset;*/
+}
+.subjectFunctionLine {
+  /*background-color : #fff;*/
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+.subjectFunctionLine.col-md-3,
+.subjectFunctionLine.col-lg-3,
+.subjectFunctionLine.col-sm-3 {
+  margin-left: 0px;
+}
+.subjectFunctionLine.col-md-2,
+.subjectFunctionLine.col-lg-2 {
+  margin-left: 0px;
+}
+.subjectFunctionLine .btn {
+  font-size: 10px;
+  text-align: justify;
+}
+a.fa-times-circle-o {
+  text-align: center;
+}
+#searchGeneralFunctionsStats .smallstat {
+  margin-bottom: 15px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  height: 35px;
+}
+#searchGeneralFunctionsStats .smallstatDate {
+  margin-bottom: 15px;
+}
+#alertNoticeMsg .alert-success {
+  display: none;
+}
+#alertNoticeMsg .alert-danger {
+  display: none;
+}

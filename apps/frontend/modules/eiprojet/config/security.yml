@@ -1,0 +1,4 @@
+all:
+  is_secure: true
+downloadKalProjet:
+  is_secure: false

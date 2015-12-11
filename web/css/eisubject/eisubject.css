@@ -1,0 +1,117 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 janv. 2015, 15:46:19
+    Author     : LENINE
+*/
+#eiProjectSubjectMainAccess {
+  background: none repeat scroll 0 0 #f5f5f5 ;
+  color: #ff5450;
+}
+#eiProjectCurrentSubject {
+  color: #ff5450;
+}
+.rightSideFunctionBlocHeader strong {
+  border-bottom: solid 2px yellowgreen;
+  text-underline-position: below;
+}
+#subjectHeader .divider-vertical {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+#subjectHeader .navbar-inner {
+  padding-left: 1px;
+  paddind-right: 1px;
+}
+ul.search_subject_by_state,
+ul.search_subject_by_priority,
+ul.search_subject_by_type {
+  padding-top: 0px;
+  padding-left: 0px;
+  margin-left: 10px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+.search_subject_by_priority {
+  padding-left: 10px;
+}
+#groupActionPriorityForm,
+#groupActionTypeForm,
+#groupActionStateForm {
+  display: none;
+}
+#subjectAttachments .well {
+  margin-top: 10px;
+}
+#subjectForm hr,
+#deliveryForm hr {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+#usersToAssignToSubject {
+  float: right;
+  display: inline-block;
+  width: 180px;
+  line-height: 20px;
+  margin: 2px 0 0 0;
+}
+#usersToAssignToSubject > div > span {
+  width: 30px;
+}
+#usersToAssignToSubject > div > ul > li:not(.active) > a {
+  color: black;
+}
+.subjectAssignment {
+  padding: 0 10px 0 0;
+}
+.subjectAssignmentUserName {
+  cursor: default;
+}
+#alreadyAssignUsers {
+  display: inline-block;
+}
+.search_subject_by_state > li,
+.search_subject_by_type > li,
+.search_subject_by_priority > li,
+.search_subject_by_delivery_state > li {
+  display: inline-block;
+}
+.search_subject_by_type > li,
+.search_subject_by_delivery_state > li {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.search_subject_by_state > li,
+.search_subject_by_priority > li {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+#searchSubjectForm label,
+#searchDeliveryForm label {
+  font-size: 11px;
+  font-style: italic;
+}
+#searchSubjectForm .control-group,
+#searchDeliveryForm .control-group {
+  margin-bottom: 10px;
+}
+#searchSubjectForm .form-group,
+#searchDeliveryForm .form-group {
+  margin-bottom: 7px;
+}
+/*Critères avancés de recherche de sujets par rapport aux livraisons*/
+#subjectDeliverySearchBlock {
+  /*display: none;*/
+}
+#subjectAttachments .btn-group {
+  margin-bottom: 10px;
+}
+#EiPaginateBugHistoryList {
+  margin-top: 5px;
+}
+.subjectAttachmentsTitle {
+  cursor: auto;
+}

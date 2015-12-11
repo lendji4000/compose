@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4 déc. 2014, 16:34:10
+    Author     : LENINE
+*/
+/*  Css du module */
+#deliveryForm .controls,
+#subjectForm .controls,
+#searchSubjectForm .controls,
+#searchDeliveryForm .controls {
+  margin-left: 0px;
+}
+#deliveryList .pagination,
+#subjectList .pagination {
+  margin-top: 0px;
+}
+#deliveryList .panel-body {
+  padding: 10px;
+}
+#subjectList table {
+  margin-top: 10px;
+}
+#deliveryForm .span6,
+#subjectForm .span6 {
+  margin-left: 5px;
+}
+#subjectForm h4,
+#deliveryForm h4 {
+  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+.loaderProfile,
+#loading-indicator {
+  display: none;
+}
+.alertConflictClass {
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.thumbsWell {
+  display: none;
+}

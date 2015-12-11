@@ -1,0 +1,3176 @@
+
+homepage:
+  url:   /
+  param: { module: eiprojet, action: index }
+
+
+###Profils d'un projet dans les settings utilisateurs 
+projectProfiles:
+    url:   /User/Settings/Profile/Project/:project_id/:project_ref/:action
+    param: { module: eiuser} 
+    requirements:  
+        project_id: \d+
+        project_ref: \d+ 
+#User setting 
+userProfileParam:
+    url:   /User/Settings/Parameters/Project/:project_id/:project_ref/:action
+    param: { module: eiuserprofileparam} 
+    requirements:  
+        project_id: \d+
+        project_ref: \d+
+        
+#Profil utilisateur par defaut        
+userProfile:
+    url:   /User/Settings/Profile/Project/:project_id/:project_ref/Profile/:profile_id/:profile_ref/:action
+    param: { module: eiuser} 
+    requirements:  
+        project_id: \d+
+        project_ref: \d+
+        profile_id: \d+
+        profile_ref: \d+
+        
+userProfileParamAction:
+    url:   /User/Settings/Parameters/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/paramId/:id/:action
+    param: { module: eiuserprofileparam} 
+    requirements:  
+        project_id: \d+
+        project_ref: \d+
+        profile_id: \d+
+        profile_ref: \d+ 
+        id : \d+
+    
+#Route de définition du package par défaut d'un projet
+setDefaultPackage :
+  url:   /User/Settings/Set/Default/Package/project/:project_id/:project_ref/:action
+  param: { module: eiuser} 
+#Ajout d'un lien bug-fonction via le package par défaut 
+linkFunctionWithDefPack:
+  url: Link/Function/With/:function_id/:function_ref/Default/Package/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name 
+  param: { module: subjectfunction ,  action : linkFunctionWithDefPack} 
+
+# Ressources
+resources:
+    url:   /Resources/download
+    param: { module: eiresources, action: index }
+    
+resourcesDevices:
+    url:   /Resources/devices
+    param: { module: eiresources, action: devices }
+
+resourcesDeviceCreate:
+    url:   /Resources/devices/create
+    param: { module: eiresources, action: create }
+
+    
+resourcesDeviceUpdate:
+    url:   /Resources/devices/update
+    param: { module: eiresources, action: update }
+    
+resourcesDeviceDisown:
+    url:   /Resources/devices/disown/:device_id
+    param: { module: eiresources, action: disown }
+    requirements:
+      device_id: \d+
+    
+ajouterFonction:
+  url: Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/eiversion/:ei_version_id/ajouterFonction/:ei_version_structure_id/*
+  param: { module: eifonction, action: ajouter }
+
+deleteFonction:
+  url: /eiprojet/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/eiversion/deleteFonction/:ei_fonction_id
+  param: {module: eifonction, action: delete }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    ei_fonction_id : \d+
+    
+updateFonction:
+  url: /Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/eifonction/:ei_fonction_id/update
+  param: {module: eifonction, action: update}
+
+##Administration des fonctions
+
+#Ecran de visualisation des fonctions
+functionList:
+  url: /functions/list/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/Administrate
+  param: {module: kalfonction, action: index }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+
+ #Actions sur une fonction 
+functionActions:
+  url: /Function/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/:action
+  param: {module: kalfonction}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+###Paramètres d'une fonction
+ #Actions sur les paramètres d'une fonction 
+functionParamsActions:
+  url: /Function/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/Parameters/:action
+  param: {module: eifunctionparams}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    
+detailsParamActions:
+  url: /Function/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/Parameters/:param_id/:action
+  param: {module: eifunctionparams}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    param_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"    
+ ###  
+###Notices d'une fonction
+ #Actions sur les notices d'une fonction 
+functionNoticesActions:
+  url: /Function/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/Notices/:action
+  param: {module: eiversionnotice}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    
+detailsNoticeActions:
+  url: /Function/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/Notice/:notice_id/:notice_ref/:version_notice_id/:lang/:action
+  param: {module: eiversionnotice}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    notice_id: \d+
+    notice_ref: \d+
+    version_notice_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"    
+ ###   
+#Visuel d'une fonction (show , statistics)
+showFunctionContent:
+  url: /Show/KalFunction/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/:action
+  param: {module: kalfonction}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+ 
+#Ajouter ou supprimer une fonction a un sujet (show , statistics) 
+subjectFunction:
+  url: /Subject/KalFunction/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/:action
+  param: {module: kalfonction}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+ 
+#Scénarios d'une fonction (show , statistics) 
+scenariosFunction:
+  url: /Scenarios/KalFunction/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/:action
+  param: {module: kalfonction}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"    
+    
+#Change function criticity
+changeFunctionCriticity:
+  url: /Change/KalFunction/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/:action
+  param: {module: kalfonction}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"    
+    
+#Campagnes d'une fonction
+showFunctionCampaigns:
+  url: /Show/KalFunction/Campaigns/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/:action
+  param: {module: functionCampaigns}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"    
+    
+## Association de campagnes à une fonction
+createFunctionCampaign:
+  url: /Create/KalFunction/Campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/:action
+  param: {module: functionCampaigns}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+
+editFunctionCampaign:
+  url: /Edit/KalFunction/Campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/function/:function_id/:function_ref/campaign/:campaign_id/:action
+  param: {module: functionCampaigns}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    campaign_id : \d+
+
+############################################
+###          CAMPAIGN EXECUTION          ###
+############################################
+
+execution_stats:
+  url: /Campaign/Statistics/Project/:project_id/:project_ref/Profile/:profile_id/:profile_ref/:profile_name/Campaign/:campaign_id/Execution/:campaign_execution_id/:action
+  param: { module: eicampaignexecution }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    campaign_id : \d+
+    campaign_execution_id : \d+
+
+indexCampaignExecutions:
+  url: /eicampaignexecution/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/campaign/:campaign_id/index
+  param: { module: eicampaignexecution, action: campaignReportsIndex }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    campaign_id : \d+
+
+showCampaignExecutions:
+  url: /eicampaignexecution/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/campaign/:campaign_id/:campaign_execution_id
+  param: { module: eicampaignexecution, action: campaignReportsShow }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    campaign_id : \d+
+    campaign_execution_id: \d+
+
+createCampaignGraph:
+  url: /eicampaignexecution/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/campaign/:campaign_id/create
+  param: { module: eicampaignexecution, action: create }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    campaign_id : \d+
+    sf_method: post
+
+##Routes de traitement des paramètres de la plate forme centrale
+ 
+
+#Route permettant de rajouter une ligne de paramètre à une fonction
+addParamField:
+  url: /Add/KalParam/Field/:paramType
+  param: {module: kalparam, action: addParamField }
+  requirements:  
+    paramType: "[^/]+"   
+    
+##Gestion des notice de fonction (oracle de fonction)
+#Visualisation de la notice
+showFunctionNotice :
+  url: /eifunctionnotice/profile/:profile_id/:profile_ref/show/version/:ei_version_id/function/:ei_fonction_id/:lang
+  param: {module: eifunctionnotice, action: show }
+  requirements:
+    ei_version_id: \d+
+    ei_fonction_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    
+#Ajout d'une la notice du coté client ( surcharge de la notice de la plate forme centrale
+newFunctionNotice :
+  url: /eifunctionnotice/new/:version_notice_id/:notice_id/:notice_ref/:lang/profile/:profile_id/:profile_ref/version/:ei_version_id/function/:ei_fonction_id
+  param: {module: eifunctionnotice, action: new }
+  requirements:
+    version_notice_id: \d+
+    ei_version_id: \d+
+    ei_fonction_id: \d+
+    notice_id: \d+   
+    notice_ref: \d+ 
+    profile_id: \d+   
+    profile_ref: \d+ 
+    
+#Création d'un notice de fonction 
+createFunctionNotice :
+  url: /eifunctionnotice/create/:lang/profile/:profile_id/:profile_ref/version/:ei_version_id/function/:ei_fonction_id
+  param: {module: eifunctionnotice, action: create }
+  requirements: 
+    ei_version_id: \d+
+    ei_fonction_id: \d+ 
+    profile_id: \d+   
+    profile_ref: \d+ 
+#Edition d'une notice de fonction
+editFunctionNotice:
+  url: /eifunctionnotice/edit/:lang/profile/:profile_id/:profile_ref/version/:ei_version_id/function/:ei_fonction_id
+  param: {module: eifunctionnotice, action: edit }
+  requirements: 
+    ei_version_id: \d+
+    ei_fonction_id: \d+ 
+    profile_id: \d+   
+    profile_ref: \d+ 
+#Mise à jour d'un notice de fonction 
+updateFunctionNotice :
+  url: /eifunctionnotice/update/:lang/profile/:profile_id/:profile_ref/version/:ei_version_id/function/:ei_fonction_id
+  param: {module: eifunctionnotice, action: update }
+  requirements: 
+    ei_version_id: \d+
+    ei_fonction_id: \d+     
+    profile_id: \d+   
+    profile_ref: \d+ 
+#Restorer les valeurs par défaut d'une notice de fonction
+restoreDefaultFunctionNotice:
+  url: /eifunctionnotice/restoreDefault/:lang/version/:ei_version_id/function/:ei_fonction_id/profile/:profile_id/:profile_ref
+  param: {module: eifunctionnotice, action: delete }
+  requirements: 
+    ei_version_id: \d+
+    ei_fonction_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    
+
+#Edition et mise à jour de la notice par défaut d'une fonction
+editDefaultNotice:
+  url: /eifunctionnotice/defaultNotice/Notice/:notice_id/:notice_ref/:version_notice_id/Language/:lang/version/:ei_version_id/function/:ei_fonction_id/profile/:profile_id/:profile_ref/:action
+  param: {module: eifunctionnotice }
+  requirements:
+    notice_id: \d+
+    notice_ref: \d+
+    version_notice_id: \d+
+    lang: "[^/]+"
+    ei_version_id: \d+
+    ei_fonction_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    
+#####################################
+#####     GESTION DES BLOCS     #####
+#####################################
+
+eiversionstructure_update_block:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiversion/:ei_version_id/block/:ei_version_structure_id/update
+  param: { module: block, action: update }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_version_structure_id: \d+
+    ei_version_id: \d+
+
+### Gestion des blocs dans la version.
+ajouterBlock:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiversion/:ei_version_id/ajouterBlock/:ei_version_structure_id/*
+  param: { module: block, action: ajouter }
+
+#Route permettant de rajouter une ligne de paramètre à une fonction
+addBlockParam:
+  url: /block/add/blockParam
+  param: {module: blockparam, action: addParamBlock }
+
+### Gestion des blocs.
+
+eiblock_new:
+  url: /:ei_scenario_id/eiblock/new/:ei_block_parent_id
+  param: {module: block, action: new }
+  requirements:
+    ei_block_parent_id: \d+
+ 
+eiblock_create:
+  url: /:ei_scenario_id/eiblock/create/:ei_block_parent_id
+  param: {module: block, action: create }
+  requirements:
+    ei_block_parent_id: \d+
+    
+eiblock_delete:
+  url: /eiblock/delete/:ei_block_id
+  param: {module: block, action: delete }
+  requirements:
+    ei_block_id: \d+
+    
+eiblock_update:
+  url: /eiblock/update/:ei_block_id
+  param: {module: block, action: update }
+  requirements:
+    ei_block_id: \d+
+    
+eiblock_edit:
+  url: /eiblock/edit/:ei_block_id
+  param: {module: block, action: edit }
+  requirements:
+    ei_block_id: \d+
+    
+eiblock_move:
+  url: /eiblock/move/:ei_block_id
+  param: {module: block, action: move }
+  requirements:
+    ei_block_id: \d+
+    
+eiblockparam_new:
+  url: /eiblockparam/new/:ei_block_id
+  param: {module: blockparam, action: new }
+  requirements:
+    ei_block_id: \d+
+    
+eiblockparam_create:
+  url: /eiblockparam/create/:ei_block_parent_id
+  param: {module: blockparam, action: create }
+  requirements:
+    ei_block_parent_id: \d+
+    
+eiblockparam_delete:
+  url: /eiblockparam/delete/:ei_block_param_id
+  param: {module: blockparam, action: delete }
+  requirements:
+    ei_block_id: \d+
+    
+eiblockparam_update:
+  url: /eiblockparam/update/:ei_block_param_id
+  param: {module: blockparam, action: update }
+  requirements:
+    ei_block_id: \d+
+
+
+####################################################
+#####     GESTION STRUCTURE JEU DE DONNEES     #####
+####################################################
+
+eidatasetstructure_edit:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/edit
+  param: { module: eidatasetstructure, action: edit }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_scenario_id: \d+
+
+eidatasetstructure_edit_node:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/:ei_root_node_id/edit
+  param: { module: eidatasetstructure, action: editNode }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_scenario_id: \d+
+    ei_node_id: \d+
+
+eidatasetstructure_create_node:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/:ei_node_parent_id/create
+  param: { module: eidatasetstructure, action: createNode }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_node_parent_id: \d+
+    ei_scenario_id: \d+
+    sf_method: post
+
+eidatasetstructure_remove_node:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/:ei_node_id/remove
+  param: { module: eidatasetstructure, action: removeNode }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_node_id: \d+
+    ei_scenario_id: \d+
+    sf_method: delete
+
+eidatasetstructure_move_node:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/move
+  param: { module: eidatasetstructure, action: moveNode }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_scenario_id: \d+
+    sf_method: post
+
+eidatasetstructure_download_xsd:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/downloadXSD
+  param: { module: eidatasetstructure, action: downloadXSD }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_ref: \d+
+    profile_id: \d+
+    ei_scenario_id: \d+
+
+eidatasetstructure_download_xml_sample:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/downloadXMLSample.:sf_format
+  param: { module: eidatasetstructure, action: downloadXMLSample }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_ref: \d+
+    profile_id: \d+
+    ei_scenario_id: \d+
+    sf_format: (xml)
+
+eidatasetstructure_rename_node:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/structure/:ei_node_id/rename
+  param: { module: eidatasetstructure, action: renameNode }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_node_id: \d+
+    ei_scenario_id: \d+
+    sf_method: put
+
+################################################################
+#####     GESTION DU MAPPING STRUCTURE JDD ET SCENARIO     #####
+################################################################
+
+eiblockdatasetmapping_select_mapping:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/structure/mapping/:ei_block_param_id/select
+  param: { module: eiblockdatasetmapping, action: selectMapping }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_block_param_id: \d+
+    ei_scenario_id: \d+
+    sf_method: get
+
+eiblockdatasetmapping_do_select_mapping:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/structure/mapping/:type/:ei_block_param_id/doMap
+  param: { module: eiblockdatasetmapping, action: doSelectMapping }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_block_param_id: \d+
+    ei_scenario_id: \d+
+    sf_method: post
+
+
+###############################################
+#####     GESTION DES JEUX DE DONNEES     #####
+###############################################
+
+
+eidataset_index:    
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/:ei_scenario_id/eidataset/index
+  param: {module: eidataset, action: index }
+  requirements:
+    ei_scenario_id: \d+
+    
+eidataset_create:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eidataset/:action/:ei_scenario_id/:parent_id
+  param: {module: eidataset }
+  requirements:
+    parent_id: \d+
+    ei_scenario_id: \d+
+ 
+eidataset_edit:
+  url: /Project/:project_id/:project_ref/Profile/:profile_name/:profile_id/:profile_ref/Scenario/:ei_scenario_id/DataSet/:ei_data_set_id/:action
+  param: {module: eidataset }
+
+eidataset_template_change_version:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eidataset/template/:ei_data_set_template_id/change/version
+  param: { module: eidataset, action: changeCurrentVersion }
+  requirements:
+    sf_method: [POST]
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    ei_data_set_template_id: \d+
+   
+
+eidataset_download:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eidataset/download/:ei_data_set_id.:sf_format
+  param: {module: eidataset, action: download}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    parent_id: \d+
+    ei_scenario_id: \d+
+    sf_format: (xml)
+    
+#Récupération de l'arbre des jeux de données d'un scénario pour l'edition d 'une step de campagne
+getScenarioDataSets:
+  url: /Get/Scenario/Data/Set/eiproject/:project_id/:project_ref/profile/:profile_name/:profile_id/:profile_ref/ScenarioId
+#  /:ei_scenario_id
+  param: {module: eiscenario, action: getScenarioDataSets}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+#    ei_scenario_id: \d+
+  
+
+    
+eidataset_folder_create:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eidatasetfolder/:action/:ei_scenario_id/:parent_id
+  param: {module: einode }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    parent_id: \d+
+    ei_scenario_id: \d+
+    
+eidataset_folder_edit:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eidatasetfolder/:action/:ei_scenario_id/:parent_id/:ei_node_id
+  param: {module: einode }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    parent_id: \d+
+    ei_scenario_id: \d+
+    ei_node_id: \d+
+
+
+########################################################
+#####     GESTION DES LIGNES DU JEU DE DONNEES     #####
+########################################################
+
+eidataset_rename_value_dataline:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eidataset/:ei_data_set_id/line/:ei_data_line_id/rename
+  param: { module: eidataset, action: redefineValue }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    ei_data_set_id: \d+
+    ei_data_line_id: \d+
+    ei_scenario_id: \d+
+    sf_method: put
+
+########################################
+#####     GESTION DES DOSSIERS     #####
+########################################
+
+#Traitement des dossiers
+
+#Traitement des editions,et supressions
+path_folder:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/:node_id/:folder_id/folder/:action
+  param: { module: eifolder }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    node_id: \d+
+    folder_id: \d+
+    
+#Traitement des ajouts de dossiers
+create_folder:
+  url: /Project/:project_id/:project_ref/:profile_id/:profile_ref/:profile_name/Parent/:root_id/folder/:action
+  param: { module: eifolder}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    root_id : \d+
+    profile_name: "[^/]+"
+    
+#---------------------------------------------
+#-------routes relatives à un projets---------
+#---------------------------------------------
+
+project_first_load:
+  url: /Project/firstLoad/:project_id/:project_ref
+  param: {module: eiprojet, action: firstLoad}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+
+projet_new_eiversion:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eiversion/:action
+  param: { module: eiversion}
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    project_ref: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+     
+    
+#Association d'un profil projet à une version de scénario
+newProfScen  :
+  url: /Project/:project_id/:project_ref/Profile/:profile_id/:profile_ref/Scenario/:ei_scenario_id/Version/:ei_version_id/:action
+  param: { module: eiprofilscenario}
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    project_ref: \d+
+    profile_ref: \d+ 
+    ei_scenario_id: \d+
+    ei_version_id: \d+
+    
+projet_copy_eiversion:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eiversion/createClone/:ei_version_id/:default_notice_lang
+  param: { module: eiversion, action: createClone}
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    project_ref: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+#Edition d'une version de scénario à partir du package associé
+editVersionWithPackage:
+  url: /Project/:project_id/:project_ref/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/package/:package_id/:package_ref
+  param: { module: eiversion , action : editVersionWithPackage}
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    project_ref: \d+
+    profile_ref: \d+
+    package_ref: \d+
+    package_id: \d+
+    
+projet_edit_eiversion:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id/eiversion/:action/:ei_version_id
+  param: { module: eiversion}
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    project_ref: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+
+projet_show:
+  url: /Project/show/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref
+  param: { action: show, module: eiprojet }
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    project_ref: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    
+projet_list_show:
+  url: /Project/forwardToChoice/:project_id/:project_ref
+  param: { action: showOnProjetListChange, module: eiprojet}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+
+projet_reloadAfterShow:
+  url: /Project/reloadAfterShow/:project_id/:project_ref
+  param: { action: reloadAfterShow, module: eiprojet }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+
+projet_profils_list:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref
+  param: { action: index, module: eiprofil }
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    project_ref: \d+
+    profile_name: "[^/]+"
+    
+projet_eiscenario_downloadJDT:
+  url: /eiscenario/:ei_scenario_id/id_version/:id_version/:filename.:sf_format
+  param: { module: eiscenario, action: downloadJDT}
+  requirements:
+    sf_format: (?:xml|json)
+    
+projet_eiscenario_action:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:action/:ei_scenario_id/*
+  param: { module: eiscenario }
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    project_ref: \d+
+    profile_name: "[^/]+"
+#Récupération des noeuds d'un scénario ou dossier 
+einode_children:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/einode/sendDiagram/:ei_node_type/:ei_node_id
+  param: {module: einode, action: sendDiagram }
+  requirements:
+    ei_scenario_id: \d+
+    ei_node_id: \d+
+    project_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    project_ref: \d+
+    profile_name: "[^/]+"
+changeNodeParent:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/einode/changeNodeParent
+  param: {module: einode, action: changeNodeParent }
+  requirements:  
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+ 
+    profile_name: "[^/]+"
+#Route permettant de renvoyer les fils d'un noeud dans le processus de changement de parent
+sendDiagramForCheck:
+  url: /sendDiagramForCheck/node/:obj_id/:node_type/current/:current_node_id/project/:project_id/:project_ref/profile/:profile_name/:profile_id/:profile_ref
+  param: { module: einode, action: sendDiagramForCheck }
+  requirements:
+    obj_id: \d+
+    node_type: "[^/]+"
+    current_node_id: \d+
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    
+#Générer le xsl de la notice d'un scénario ou jeu de tests
+generateXslNotice:
+  url:   /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:ei_scenario_id.:sf_format
+  param:   { module: eiscenario, action: generateXslNotice , sf_format : html}
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    project_id: \d+
+    project_ref: \d+
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+    
+    
+projet_eiscenario:
+  url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/eiscenario/:action
+  param: { module: eiscenario }
+  requirements:
+    project_id: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    project_ref: \d+
+    profile_name: "[^/]+"
+        
+    
+#  Renommer un scénario  
+ei_scenario_rename :
+  url: /Project/:project_id/:project_ref/:ei_scenario_id/:new_name/eiscenario/rename
+  param: { module: eiscenario , action: rename}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    ei_scenario_id: \d+
+    
+ei_version_rename :
+  url: /Project/:project_id/:project_ref/:id_version/:new_name/eiscenario/rename
+  param: { module: eiscenario , action: rename}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    id_version: \d+  
+ 
+    
+eiscenario_generate_XSL:
+  url: /eiscenario/:project_id/:project_ref/:ei_scenario_id/:profile_id/:profile_ref/:login/generateXSL.:sf_format
+  param: {module: eiscenario, action: generateXSL} 
+  sf_format: (?:xml|xsl)
+
+
+  
+profil_forwardTo:
+  url: /eiprofil/forwardTo/:profile_id/:profile_ref
+  param: {module: eiprofil, action: forwardTo }
+  
+  
+#Rechargement des projets
+recharger_projet:
+  url: Project/downloadKalProjet
+  param: {module: eiprojet, action: downloadKalProjet}
+  
+recharger_fonctions:
+  url: eiprojet/downloadKalFonctions/:project_id/:project_ref
+  param: { module: eiprojet, action: downloadKalFonctions }
+  
+#Url de récupération des détails d'un noeud de fonctions
+
+functionNodeDetails:
+  url: eitree/Node/details/project/:project_id/:project_ref/Node/:ei_tree_id/:obj_id/:ref_obj/Type/:tree_type/Profile/:profile_id/:profile_ref/:profile_name
+  param: {module: tree, action: getNodeDetails}
+  requirements:
+    project_id : \d+
+    project_ref : \d+ 
+    profile_id: \d+
+    profile_ref: \d+ 
+    profile_name: "[^/]+"
+    tree_type: "[^/]+"
+    obj_id : \d+
+    ref_obj : \d+
+    ei_tree_id : \d+    
+#Retour d'un noeud d'arbre de fonctions
+sendTree:
+  url: eitree/open/project/:project_id/:project_ref/open/root/:root_id/node/:obj_id/:ref_obj/Type/:tree_type
+  param: {module: tree, action: sendTree}
+  requirements:
+    project_id : \d+
+    project_ref : \d+
+    obj_id : \d+
+    ref_obj : \d+
+    root_id : \d+
+    
+    
+#Fermeture d'un noeud d'arbre de fonctions 
+ei_tree_close:
+  url: eitree/close/:ei_tree_id
+  param: {module: tree, action: closeTree}
+  requirements:
+    ei_tree_id : \d+
+    
+    
+ei_tree_open_node :
+  url: eitree/project/:project_id/:project_ref/open/node/:obj_id/:ref_obj
+  param: {module: tree, action: openNode}
+  requirements:
+    project_id : \d+
+    project_ref : \d+
+    obj_id : \d+
+    ref_obj : \d+
+    
+ei_node_close:
+  url: einode/close/:ei_node_id
+  param: {module: einode, action: closeNode}
+  requirements:
+    ei_node_id: \d+
+#Routes pour la sécurité de l'application 
+  
+connexion:
+  url:   /connexion/login
+  param: { module: connexion, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+#sf_guard_password:
+#  url:   /request_password
+#  param: { module: sfGuardForgotPassword, action: password }
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardForgotPassword, action: index }
+
+#Routes Ajax
+#routes pour web services
+
+#Routes pour le service web permettant de retourner la liste des projets d'un utilisateur
+
+#Route de rechargement d'une fonction et de ses objets liés
+reload_function:
+  url:     /kalfonction/:project_id/:project_ref/:function_id/:function_ref/:login/:pwd/:login_user/reloadFunction.:sf_format
+  param:   { module: kalfonction, action: reloadFunction , sf_format : html}
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json)
+
+ #Route de rechargement d'une fonction et de ses objets liés
+getRootTree:
+   url:     /Project/:project_id/:project_ref/tree/getRootTree/Profile/:profile_id/:profile_ref/:profile_name
+   param:   { module: tree, action: getRootTree}
+   requirements:
+       project_id: \d+
+       project_ref: \d+
+       profile_id: \d+
+       profile_ref: \d+ 
+       profile_name: "[^/]+"
+
+    
+service_projet:
+  url:     /serviceweb/:token/listProjet.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: serviceweb, action: listProjet}
+  options: { model: EiProjet , type: list}
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+
+service_project:
+  url:     /serviceweb/:token/listProject.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: serviceweb, action: listProject}
+  options: { model: EiProjet , type: list}
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+
+seleneseProjectCmds:
+  url:     /serviceweb/:token/:project_id/:project_ref/listSeleneseCmds.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: serviceweb, action: seleneseProjectCmds}
+  options: { model: EiProjet , type: list}
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json|yaml)     
+    
+service_profil:
+  url:     /serviceweb/:token/:project_id/:project_ref/listProfil.:sf_format
+  param:   { module: serviceweb, action: listProfil }
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+ 
+#Retour des scripts d'une fonction (par rapport à un profil) à l'ide sélénium    
+service_script :
+  url:     /serviceweb/getScriptWithVariables/:token/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/scenario/:scenario_id/Jdt/:jdt_id/position/:position/scriptCmds.:sf_format
+  param:   { module: serviceweb, action: listScripts }
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json)
+    
+#Mise à jour de données recu de l'IDE sélénium    
+service_script_update :
+  url:     /serviceweb/ScriptGetBySeleniumIde/:token/project/:project_id/:project_ref/ticket/:ticket_id/:ticket_ref/profile/:profile_id/:profile_ref/scenario/:scenario_id/Jdt/:jdt_id/position/:position/update.:sf_format
+  param:   { module: serviceweb, action: updateScript, sf_format : html }
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json)
+    
+#Retour des tickets d'un projet à l'ide sélénium
+service_ticket:
+  url:     /serviceweb/:token/:project_id/:project_ref/listTickets.:sf_format
+  param:   { module: serviceweb, action: listTickets }
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json)    
+    
+service_scenario:
+  url:     /serviceweb/:token/:project_id/:project_ref/:profile_id/:profile_ref/listScenario.:sf_format
+  param:   { module: serviceweb, action: listScenario }
+  requirements:
+    sf_method: get
+    sf_format: (?:xml|json|yaml)     
+
+service_plugin_selenium:
+  url:     /serviceweb/:token/:profile_id/:profile_ref/:ei_scenario_id/listFonctions.:sf_format
+  param:   { module: serviceweb, action: listFonctions , sf_format : html }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+    
+#Retour du dossier root et de ses enfants de premier niveau par webservice
+sendRootFolder:
+  url: /serviceweb/root/:token/:project_id/:project_ref/:profile_id/:profile_ref.:sf_format
+  param: { module: serviceweb, action : sendRootFolderToIde }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+ 
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+    
+#Retour d'un dossier et de ses fils et de ses enfants de premier niveau par webservice
+sendFolderChilds:
+  url: /serviceweb/folder/childs/:token/:project_id/:project_ref/:profile_id/:profile_ref/:node_id.:sf_format
+  param: { module: serviceweb , action : sendFolderToIde}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    node_id: \d+
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+    
+#Récupération des logs au plugin sélénium   
+getLogFromIde:
+  url: /serviceweb/logFile/:token/:project_id/:project_ref/:profile_id/:profile_ref/:node_id.:sf_format
+  param: { module: serviceweb , action : getLogFile}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+ 
+    node_id: \d+ 
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+    
+listScenariosCampaign:
+    url: /serviceweb/campaign/:token/:projet_nom/:profil_nom/:campagne_id/:pos_dep/:pos_fin/listScenario.:sf_format
+    param: { module: serviceweb , action : listScenariosCampaign}
+    requirements:
+      campagne_id: \d+
+      pos_dep: \d+
+      pos_fin: \d+
+      sf_method: get
+      sf_format: (?:json)
+
+listScenariosCampaignExecution:
+    url: /serviceweb/campaign/:token/:projet_nom/:profil_nom/:campagne_id/:pos_dep/:pos_fin/:execution_id/listScenario.:sf_format
+    param: { module: serviceweb , action : listScenariosCampaign}
+    requirements:
+      campagne_id: \d+
+      pos_dep: \d+
+      pos_fin: \d+
+      execution_id: \d+
+      sf_method: get
+      sf_format: (?:json)
+    
+generateFunctionXMLLink:
+  url:     /serviceweb/:token/:profile_id/:profile_ref/:function_id/generateXMLLink.:sf_format
+  param:   { module: serviceweb, action: generateXMLLink }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    id_fonction: \d+
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+    
+list_fonction: 
+  url:     /serviceweb/:token/:profile_id/:profile_ref/:ei_scenario_id/listFonctions.:sf_format
+  param:   { module: serviceweb, action: listFonctions , sf_format : html}
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    sf_method: get
+    sf_format: (?:xml|json|yaml)
+    
+ 
+    
+#Génération du xsl de la fonction pour l'interprétation par l'ide
+
+fonction_downloadxsl:
+  url: /eifonction/genererXSL/:token/:function_id/:function_ref/:profile_id/:profile_ref.:sf_format
+  param: { module: serviceweb, action: genererXSL }
+  requirements:
+    sf_format: (?:xml)
+    
+#Génération du fichier xml d'une fonction (EiFonction) sur test. Géneralement utilisé par l'ide sélénium
+fonction_generateXml:
+  url: /eifonction/generateXML/:token/:function_id/:profile_id/:profile_ref.:sf_format
+  param: { module: eifonction, action: generateXML }
+  requirements:
+    sf_format: (?:xml)      
+
+#routes classiques
+aide:
+  url:     /presentation/aide/:eimodule
+  param:   { module: presentation, action: aide }
+eiprojet:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiProjet }
+
+eiscenario:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiScenario }
+
+
+eifonction:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiFonction }
+  
+new_eifonction :
+  url:     /eifonction/new/:project_id/:project_ref/:ei_scenario_id/:id_version/:niveau
+  param:   { module: eifonction, action: new }
+  
+ei_fonction_xml:
+  url:     /eifonction/:profile_id/:profile_ref/:function_id/generateXML.:sf_format
+  class:   sfDoctrineRoute
+  options: { model: EiFonction, type: object }
+  param:   { module: eifonction, action: generateXML, sf_format: html }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    function_id: \d+
+    sf_method: [get]
+    sf_format: (?:html|xml)
+
+ei_scenario_xml:
+  url:     /eiscenario/generateXML.:sf_format
+  class:   sfDoctrineRoute
+  options: { model: EiScenario, type: object }
+  param:   { module: eiscenario, action: generateXML, sf_format: html }
+  requirements:
+    sf_method: [get]
+    sf_format: (?:html|xml)
+
+# Synchronisation des paramètres de fonction.
+ws_update_function_out_params:
+  url: /serviceweb/logs/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_test_set_id/:ei_log_id/synchronize/:position
+  param: { module: eiblockdatasetmapping, action: synchronizeOutParams }
+  requirements:
+    sf_method: [post]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+
+#création d'un nouvel id de log
+create_ei_log:
+  url: /serviceweb/createlog/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_test_set_id
+  param: { module: eilog, action: createLog }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+
+state_ei_log_abort:
+  url: /serviceweb/logs/aborted/:token
+  param: { module: eilog, action: AbortTestSet }
+  requirements:
+    sf_method: [post]
+    
+# sauvegarde des logs envoyés par l'IDE
+set_ei_test_set_function_log:
+  url: /serviceweb/logs/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_test_set_id/:ei_log_id
+  param: { module: eilog, action: retrieveLogs }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+
+set_campaign_graph_state_log:
+  url: /serviceweb/logs/campaign/start/:token
+  param: { module: eilog, action: StartCampaignStep }
+  requirements:
+    sf_method: [post]
+
+set_campaign_graph_state_log_finish:
+  url: /serviceweb/logs/campaign/finished/:token
+  param: { module: eilog, action: FinishedCampaignStep }
+  requirements:
+    sf_method: [post]
+
+set_campaign_graph_state_log_abort:
+  url: /serviceweb/logs/campaign/aborted/:token
+  param: { module: eilog, action: AbortedCampaignStep }
+  requirements:
+    sf_method: [post]
+
+#cloture les logs depuis l'IDE.
+closelog_ei_test_set_function_log:
+  url: /serviceweb/closelog/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_test_set_id/:ei_log_id
+  param: { module: eilog, action: endCurrentLog }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    
+#récupération des bloc disponible pour la création de nouvelles lignes de données depuis l'IDE
+get_available_blocks:
+  url: /serviceweb/availableblocks/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_data_line_id
+  param: { module: eidataset, action: getAvailableBlocks }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+
+create_empty_ei_test_set:
+  url: /serviceweb/createdataset/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_node_parent_id
+  param: { module: serviceweb, action: createEmptyDataSet }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    
+get_ei_data_line:
+  url: /serviceweb/dataset/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_data_set_id/:ei_data_line_id/:page
+  param: { module: eidataset, action: sendEiDataLine }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    
+create_ei_data_line:
+  url: /serviceweb/createdataline/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id
+  param: { module: eidataset, action: createEiDataLine }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    
+edit_ei_data_line:
+  url: /serviceweb/editdataset/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_data_set_id
+  param: { module: eidataset, action: editEiDataLine }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    
+delete_ei_data_line:
+  url: /serviceweb/deletedataline/:token/:project_id/:project_ref/:profile_id/:profile_ref/:ei_scenario_id/:ei_data_set_id/:ei_data_line_id
+  param: { module: eidataset, action: deleteEiDataLine }
+  requirements:
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    
+#Gestion des jeux de tests
+
+#Affichage des jeux de tests d'un scénario
+ei_test_set_index:
+  url: /Project/:project_id/:project_ref/eitestset/list/scenario/:ei_scenario_id/profile/:profile_name/:profile_id/:profile_ref
+  param: { module: eitestset, action: index, sf_format: html }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+ 
+    
+#Génération de l'oracle d'un jeu de test
+eitestset_oracle:
+  url: /Oracle/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/scenario/:ei_scenario_id/eitestset/:ei_test_set_id
+  param: { module: eitestset, action: oracle , sf_format: html}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    ei_test_set_id: \d+
+    ei_scenario_id: \d+
+    
+#Génération de l'oracle d'un jeu de test
+eitestset_function_oracle:
+  url: /Oracle/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/Function/:function_id/:function_ref/eitestset/:ei_test_set_id/Scenario/:ei_scenario_id
+  param: { module: eitestset, action: functionOracle , sf_format: html}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    ei_test_set_id: \d+
+    ei_scenario_id: \d+
+    function_id: \d+
+    function_ref: \d+
+    profile_name: "[^/]+"
+
+#Récupération de l'oracle le plus récent d'un scénario
+
+getLastOracle:
+  url: /Oracle/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/scenario/:ei_scenario_id/Most/Recent/oracle
+  param: { module: eiscenario, action: getLastOracle , sf_format: html}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+  
+    ei_scenario_id: \d+
+
+eitestset_oracle_download:
+  url: /Oracle/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/scenario/:ei_scenario_id/eitestset/:ei_test_set_id.:sf_format
+  param: {module: eitestset, action: downloadOracle}
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    ei_test_set_id: \d+
+    ei_scenario_id: \d+
+    sf_format: (xml)
+    
+generate_ei_test_set:
+  url: /serviceweb/generateTestSet/:token/:profile_id/:profile_ref/:ei_scenario_id/:exec_mode/:ei_data_set_id/:execution_id/:graph_id
+  param: { module: eitestset, action: generateTestSet, graph_id: 0, execution_id: 0 }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_data_set_id: \d+
+    graph_id: \d+
+    execution_id: \d+
+    
+get_previous_ei_test_set_block:
+  url: /serviceweb/getPreviousBlock/:token/:profile_id/:profile_ref/:ei_scenario_id/:ei_test_set_id/:position
+  param: { module: eitestset, action: getPreviousBlock }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_test_set_id: \d+
+    position: \d+
+    
+get_functions_from_position:
+  url: /serviceweb/getFunctions/:token/:profile_id/:profile_ref/:ei_scenario_id/:ei_test_set_id/:position
+  param: { module: eitestset, action: getFunctionsFromPosition }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_test_set_id: \d+
+    position: \d+
+    
+generateXML_ei_test_set_function:
+  url: /serviceweb/generateEiFunctionXML/:token/:profile_id/:profile_ref/:ei_scenario_id/:ei_test_set_id/:ei_fonction_id/:position
+  param: { module: eitestset, action: generateEiFunctionXML }
+  requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_data_set_id: \d+
+    
+    
+# Statistiques d'execution
+getScenarioStats: 
+    url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/Scenario/:ei_scenario_id/stats
+    params: { module: eiscenario, action : statistics }
+    requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    project_id: \d+
+    project_ref: \d+
+    profile_name: "[^/]+"
+    ei_scenario_id: \d+ 
+###Module de gestion des statistiques   
+
+#Statistiques générales sur l'applciation
+generalStats:
+    url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/Statistics/:action
+    params: { module: statistics }
+    requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    project_id: \d+
+    project_ref: \d+
+    profile_name: "[^/]+"
+    
+statistics:
+    url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/stats/:action
+    params: { module: statistics }
+    requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_data_set_id: \d+
+    
+    
+statistics_function:
+    url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/stats/function/:function_id/:function_ref
+    params: { module: statistics, action: getFunctionStats }
+    requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_data_set_id: \d+
+
+statistics_function_graph:
+    url: /Project/:project_id/:project_ref/:profile_name/:profile_id/:profile_ref/stats/function/:function_id/:function_ref/graph
+    params: { module: statistics, action: getFunctionGraph }
+    requirements:
+    sf_method: [get]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_data_set_id: \d+
+
+kalparam:
+  class:   sfDoctrineRouteCollection
+  options: { model: KalParam }
+
+eilog:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiLog }
+
+eiparam:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiParam }
+
+eiversion:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiVersion }
+
+eiprofil:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiProfil }
+
+eiprofilscenario:
+  class:   sfDoctrineRouteCollection
+  options: { model: EiProfilScenario }
+
+#Autres routes pour les profils scénario
+eiprofilscenario_other:
+  url:   /eiprofilscenario
+  param: { module: eiprofilscenario }
+
+#Route pour la visualisation des notices d'un jeu de test
+
+show_notice:
+   url: /Project/:project_id/:project_ref/eiscenario/:ei_scenario_id/eiprofil/:profile_id/:profile_ref/version/:id_version/:lang/notice
+   param: { module: eiversion, action: showNotice }  
+  
+##  
+## Routes pour les gestions des anomalies
+##
+
+#Route de gestion des livraisons (les livraisons sont affichées par projet)
+
+#Route de listing , ou création d'un statut de bug 
+bug_state:
+  url:   /Bug/Project/:project_id/:project_ref/Bugs/State/:action
+  param: { module: eisubjectstate}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    
+#Route d'edition, visualisation ou suppression d'un statut de bug
+bug_state_edit:
+  url:   /Bug/Project/:project_id/:project_ref/Bugs/State/:state_id/:action
+  param: { module: eisubjectstate}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+    
+    state_id : \d+
+    
+#Route de listing , ou création d'un statut de livraison 
+delivery_state:
+  url:   /Delivery/Project/:project_id/:project_ref/Deliveries/State/:action
+  param: { module: eideliverystate}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    
+#Route d'edition, visualisation ou suppression d'un statut de livraison
+delivery_state_edit:
+  url:   /Delivery/Project/:project_id/:project_ref/Deliveries/State/:state_id/:action
+  param: { module: eideliverystate}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+    
+    state_id : \d+
+    
+#Listing des livraisons 
+delivery_list :
+  url:   /Delivery/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/list
+  param: { module: eidelivery, action: index }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+editDeliveryCampaign:
+  url:   /Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/Delivery/:delivery_id/Campaign/:campaign_id
+  param: { module: eicampaign, action: show }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+
+    campaign_id : \d+   
+#Route de récupération de la procedure de migration d'une livraison
+deliveryProcess:
+    url:   /Delivery/:delivery_id/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/deliveryProcess
+    param: { module: eidelivery, action: deliveryProcess }
+    requirements: 
+      delivery_id : \d+  
+      project_id: \d+
+      project_ref: \d+
+      profile_id: \d+
+      profile_ref: \d+
+      profile_name: "[^/]+"
+#Recherche de livraison   (avec récupération des données renseignées dans le tableau des critères)
+searchDeliveries :
+  url:   /Delivery/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/searchDeliveries
+  param: { module: eidelivery, action: searchDeliveries }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+  
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+
+#Route d'actions générales de livraisons 
+delivery_actions:
+  url:   /Delivery/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eidelivery }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"  
+    
+    
+#  Recherche d'une livraison par son id ou son nom   (on est dan l'édition d'une livraison)
+searchDeliveryByIdOrName: 
+  url:   /Delivery/:id/searchDeliveryByIdOrName/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eidelivery, action: searchDeliveryByIdOrName }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id : \d+ 
+
+
+delivery_new :
+  url:   /Delivery/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/new
+  param: { module: eidelivery, action: new }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Création d'un livraison
+delivery_create :
+  url:   /delivery/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/create
+  param: { module: eidelivery, action: create }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+  
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+ 
+#Visuel,mise à jour ou edition d'une livraison
+
+delivery_edit:
+  url:   /delivery/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action/:delivery_id
+  param: { module: eidelivery }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id : \d+      
+    
+#Route de gestion des recherches d'objets tels que ( les bugs , les livraisons les campagnes) avec préfixage d'ID
+bugManagementSearch:
+  url:   /Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/Bug/Management/search
+  param: { module: eisubject, action: bugManagementSearch }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Route de gestion des sujets (les sujets sont affichées par projet au moins )
+setBugPackageAsDefault :
+  url:   /subjects/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/setBugPackageAsDefault/:package_id/:package_ref
+  param: { module: eisubject,action:setBugPackageAsDefault }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    package_id : \d+
+    package_ref : \d+
+## Url sur les actions globales d'interventions
+intervention_global_actions :
+  url: /Interventions/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubject }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+
+## Url sur les actions sur une intervention
+intervention_actions :
+  url: /Interventions/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/Intervention/:subject_id/:action
+  param: { module: eisubject }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"
+    subject_id : \d+
+    
+subjects_list :
+  url:   /subjects/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/list
+  param: { module: eisubject, action: index }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+toDoList  :
+  url:   /subjects/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/To/Do/List
+  param: { module: eisubject, action: toDoList }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"   
+  
+#Recherche de sujets   (avec récupération des données renseignées dans le tableau des critères)
+searchSubjects :
+  url:   /subjects/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/searchSubjects
+  param: { module: eisubject, action: searchSubjects }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Retirer un fichier attaché à un sujet
+remove_subject_attachment:
+  url:   /subject/attachment/:id/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/remove
+  param: { module: eisubjectattachment, action: delete }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id :         \d+
+    
+#Création d'un fichier attaché
+subject_attachment_create:
+  url:   /subject/:subject_id/attachment/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/create
+  param: { module: eisubjectattachment, action: create }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    
+#Mise à jour d'un fichier attaché
+subject_attachment_update:
+  url:   /subject/:subject_id/attachment/:id/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/update
+  param: { module: eisubjectattachment, action: update }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    id : \d+
+    
+#Téléchargement des fichiers joints
+downloadSubjectAttachment:
+  url:   /subjects/attachment/:id/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/download
+  param: { module: eisubjectattachment, action: download }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id :         \d+
+  
+#Changement du statut,priorité ou type d'un groupe de sujets 
+changeGroupSubjectAction:
+  url:   /subjects/group/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/change/:act
+  param: { module: eisubject, action: changeGroupSubjectAction }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Sélection d'une livraison pour plusieurs sujets
+chooseDelForManySub:
+  url:   /choose/delivery/for/many/subjects/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubject, action: chooseDelForManySub }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+
+#Gestion des solutions d'un sujet
+subject_solution_edit:
+  url:   /subject/:subject_id/solution/:id/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubjectsolution }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    id : \d+
+      
+#creation d'une solution
+subject_solution_create:
+  url:   /subject/:subject_id/solution/Project/:project_id/:project_ref/:action
+  param: { module: eisubjectsolution }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+ 
+     
+    
+    
+#Gestion des migrations d'un sujet    
+subject_migration_edit:
+  url:   /subject/:subject_id/migration/:id/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubjectmigration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    id : \d+
+#Visuel d'une migration sur sujet  
+subject_migration_create:
+  url:   /subject/:subject_id/migration/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubjectmigration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+  
+    
+#Gestion des détails d'un sujet  
+#Edition des détails sur sujet
+subject_details_edit : 
+  url:   /subject/:subject_id/details/:id/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubjectdetails }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    id : \d+ 
+#Ajout d'un détail sur sujet    
+subject_details_create :
+  url:   /subject/:subject_id/details/Project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubjectdetails }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+  
+
+
+
+#Création d'un méssage sur un sujet
+ei_msg_subject_add:
+  url:   /subject/:subject_id/message/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/type/:message_type_id/parent/:parent_id/type/:ei_message_type
+  param: { module: eisubjectmessage , action : addQuickMsg }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+ 
+    parent_id : \d+
+    message_type_id : \d+
+    ei_message_type: "[^/]+" 
+#Ajout et création d'un message de sujet
+subject_message_create:
+  url:   /subject/:subject_id/message/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/type/:type/parent/:parent_id/:action
+  param: { module: eisubjectmessage }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+ 
+    parent_id : \d+
+#Edition et mise à jour d'un méssage de sujet
+subject_message_edit:
+  url:   /subject/:subject_id/message/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action/:id
+  param: { module: eisubjectmessage }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    id: \d+
+#Ajout d'une campagne en spécifiant un sujet lié
+createSubjectCampaign:
+  url:   /subject/:subject_id/subjectCampaigns/createSubjectCampaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubjecthascampaign }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    
+#creation d'une campagne de test pour un sujet   
+editSubjectCampaign:
+  url:   /subject/:subject_id/subjectCampaigns/editSubjectCampaign/:campaign_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eisubjecthascampaign }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+    
+    campaign_id : \d+
+    
+#Récupération des campagnes de tests d'un sujet     
+subjectCampaignsList:
+  url:   /subject/:subject_id/subjectCampaigns/list/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubjecthascampaign, action: index }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+ 
+#Récupération des fonctions d'un sujet     
+subjectFunctionList:
+  url:   /subject/:subject_id/Functions/list/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: subjectfunction, action: index }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+ 
+ 
+#Administration de la migration d'une livraison     
+deliveryAdminMigration:
+  url:   /Delivery/:delivery_id/Administrate/Migration/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eidelivery, action: adminMigration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id : \d+     
+    
+#Administration de la migration d'un bug     
+subjectAdminMigration:
+  url:   /subject/:subject_id/Administrate/Migration/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubject, action: adminMigration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+   
+#Route de changement du profil de migration    
+changeProfileForMigration: 
+  url:   /Subject/changeProfileForMigration/:project_id/:project_ref/:profile_id/:profile_ref/:subject_id
+  param: { module: eisubject, action: changeMigrationProfile }
+  requirements:
+    sf_culture: (?:fr|en)
+#Route de changement du profil de migration  pour plusieurs fonctions d'une livraison   
+changeProfileForMigrationDelivery:
+    url:   /Delivery/changeProfileForMigration/:project_id/:project_ref/:profile_id/:profile_ref
+    param: { module: eidelivery, action: changeMigrationProfile }
+    requirements:
+      sf_culture: (?:fr|en)
+      
+#Récupération des profils cochés dans les scripts d'une fonction  pour un ticket donné
+getProfileForTicket:
+    url:   /Get/Profile/For/Package/:ticket_id/:ticket_ref/Function/:function_id/:function_ref/project/:project_id/:project_ref/Delivery/:delivery_id
+    param: { module: kalfonction, action: getProfileForTicket }
+    requirements: 
+      project_id: \d+
+      project_ref: \d+  
+      ticket_ref: \d+
+      ticket_id: \d+
+      function_ref: \d+
+      function_id: \d+
+      delivery_id: \d+
+#Récupération des profils cochés dans les versions d'un scénario pour un package donné      
+getScenarioProfilesForPackage:
+    url:   /Get/Scenario/Profiles/For/Package/:package_id/:package_ref/Scenario/:ei_scenario_id/project/:project_id/:project_ref/Delivery/:delivery_id
+    param: { module: eiscenario, action: getScenarioProfilesForPackage }
+    requirements: 
+      project_id: \d+
+      project_ref: \d+  
+      package_id: \d+
+      package_ref: \d+
+      ei_scenario_id: \d+ 
+      delivery_id: \d+ 
+#Migration d'un scénario de bug 
+migrateBugScenario:
+  url:   /subject/Migrate/Package/:package_id/:package_ref/Scenario/:ei_scenario_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubject, action: migrateBugScenario }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"  
+    package_ref: \d+
+    package_id: \d+
+    ei_scenario_id: \d+ 
+#Migration de plusieurs scénario d'un bug à la fois 
+migrateManyBugScenario:
+  url:   /subject/Migrate/Many/Scenario/project/:project_id/:project_ref/profile/:profile_id/:profile_ref
+  param: { module: eisubject, action: migrateManyBugScenario }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+  
+#Migration d'une fonction d'un bug    
+migrateBugFunction:
+  url:   /subject/Migrate/Package/:ticket_id/:ticket_ref/Function/:function_id/:function_ref/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubject, action: migrateBugFunction }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+#    subject_id : \d+
+    ticket_ref: \d+
+    ticket_id: \d+
+    function_ref: \d+
+    function_id: \d+
+#Migration de plusieurs fonctions d'un bug
+migrateManyBugFunction:
+  url:   /subject/Migrate/Many/Functions/project/:project_id/:project_ref/profile/:profile_id/:profile_ref
+  param: { module: eisubject, action: migrateManyBugFunction }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+    
+ 
+#Récupération du détail , d'une migration ou d'une solution pour un sujet    
+getSubjectDetailOrSolutionOrMigration:
+  url:   /subject/:subject_id/subjectCampaigns/field/:field_type/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubject, action: getSubjectDetailOrSolutionOrMigration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+    
+#Mise à jour du détail , de la solution ou de la migration d'un sujet
+updateDetailOrSolutionOrMigration:
+  url:   /subject/:subject_id/subject/update/field/:field_type/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubject, action: updateDetailOrSolutionOrMigration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+ 
+    
+#  Recherche d'un sujet par son id ou son nom   (on est dans l'édition d'un sujet)
+searchSubjectByIdOrName: 
+  url:   /delivery/:id/searchSubjectByIdOrName/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubject, action: searchSubjectByIdOrName }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id : \d+       
+ 
+subject_new :
+  url:   /subject/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/new
+  param: { module: eisubject, action: new }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+subject_create :
+  url:   /subject/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/subject/create
+  param: { module: eisubject, action: create }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+  
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Mise à jour d'un sujet
+subject_update :
+  url:   /subject/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/subject/update/:subject_id
+  param: { module: eisubject, action: update }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+     
+    
+#Edition d'un sujet    
+subject_edit :
+  url:   /subject/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/subject/edit/:subject_id
+  param: { module: eisubject, action: edit }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+   
+    
+#Visuel d'un sujet    
+subject_show :
+  url:   /subject/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/subject/show/:subject_id
+  param: { module: eisubject, action: show }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+       
+  
+#Actions on interventions changeInterventionInMigrationLine
+intervention_actions :
+  url:   /Intervention/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/subject/:action/:subject_id
+  param: { module: eisubject }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+  
+#Assignation d'un sujet à un utilisateur
+assign_subject_to_user:
+  url:   /subjectAssignments/AddAssignment/subject/:subject_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubjectassignment, action: add }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+
+#    guard_id: \d+
+    
+#Suppression d'une assignation 
+remove_user_assign_for_subject:
+  url:   /subjectAssignments/removeAssignment/subject/:subject_id/User/:guard_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eisubjectassignment, action: remove }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+
+    guard_id: \d+     
+
+#Route de gestion des campagnes de tests (les campagnes sont affichées par projet)
+campaign_list :
+  url:   /campaign/project/:project_id/:project_ref/List/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eicampaign, action: index }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+campaign_search :
+  url:   /campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/search
+  param: { module: eicampaign, action: search }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+  
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+       
+#Recherche d'une campagne de tests par son nom ou son Id
+searchCampaignByIdOrName : 
+  url:   /campaign/:campaign_id/searchCampaignByIdOrName/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eicampaign, action: searchCampaignByIdOrName }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+  
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id : \d+
+    
+#Ajout d'un formulaire de création de campagne    
+campaign_new :
+  url:   /campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/new
+  param: { module: eicampaign, action: new }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Création d'une campagne de tests   
+campaign_create :
+  url:   /campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/create
+  param: { module: eicampaign, action: create }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+#Edition d'une campagne    
+campaign_edit:
+  url:   /campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/edit/:campaign_id
+  param: { module: eicampaign, action: edit }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+  
+#Mise à jour d'une campagne
+campaign_update:
+  url:   /campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/update/:campaign_id
+  param: { module: eicampaign, action: update }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+      
+
+##Graphe d'une campagne de tests
+
+#Vérification du type (automatisable ou pas ) d'un step type de campagne
+isStepAutomatizable:
+  url:   /campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/step/isAutomatizable
+  param: { module: eicampaigngraph, action: isAutomate }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Changement du bloc_type_id d'une step de campagne
+changeBlocTypeId:
+  url:   /campaign/:campaign_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/block/type/:block_type_id
+  param: { module: eicampaign, action: changeBlocTypeId }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+
+    block_type_id: \d+
+
+#Graphe d'une exécution de campagne sous forme de tableau
+executionGraphHasChainedList:
+  url:   /campaign/ChainedList/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:campaign_id/:execution_id
+  param: { module: eicampaigngraph, action: graphHasChainedList }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+
+    execution_id: \d+
+    
+#Graphe d'une campagne sous forme de tableau
+graphHasChainedList:
+  url:   /campaign/ChainedList/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:campaign_id
+  param: { module: eicampaigngraph, action: graphHasChainedList }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+
+    
+campaign_graph :
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:campaign_id
+  param: { module: eicampaigngraph, action: index }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+
+
+#mise à jour d'une step (data set) de campagne (du jeux de données)
+majStepDataSet:
+  url:  /Maj/Step/:id/DataSet/:data_set_id/Step/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name 
+  param: { module: eicampaigngraph, action: majStepDataSet }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    data_set_id : \d+
+    id : \d+
+#mise à jour d'une step (description) de campagne (du jeux de données)
+majStepDesc:
+  url:  /Maj/Step/:id/Set/Desc/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name 
+  param: { module: eicampaigngraph, action: majStepDesc }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id : \d+    
+    
+campaign_graph_order_step :
+  url:  /campaign/Order/Step/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:campaign_id
+  param: { module: eicampaigngraph, action: majStepInBase }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+    
+    
+campaign_graph_new :
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/new/:campaign_id/:parent_id
+  param: { module: eicampaigngraph, action: new }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+    
+    parent_id : \d+
+
+campaign_graph_create :
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/create/:campaign_id/:parent_id
+  param: { module: eicampaigngraph, action: create }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id: \d+    
+    parent_id : \d+    
+
+campaign_graph_update:
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/update/:id
+  param: { module: eicampaigngraph, action: update }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id : \d+
+    
+campaign_graph_edit:
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/edit/:id
+  param: { module: eicampaigngraph, action: edit }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id : \d+
+    
+campaign_graph_delete:
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/delete/:id/node 
+  param: { module: eicampaigngraph, action: delete }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id : \d+
+
+campaign_graph_resetting:
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/resetting/:campaign_id/:execution_id
+  param: { module: eicampaigngraph, action: resettingStatusCampaign }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id : \d+
+    execution_id : \d+
+
+campaign_graph_refresh:
+  url:   /campaign/graph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/refresh/:campaign_id/:execution_id
+  param: { module: eicampaigngraph, action: refreshStatusCampaign }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id : \d+
+    execution_id : \d+
+    
+##Edition des steps d'une campagne 
+
+#Page principale d'édition des steps de la campagne
+editCampaignContent:
+  url:   /campaign/:campaign_id/content/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/edit/steps
+  param: { module: eicampaigngraph, action: editContent }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id : \d+
+    
+##  Retour ajax des steps d'une campagne ## 
+
+showCampaignSteps:
+  url:   /campaign/:campaign_id/tree/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/get/steps
+  param: { module: eicampaigngraph, action: showCampaignSteps }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id : \d+
+  
+#Récupération des campagnes d'une livraison pour l'edition des steps de campagne
+showDeliveryCampaigns:
+  url:   /delivery/:delivery_id/tree/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/get/campaigns
+  param: { module: eidelivery, action: showDeliveryCampaigns }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id : \d+
+#Récupération des campagnes d'un sujet pour l'edition des steps de campagne
+showSubjectCampaigns :
+  url:   /subject/:subject_id/tree/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/get/campaigns
+  param: { module: eisubject, action: showSubjectCampaigns }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id : \d+
+ 
+    
+#Ajout d'une step dans le contenu d'une campagne 
+addStepInContent:
+  url: /Add/step/:id/in/campaign/:campaign_id/tree/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/before
+  param: { module: eicampaigngraph, action: addStepInContent }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_id : \d+
+    id : \d+
+    
+#Ajout de plusieurs steps dans le contenu d'une campagne 
+addManyStepInContent:
+  url: /Add/Many/steps/in/Campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/before
+  param: { module: eicampaigngraph, action: addManyStepsInContent }
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+addManualStepInContent:
+  url: /Add/Manual/step/in/campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/before
+  param: { module: eicampaigngraph, action: addManualStepInContent }
+  requirements:
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+
+##Gestion des flags dans l'édition des campagnes
+
+setFlagForCampaign:
+  url: /Set/Flag/Object/:obj_id/For/Current/Campaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:module/:action
+  requirements:
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    obj_id: \d+    
+    
+    
+#Nouveau contexte  (à partir d'un step de campagne lorsqu'un bug est trouvé) 
+campaign_graph_new_bug_context :
+  url:   /Campaign/Graph/New/Context/Step/:campaign_graph_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: bugContext, action: newContext }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_graph_id : \d+ 
+    
+campaign_graph_create_bug_context :
+  url:   /Campaign/Graph/Create/Context/Step/:campaign_graph_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: bugContext, action: createContext }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    campaign_graph_id : \d+     
+ 
+#Visuel d'un contexte de bug 
+show_Bug_Context :
+  url:   /Show/Bug/:subject_id/Context/:id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: bugContext, action: showForSubject }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+
+    id : \d+
+#Edition  d'un contexte de bug 
+edit_Bug_Context :
+  url:   /Context/Bug/:subject_id/Context/:id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: bugContext}
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+
+    id : \d+    
+    
+#Renvoi de la liste déroulante des steps d'une campagnes 
+renderCampaignStepWidget:
+  url:   /Render/Campaign/Steps/Widget/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: bugContext, action: renderCampaignStepWidget }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    
+#Création d'un context par défaut sur un bug
+create_default_bug_context :
+  url:   /Context/Create/Default/For/Bug/:subject_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: bugContext, action: createDefaultBugContext }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    subject_id: \d+ 
+    
+downloadCampaignNodeAttachment:
+  url:   /Campaign/:campaign_id/Node/:id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/download
+  param: { module: eicampaigngraph, action: download }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    id :         \d+
+    campaign_id : \d+
+    
+#Récupération des noeuds fils d'un noeud de scénario ou dossier pour un noeud du graphe de campagne
+getNodeChildsForCampaignGraph:
+  url:   /campaigngraph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/nodeChildsForCampaignGraph/:ei_node_type/:ei_node_id
+  param: { module: eicampaigngraph, action: getNodeChildsForCampaignGraph }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    ei_node_id : \d+  
+    
+#Evenement su choix d'un scénario dans l'arbre des scénarios (dans le graphe d'une campagne de tests)
+chooseTestSuiteForCampaignGraphNode:
+  url:   /campaigngraph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/chooseTestSuiteForCampaignGraphNode/:ei_node_type/:ei_node_id
+  param: { module: eicampaigngraph, action: chooseTestSuiteForCampaignGraphNode }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+ 
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    ei_node_id : \d+ 
+#Evenement sur choix d'un jeu de données pour le noeud d'une campagne de tests
+chooseDataSetForCampaignGraphNode:
+  url:   /campaigngraph/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/chooseDataSetForCampaignGraphNode/:ei_node_type/:ei_node_id
+  param: { module: eicampaigngraph, action: chooseDataSetForCampaignGraphNode }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    ei_node_id : \d+ 
+    
+#Récupération des campagnes de tests d'une livraison
+getDeliveryCampaigns :
+  url:   /delivery/:delivery_id/campaign/getDeliveryCampaigns/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eideliveryCampaign, action: getDeliveryCampaigns }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+ 
+    
+#Récupération des sujets d'une livraison
+getDeliverySubjects :
+  url:   /delivery/:delivery_id/subjects/getDeliverySubjects/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eidelivery, action: getDeliverySubjects }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+ 
+searchDeliverySubjects :
+  url:   /delivery/:delivery_id/subjects/searchDeliverySubjects/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eidelivery, action: searchDeliverySubjects }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+     
+#Ajout d'une campagne en spécifiant une livraison liée
+addNewDeliveryCampaign: 
+  url:   /delivery/:delivery_id/deliveryCampaigns/addNewDeliveryCampaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eideliveryCampaign, action: new }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id : \d+
+#creation d'une campagne de test pour une livraison   
+createNewDeliveryCampaign:
+  url:   /delivery/:delivery_id/deliveryCampaigns/createNewDeliveryCampaign/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eideliveryCampaign, action: create }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id : \d+ 
+    
+#Récupération du graphe d'un campagne 
+getCampaignGraphForDelivery:
+  url:   /delivery/:delivery_id/campaign/:campaign_id/getCampaignGraphForDelivery/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eideliveryCampaign, action: getCampaignGraphForDelivery }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+
+    campaign_id: \d+ 
+    
+#Ajout d'une campagne de tests à une livraison
+eideliveryCampaign_new:
+  url:   /delivery/:delivery_id/addCampaign/campaign/:campaign_id/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eideliveryCampaign, action: addCampaignToDeliverys }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+ 
+    campaign_id: \d+ 
+
+#Définition des routes générales d'itérations 
+ei_iteration_common:
+  url:   /Iteration/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/:action
+  param: { module: eiiteration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"  
+    
+#Définition des routes pour les itérations d'une livraison
+ei_iteration_global:
+  url:   /delivery/:delivery_id/Iteration/:action/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eiiteration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+ 
+    
+ #Définition des routes de création d'une itération
+ei_iteration_create:
+  url:   /delivery/:delivery_id/Iteration/:action/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/ItProfile/:it_profile_id/:it_profile_ref
+  param: { module: eiiteration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    it_profile_id: \d+
+    it_profile_ref: \d+
+    profile_name: "[^/]+" 
+    delivery_id: \d+ 
+    
+ei_iteration_actions:
+  url:   Iteration/:iteration_id/:action/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name
+  param: { module: eiiteration }
+  requirements: 
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    profile_name: "[^/]+"  
+    iteration_id: \d+   
+
+error_404:
+  url:   /
+  param: { module: erreur, action: error404 }
+   
+  
+get_user_execution_stack:
+  url: /project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/executions
+  param: { module: executionStack, action: getExecutions }
+  requirements:
+      sf_method: [GET]
+
+#################################
+#####          API          #####
+#################################
+
+api_check_configuration:
+  url: /api/:token/configuration/check.:sf_format
+  param: { module: api, action: checkConfiguration, sf_format: json }
+  requirements:
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_generate_token_api:
+  url: /api/token/generate.:sf_format
+  param: { module: api, action: generateToken, sf_format: json }
+  requirements:
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_generate_ei_test_set:
+  url: /api/:token/:profile_id/:profile_ref/:ei_scenario_id/:exec_mode/:ei_data_set_id/generateTestSet.:sf_format
+  param: { module: api, action: generateTestSet, sf_format: json }
+  requirements:
+    sf_method: [GET]
+    profile_id: \d+
+    profile_ref: \d+
+    ei_scenario_id: \d+
+    ei_data_set_id: \d+
+    sf_format: (?:json)
+
+api_get_token_api:
+  url: /api/token.:sf_format
+  param: { module: api, action: getToken, sf_format: json }
+  requirements:
+      sf_method: [GET]
+      sf_format: (?:json)
+
+# Récupération des informations relatives à la notice de la fonction.
+api_eitestset_function_notice:
+  url: /api/:token/project/:project_ref/:project_id/profile/:profile_id/:profile_ref/:profile_name/eitestset/:ei_test_set_id/function/:function_id/:function_ref/oracle.:sf_format
+  param: { module: api, action: getFunctionDescAndNotice , sf_format: json }
+  requirements:
+    sf_method: [GET,POST]
+    project_id: \d+
+    project_ref: \d+
+    profile_id: \d+
+    profile_ref: \d+
+    ei_test_set_id: \d+
+    function_id: \d+
+    function_ref: \d+
+
+api_generate_excel_request_api:
+  url: /api/project/:project_ref/:project_id/profile/:profile_ref/:profile_id/excel/request/generate.:sf_format
+  param: { module: api, action: generateExcelRequest, sf_format: json }
+  requirements:
+      project_id: \d+
+      project_ref: \d+
+      profile_id: \d+
+      profile_ref: \d+
+      sf_method: [POST]
+      sf_format: (?:json)
+
+api_get_user_excel_request_api:
+  url: /api/:token/excel/request.:sf_format
+  param: { module: api, action: getExcelRequests, sf_format: json }
+  requirements:
+      project_id: \d+
+      project_ref: \d+
+      profile_id: \d+
+      profile_ref: \d+
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_add_scenario_to_execution_stack:
+  url: /api/:token/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/scenarios/:ei_scenario_id/:jdd_id/:device_id/:driver_id/:browser_id/:date/execute.:sf_format
+  param: { module: api, action: addScenarioToExecutionStack, sf_format: json }
+  requirements:
+      ei_scenario_id: \d+
+      jdd_id: \d+
+      driver_id: \d+
+      browser_id: \d+
+      sf_method: [POST]
+      sf_format: (?:json)
+
+api_add_campaign_to_execution_stack_with_positions:
+  url: /api/:token/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/campaigns/:ei_campaign_id/:start/:end/:device_id/:driver_id/:browser_id/:date/execute.:sf_format
+  param: { module: api, action: addCampaignToExecutionStack, sf_format: json }
+  requirements:
+      ei_campaign_id: \d+
+      sf_method: [POST]
+      sf_format: (?:json)
+
+api_add_campaign_to_execution_stack:
+  url: /api/:token/project/:project_id/:project_ref/profile/:profile_id/:profile_ref/:profile_name/campaigns/:ei_campaign_id/execute.:sf_format
+  param: { module: api, action: addCampaignToExecutionStack, sf_format: json }
+  requirements:
+      ei_campaign_id: \d+
+      sf_method: [POST]
+      sf_format: (?:json)
+
+api_request_stack_to_execute:
+  url: /api/robot/:mac/check/:status.:sf_format
+  param: { module: api, action: requestStackExecution, sf_format: json }
+  requirements:
+      sf_method: [GET]
+      sf_format: (?:json)
+      
+api_register_device:
+  url: /api/robot/:device_type/:device_identifier/register.:sf_format
+  param: { module: api, action: registerDevice, sf_format: json }
+  requirements:
+      sf_method: [POST]
+      sf_format: (?:json)
+
+api_data_sets_create_update:
+  url: /api/:token/scenarios/:ei_scenario_id/datasets/dir/update.:sf_format
+  param: { module: api, action: updateDataSetsDir, sf_format: json }
+  requirements:
+      ei_scenario_id: \d+
+      sf_method: [PUT]
+      sf_format: (?:json)
+
+api_data_sets_create_delete:
+  url: /api/:token/scenarios/:ei_scenario_id/datasets/dir/delete.:sf_format
+  param: { module: api, action: deleteDataSetsDir, sf_format: json }
+  requirements:
+      ei_scenario_id: \d+
+      sf_method: [DELETE]
+      sf_format: (?:json)
+
+api_data_sets_create_dir:
+  url: /api/:token/scenarios/:ei_scenario_id/datasets/dir.:sf_format
+  param: { module: api, action: createDataSetsDir, sf_format: json }
+  requirements:
+      ei_scenario_id: \d+
+      sf_method: [POST]
+      sf_format: (?:json)
+
+api_scenario_dataset_get:
+  url: /api/:token/scenario/:ei_scenario_id/datasets.:sf_format
+  param: { module: api, action: getDataSetTree, sf_format: json }
+  requirements:
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_data_sets_create:
+  url: /api/:token/scenarios/:ei_scenario_id/datasets.:sf_format
+  param: { module: api, action: createDataSets, sf_format: json }
+  requirements:
+      ei_scenario_id: \d+
+      sf_method: [POST,GET]
+      sf_format: (?:json)
+
+api_oracle_show:
+  url: /api/:token/scenarios/:scenario_id/profils/:profil_ref/:profil_id.:sf_format
+  class: sfDoctrineRoute
+  param: { module: api, action: showOracle, sf_format: xml }
+  options: { model: EiTestSet, type: object, method: getLastFromScenarioAndProfil }
+  requirements:
+      scenario_id: \d+
+      profil_ref: \d+
+      profil_id: \d+
+      sf_method: [GET]
+      sf_format: (?:xml)
+
+api_testset_status:
+  url: /api/:token/project/:project_ref/:project_id/profile/:profile_ref/:profile_id/oracle/:ei_test_set_id/status.:sf_format
+  class: sfDoctrineRoute
+  param: { module: api, action: showTestSetStatus, sf_format: json }
+  options: { model: EiTestSet, type: object, method: getTestSetObjectById }
+  requirements:
+      project_id: \d+
+      project_ref: \d+
+      profile_id: \d+
+      profile_ref: \d+
+      ei_test_set_id: \d+
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_testset_status_without_testsetid:
+  url: /api/:token/project/:project_ref/:project_id/profile/:profile_ref/:profile_id/scenario/:scenario_id/status.:sf_format
+  class: sfDoctrineRoute
+  param: { module: api, action: showTestSetStatus, sf_format: json }
+  options: { model: EiTestSet, type: object, method: getLastFromScenarioAndProfil }
+  requirements:
+      project_id: \d+
+      project_ref: \d+
+      profile_id: \d+
+      profile_ref: \d+
+      scenario_id: \d+
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_oracle_testset_show:
+  url: /api/:token/project/:project_ref/:project_id/profile/:profile_ref/:profile_id/oracle/:ei_test_set_id.:sf_format
+  class: sfDoctrineRoute
+  param: { module: api, action: showTestSetOracle, sf_format: xml }
+  options: { model: EiTestSet, type: object, method: getTestSetObjectById }
+  requirements:
+      project_id: \d+
+      project_ref: \d+
+      profile_id: \d+
+      profile_ref: \d+
+      ei_test_set_id: \d+
+      sf_method: [GET]
+      sf_format: (?:xml)
+
+api_oracle_dataset_show:
+  url: /api/:token/scenarios/:scenario_id/dataset/:ei_data_set_id/profils/:profil_ref/:profil_id.:sf_format
+  class: sfDoctrineRoute
+  param: { module: api, action: showDataSet, sf_format: xml }
+  options: { model: EiDataSet, type: object, method: getDataSetObjectById }
+  requirements:
+      scenario_id: \d+
+      profil_ref: \d+
+      profil_id: \d+
+      ei_data_set: \d+
+      sf_method: [GET]
+      sf_format: (?:xml)
+
+api_projects_get:
+  url: /api/:token/projects.:sf_format
+  param: { module: api, action: getAllProjects, sf_format: json }
+  requirements:
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_scenarios_get:
+  url: /api/:token/scenarios.:sf_format
+  param: { module: api, action: getAllProjectsAndScenarios, sf_format: json }
+  requirements:
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_project_profils_get:
+  url: /api/:token/project/:project_ref/:project_id/profils.:sf_format
+  param: { module: api, action: getAllProjectProfiles, sf_format: json }
+  requirements:
+      project_ref: \d+
+      project_id: \d+
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_scenario_profils_get:
+  url: /api/:token/scenarios/:scenario_id/profils.:sf_format
+  class: sfDoctrineRoute
+  param: { module: api, action: getAllProfilsScenario, sf_format: json }
+  options: { model: EiScenario, type: object, method: getFromId }
+  requirements:
+      scenario_id: \d+
+      sf_method: [GET]
+      sf_format: (?:json)
+
+api_scenario_show:
+  url: /api/:token/scenarios/:scenario_id.:sf_format
+  class: sfDoctrineRoute
+  param: { module: api, action: showScenario, sf_format: xml }
+  options: { model: EiScenario, type: object, method: getFromId }
+  requirements:
+      scenario_id: \d+
+      sf_method: [GET]
+      sf_format: (?:xml|xsl)
+
+
+
+#Ecrans pour la nouvelle version
+templating:
+  url:   /templating/testsuite/screen0
+  param: { module: chemin , action: index }
+  
+screen1:
+  url:   /templating/testsuite/screen1
+  param: { module: chemin , action: screen1 }  
+screen2:
+  url:   /templating/testsuite/screen2
+  param: { module: chemin , action: screen2 }
+screen3:
+  url:   /templating/testsuite/screen3
+  param: { module: chemin , action: screen3 }  
+  
+screen4:
+  url:   /templating/testsuite/screen4
+  param: { module: chemin , action: screen4 }
+screen5:
+  url:   /templating/testsuite/screen5
+  param: { module: chemin , action: screen5 }
+screen6:
+  url:   /templating/testsuite/screen6
+  param: { module: chemin , action: screen6 }
+screen7:
+  url:   /templating/testsuite/screen7
+  param: { module: chemin , action: screen7 }
+screen8:
+  url:   /templating/testsuite/screen8
+  param: { module: chemin , action: screen8 }
+screen9:
+  url:   /templating/testsuite/screen9
+  param: { module: chemin , action: screen9 }  
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+  
+default:
+  url:   /:module/:action/*    

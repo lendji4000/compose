@@ -1,0 +1,10 @@
+diff a/apps/frontend/config/factories.yml b/apps/frontend/config/factories.yml	(rejected hunks)
+@@ -36,7 +36,7 @@
+ #        spool_class : Swift_DoctrineSpool
+ #        spool_arguments : [MailMessage,message,getSpooledMessages ]
+       delivery_strategy: single_address
+-      delivery_address:  vladimir4000@yahoo.fr   
++      delivery_address: jean-loup@eisge.com  
+   logger:
+     class:   sfAggregateLogger
+     param:

@@ -1,0 +1,57 @@
+/* Main Colors
+=================================================================== */
+@sidebar: #414141;
+@border: #d4d4d4;
+@heading: #f5f5f5;
+@main: #eee;
+@mainText: darken(@main,65%);
+
+@primary: #20a8d8;
+@success: #79c447;
+@info: #67c2ef;
+@warning: #fabb3d;
+@danger: #ff5454;
+@inverse: #444;
+
+@facebook: #3b5998;
+@twitter: #00aced;
+@linkedin: #4875B4;
+@google-plus: #d34836;
+
+@mainD5: #dcdfe2;
+@mainD15: darken(@main,15%);
+@mainD25: darken(@main,25%);
+
+.backgroundColor {
+	
+	&.primary { background: @primary; }
+	&.success { background: @success; }
+	&.info { background: @info; }
+	&.warning { background: @warning; }
+	&.danger { background: @danger; }
+		
+}
+
+.backgroundColorTitle {
+	
+	&.primary { 
+		.title { background: @primary; }
+	}
+	
+	&.success { 
+		.title { background: @success; }
+	}
+		
+	&.info { 
+		.title { background: @info; }
+	}
+	
+	&.warning { 
+		.title { background: @warning; }
+	}
+	
+	&.danger { 
+		.title { background: @danger; }
+	}
+	
+}

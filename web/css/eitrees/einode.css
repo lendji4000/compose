@@ -1,0 +1,197 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10 déc. 2014, 09:39:48
+    Author     : LENINE
+*/
+#ul_menu {
+  padding: 0;
+  height: 100%;
+}
+#ul_menu li {
+  display: block;
+  text-decoration: none;
+}
+.test_suit_name {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-align: center;
+  /*background: rgb(219,220,226);  /*Old browsers */
+}
+.ul_menu_version {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-right: 0px;
+}
+.ul_menu_version li {
+  margin-left: 7px;
+}
+td .ul_menu_version {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+#scenario_structure {
+  margin-left: 0px;
+}
+#scenario_structure ul {
+  padding-left: 0px;
+}
+#scenario_structure ul li.sortable {
+  padding-left: 0px;
+}
+.lien_survol_node {
+  white-space: nowrap;
+}
+.hide_node_diagram,
+.hide_node_diagram,
+.show_node_diagram,
+.hide_node_diagram_check,
+.show_node_diagram_check {
+  cursor: pointer;
+}
+.hide_node_diagram_check {
+  display: none;
+}
+.item_tree ul {
+  padding-left: 5px;
+}
+ul.node_diagram {
+  margin-left: 0px;
+}
+li .node_diagram {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+#boxCheckingDiagram li {
+  padding: 0px;
+  padding-left: 10px;
+  margin: 0px;
+}
+#root_diagram {
+  overflow: scroll;
+  white-space: nowrap;
+  min-height: 700px;
+  height: 98%;
+  font-size: 12px;
+  background-color: #fff;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+#root_diagram ul {
+  padding: 0px;
+  margin: 0px;
+}
+#root_diagram li {
+  padding: 0px;
+  padding-left: 5px;
+  margin: 0px;
+}
+#root_diagram li.no-padding {
+  padding: 0;
+}
+@media all and (max-width: 992px) {
+  #root_diagram {
+    min-height: 500px;
+    font-size: 10px;
+  }
+}
+#root_diagram_jdd,
+#root_diagram_test_suite {
+  height: 98%;
+  font-size: 14px;
+  background-color: #fff;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+#root_diagram_jdd li,
+#root_diagram_test_suite li {
+  padding-left: 0px;
+  width: auto;
+  display: block;
+}
+#arbo_default {
+  overflow: scroll;
+  white-space: nowrap;
+  min-height: 700px;
+  height: 98%;
+  font-size: 12px;
+  background-color: #fff;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+@media all and (max-width: 992px) {
+  #arbo_default {
+    min-height: 500px;
+    font-size: 10px;
+  }
+}
+#arbo_default ul {
+  padding-left: 7px;
+}
+@media all and (max-width: 992px) {
+  #arbo_default ul {
+    padding-left: 5px;
+  }
+}
+#arbo_default li {
+  padding-left: 0px;
+  width: auto;
+  display: block;
+}
+#arbo_default li.no-padding {
+  padding: 0;
+}
+.ei-folder,
+ei-scenario {
+  color: #d9a035;
+  font-size: 12px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.add_node_child,
+.edit_node_child,
+.edit_node_folder,
+.nodeMoreInf {
+  display: inline-block;
+  visibility: hidden;
+}
+#scenario_structure,
+#scenario_version {
+  overflow: auto;
+  max-height: 600px;
+}
+/* Dataset nodes */
+.hide_node_diagram_data_set,
+.show_node_diagram_data_set {
+  cursor: pointer;
+}
+.hide_node_diagram_data_set {
+  display: none;
+}
+#ei_data_set_tree {
+  overflow: scroll;
+  white-space: nowrap;
+  min-height: 500px;
+  height: 98%;
+  font-size: 12px;
+  background-color: #fff;
+  padding-left: 7px;
+  padding-top: 5px;
+}
+#ei_data_set_tree li {
+  display: block;
+  margin: 0;
+  text-decoration: none;
+  width: auto;
+}
+@media all and (max-width: 992px) {
+  #ei_data_set_tree {
+    font-size: 10px;
+    background-color: #fff;
+    padding-left: 5px;
+  }
+}

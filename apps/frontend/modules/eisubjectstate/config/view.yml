@@ -1,0 +1,5 @@
+all:  
+  stylesheets:    [eisubject/eigeneric.css,eisubject/eisubjectstate.css]
+  javascripts:    [eisubject/eisubjectstate.js]
+  has_layout:     true
+  layout:         layout 

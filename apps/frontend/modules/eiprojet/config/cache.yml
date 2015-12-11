@@ -1,0 +1,13 @@
+#cache du module eiprojet
+
+index:
+  enabled:     off
+  with_layout: true
+  
+_list:
+  enabled:     on
+  with_layout: true
+  
+show:
+  enabled : on
+  with_layout : true

@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:43:55
+    Author     : LENINE
+*/
+#eiProjectDeliveriesMainAccess {
+  color: #065260;
+  background-color: #eeeeee;
+}
+#eiProjectDeliveriesMainAccess:hover {
+  color: rgba(4, 54, 62, 0.6);
+  background-color: #a6a6a3;
+}
+#eiProjectDeliveriesMainAccess:visited {
+  color: rgba(4, 54, 62, 0.6);
+  background-color: #a6a6a3;
+}
+.selectItForDelStats,
+#selectAllItForDelStats,
+#getStatsForSelectedId {
+  cursor: pointer;
+}
+#selectAllItForDelStats.isSelected {
+  background-color: greenyellow !important;
+}
+.table-striped > tbody > tr.selectItColor > td,
+.table-striped > tbody > tr.selectItColor > th {
+  background-color: greenyellow !important;
+}

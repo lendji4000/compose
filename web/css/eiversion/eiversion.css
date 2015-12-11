@@ -1,0 +1,281 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18 déc. 2014, 15:29:52
+    Author     : LENINE
+*/
+/* Intégration nouvelle présentation*/
+/*@gradientcolor1:#065260;*/
+/* Déclaration des fonctions less */
+/*  Css */
+.-sew-list-container {
+  background: none repeat scroll 0 0 white;
+  border: 1px solid #DDDDDD;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 100;
+}
+.-sew-list {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+}
+.-sew-list-item {
+  border-bottom: 1px solid #DDDDDD;
+  display: block;
+  padding: 5px 10px;
+}
+.-sew-list-item small {
+  color: #AFAFAF;
+}
+.-sew-list-item .selected {
+  background: none repeat scroll 0 0 #4183C4;
+  color: white;
+  text-decoration: none;
+}
+#ei_sous_objet_header {
+  margin-bottom: 0px;
+}
+.add_version,
+.create_version_clone,
+.edit_version,
+.delete_version,
+.version_plus_info,
+.version_moins_info {
+  cursor: pointer;
+}
+.show_version_table {
+  width: 100%;
+}
+.donnees_version .libelle_version {
+  width: 25%;
+  display: none;
+}
+.libelle_version input {
+  width: 95%;
+}
+.details_version_observation,
+.version_moins_info {
+  display: none;
+}
+.desc_kal_fonction textArea {
+  height: 1.3em;
+  width: 70%;
+  resize: none;
+}
+.saved {
+  background-color: green;
+}
+#path_block {
+  padding-left: 0px;
+}
+#scrolled_box_version .fonction_form {
+  margin: 0;
+}
+.content_version {
+  border: none;
+  padding-left: 0px;
+  padding-right: 5px;
+}
+#select_version {
+  display: inline;
+}
+#profils_actifs,
+#profils_inactifs {
+  float: left;
+  width: 47%;
+  min-height: 1em;
+  vertical-align: top;
+  padding-left: 5px;
+  border-right: 1px dotted black;
+}
+#profils_actifs td,
+#profils_inactifs td {
+  margin-left: 1%;
+  width: 30%;
+}
+#liste_profils_version {
+  padding: 3px;
+  height: auto;
+  width: 100%;
+}
+.sous_version textArea {
+  resize: none;
+  height: 1.2em;
+}
+.root_version {
+  margin-left: 0px;
+}
+.donnees_version {
+  margin-bottom: 20px;
+  border: none;
+}
+.donnees_version input {
+  text-align: justify;
+  vertical-align: top;
+  width: 35%;
+  height: 25px;
+}
+.parametres_version input,
+.parametres_version textArea {
+  font-size: 12px;
+}
+.description_version {
+  width: 100%;
+  height: 7em;
+  font-size: 12px;
+}
+.folder_detail {
+  margin-left: 20px;
+  -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.75);
+  box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.75);
+}
+.panel.eiPanel.selectedColorBlock {
+  margin-bottom: 0px;
+}
+.panel.eiPanel.selectedColorBlock .panel-heading {
+  background: #a2b7be;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #a2b7be 0%, #89a7b3 37%, #8fadb7 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89a7b3), color-stop(37%, #e3eaed), color-stop(100%, #8fadb7));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #a2b7be 0%, #89a7b3 37%, #8fadb7 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #a2b7be 0%, #89a7b3 37%, #8fadb7 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #a2b7be 0%, #89a7b3 37%, #8fadb7 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #a2b7be 0%, #89a7b3 37%, #8fadb7 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f5f6', endColorstr='#c8d7dc', GradientType=0);
+  /* IE6-9 */
+}
+.panel.eiPanel.selectedColorBlock .panel-heading h2 i {
+  color: #04363f;
+}
+.panel.eiPanel.selectedColorBlock .panel-heading h2 a {
+  color: #04363f;
+  text-decoration: none;
+}
+.panel.eiPanel.selectedColorBlock .panel-body {
+  background-color: #fafeff;
+}
+.panel.eiPanel .fonction .panel-heading {
+  background: #f2f5f6;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f2f5f6 0%, #eff3f5 57%, #d0dde1 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f5f6), color-stop(57%, #eff3f5), color-stop(100%, #d0dde1));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f2f5f6 0%, #eff3f5 57%, #d0dde1 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f2f5f6 0%, #eff3f5 57%, #d0dde1 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f2f5f6 0%, #eff3f5 57%, #d0dde1 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f2f5f6 0%, #eff3f5 57%, #d0dde1 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f5f6', endColorstr='#eff3f5', GradientType=0);
+  /* IE6-9 */
+}
+.panel.eiPanel .fonction .panel-heading h2 i {
+  color: #04363f;
+}
+.panel.eiPanel .fonction .panel-heading h2 a {
+  color: #04363f;
+  text-decoration: none;
+}
+.fonction_delete,
+.block_delete {
+  color: black;
+  background: #ff5454;
+}
+.fonction_delete:hover,
+.fonction_delete.disabled,
+.fonction_delete[disabled],
+.block_delete:hover,
+.block_delete.disabled,
+.block_delete[disabled] {
+  background-color: #ff2121;
+  border-color: #ff2121;
+}
+.fonction_delete:active,
+.fonction_delete.active,
+.block_delete:active,
+.block_delete.active {
+  background-color: #ff1717;
+  border-color: #ff1717;
+}
+.showFunctionNotice {
+  color: white;
+  background: #444444;
+}
+.showFunctionNotice.disabled,
+.showFunctionNotice:hover,
+.showFunctionNotice[disabled] {
+  background-color: #2b2b2b;
+  border-color: #2b2b2b;
+  color: white;
+}
+.showFunctionNotice.active,
+.showFunctionNotice:active {
+  background-color: #252525;
+  border-color: #252525;
+}
+.detail_fonction {
+  margin-left: 10px;
+  padding: 0;
+}
+.detail_fonction textArea {
+  height: 3em;
+  margin-top: 7px;
+  resize: vertical;
+  white-space: nowrap;
+}
+.params_fonction textArea {
+  height: 3em;
+}
+.params_out_fonction_sync {
+  color: black;
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+.params_out_fonction_sync .textarea {
+  height: 1.5em;
+}
+.params_out_fonction_sync table {
+  width: 97%;
+  text-align: justify;
+  margin-bottom: 2px;
+}
+/* Classes permettant de distinguer sur les fonctions d'une version d'un scénario si celles ci sont liées au bug correspondant au package par défaut .
+Aussi on sait si la liaison est forte ou pas.
+*/
+.panel.eiPanel .panel-heading .panel-actions {
+  border-color: #4a4a4a;
+  border: none;
+  margin-right: -1px;
+}
+.panel.eiPanel .panel-heading .panel-actions a {
+  background-color: #04363f;
+}
+.panel.eiPanel .panel-heading .panel-actions a:hover,
+.panel.eiPanel .panel-heading .panel-actions a:focus {
+  background-color: #177b8c;
+  box-shadow: 0px 5px 5px 0px #0e2425;
+}
+.panel.eiPanel .panel-heading .panel-actions a.ei-strong-link {
+  background-color: red;
+}
+.panel.eiPanel .panel-heading .panel-actions a.ei-breakable-link {
+  background-color: #DEA33F;
+}
+.panel.eiPanel .panel-heading .panel-actions a.ei-notfound-link {
+  background-color: #B9B5AF;
+}

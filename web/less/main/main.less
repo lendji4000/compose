@@ -1,0 +1,123 @@
+/* Basic
+=================================================================== */
+body {
+	color: @mainText;
+	background: @main;
+}
+
+a {
+  	color: darken(@primary,10%);
+  
+	&:hover, a:focus {
+		color: darken(@primary,15%);
+	}
+}
+
+h1 { font-size: 32px; line-height: 32px; font-weight: 400}
+h2 { font-size: 16px; line-height: 16px; font-weight: 400}
+h3 { font-size: 15px; line-height: 15px; font-weight: 400}
+h4 { font-size: 14px; line-height: 14px; font-weight: 400}
+h5 { font-size: 13px; line-height: 13px; font-weight: 400}
+h6 { font-size: 12px; line-height: 12px; font-weight: 400}
+
+hr { border-top: 1px solid @main; }
+
+.main {
+	background: @main;
+	padding: 90px 30px 0 @sidebar-width + 30px;
+}
+
+.breadcrumb {
+	.border-radius;
+	height: 40px;
+	position: relative;
+	border: 1px solid #d4d4d4;
+	.box-shadow-double(inset 0 0 1px 1px rgba(255,255,255,1), 0 2px 1px -1px rgba(0,0,0,.05));
+	text-shadow: 0 1px 1px rgba(255,255,255,.9);
+	margin: 0 0 30px 0;
+	overflow: hidden;
+	
+	li {
+		position: relative;
+		margin-right: 20px;
+	}
+		
+	> li + li:before {
+		position: absolute;
+		content: ''; 
+		background: #d4d4d4;
+		border-left: 1px solid white;
+		border-right: 1px solid white;
+		width: 3px;
+		height: 42px !important;
+		padding: 0;
+		display: block;
+		top: -10px;
+		left: -12px;	
+	}
+	
+	> .active {
+		color: @mainD15;
+	}	
+}
+
+.small, small {
+	color: darken(@main,15%) !important;
+}
+
+.well {
+	border: 1px solid @border;
+	.box-shadow;
+	background: @heading;
+	.border-radius(2px);
+}
+
+blockquote {
+  	font-size: 14px;
+  	border-left: 5px solid @main;
+	color: @border;
+	
+	&.pull-right {
+		border-right: 5px solid @main;
+	}
+}
+
+.img-rounded {
+	.border-radius(2px);
+}
+
+.pace .pace-progress {
+  	background: @primary;
+  	position: fixed;
+  	z-index: 2000;
+  	top: 0;
+  	left: 0;
+  	height: 2px;
+	.box-shadow(0px 0px 3px @primary);
+  	-webkit-transition: width 1s;
+  	-moz-transition: width 1s;
+  	-o-transition: width 1s;
+  	transition: width 1s;
+}
+
+.pace-inactive {
+  	display: none;
+}
+
+/* Text
+=================================================================== */
+.text-primary {
+	color: @primary;
+}
+.text-success {
+	color: @success;
+}
+.text-info {
+	color: @info;
+}
+.text-warning {
+	color: @warning;
+}	
+.text-danger {
+	color: @danger;
+}

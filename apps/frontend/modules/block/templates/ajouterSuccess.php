@@ -1,0 +1,1 @@
+<?php include_partial('formFull', array('form' => $form)) ?>

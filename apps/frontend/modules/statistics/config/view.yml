@@ -1,0 +1,6 @@
+all: 
+#  stylesheets:    [eidelivery/eigeneric.css,eidelivery/eidelivery.css]
+  stylesheets:    [ eifunction/eigeneric.css,eifunction/eifunction.css,eitrees/eitree.css,eitrees/einode.css,statistics/eigeneric.css ] 
+  has_layout:     true
+  layout:         layout
+   

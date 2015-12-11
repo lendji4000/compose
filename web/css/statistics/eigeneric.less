@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 août 2015, 16:52:14
+    Author     : nyne-tsar
+*/
+
+@bodybgcolor :hsla(189, 88%, 13%, 0.6) ; 
+@gradientcolor1:#065260;
+ 
+@gradientcolor2 :#0e2425;
+@textcolor1 : #eeeeee; 
+@textcolor2 : #a6a6a3;
+@bordercolor1 : #4a4a4a; 
+@bordercolor2 : #656565;
+@bordercolor3 : #d4d4d4;
+@bordercolor4: #098095;
+@sidebarbgcolor1: #177A8B;
+@navIconColor2: #c8c8c8;
+@objectbgcolor : hsla(189, 72%, 32%, 0.53);
+
+#eiSideBar121MainObjects{
+      
+    a{ 
+         &.generalStatsIcon{
+            color:@gradientcolor1;
+            background-color:  @textcolor1;
+            &:hover{
+                color:@bodybgcolor;
+                background-color: @textcolor2;
+            }
+        }  
+        &.functionIcon{
+            color:@textcolor1;
+            background-color:  @bodybgcolor;
+        }
+    }
+}

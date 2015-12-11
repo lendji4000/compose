@@ -1,0 +1,5 @@
+all:
+  prefix_path: script.local/frontend_dev.php/
+  system_uri:  compose.local
+  login_systeme : eisge 
+  pwd_systeme : eisgeeisge

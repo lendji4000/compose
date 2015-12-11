@@ -1,0 +1,16 @@
+#cache du module eifonction
+index:
+  enabled:     off
+  with_layout: true
+
+_list:
+  enabled:     on
+  with_layout: true
+
+_showFonction:
+  enabled : on
+  with_layout : true
+
+_menuDetailsFonction:
+  enabled:     on
+  with_layout: true

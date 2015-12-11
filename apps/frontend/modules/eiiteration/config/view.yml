@@ -1,0 +1,10 @@
+all: 
+#  stylesheets:    [eidelivery/eigeneric.css,eidelivery/eidelivery.css]
+  stylesheets:    [eidelivery/eigeneric.css,eidelivery/eidelivery.css]
+  javascripts:    [eidelivery/eidelivery.js]
+  has_layout:     true
+  layout:         layout
+    
+showSuccess : 
+  stylesheets: [eitrees/eitree.css,eitrees/einode.css,eifunction/eifunction.css]  
+  javascripts:    [eifunction/eikalfunction.js]    

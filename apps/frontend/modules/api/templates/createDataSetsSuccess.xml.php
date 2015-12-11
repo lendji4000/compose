@@ -1,0 +1,1 @@
+<user><?php echo $token ?></user>

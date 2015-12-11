@@ -1,0 +1,1304 @@
+---
+actAs: [Timestampable]
+options:
+  collate: utf8_general_ci
+  charset: utf8
+  type: InnoDB
+  
+EiProjet:
+  columns:
+    ref_id: {type: integer(8)  , notnull: true   ,primary: true }
+    project_id:  {type: integer(8)   , notnull: true ,   primary: true }
+    name: {type: string(90) ,  notnull: true  } 
+    description: { type: clob()  }
+    state: { type: integer(8)   ,notnull: true }
+    default_notice_lang: {type: string(255) ,  notnull: true  } 
+    user_ref: {type: integer(8)   ,notnull: true  }
+    user_id:  { type: integer(8)  ,notnull: true  }
+    system_id: {type: integer(8), notnull: true }
+    version: {type: integer(8) ,  notnull: true  ,default: 1}
+    version_courante: {type: integer(8) ,  notnull: true  , default: 0} 
+    version_kalifast: {type: integer(8) ,  notnull: true  , default: 1}  
+    obsolete:  { type: boolean, notnull: true , default: false }
+    checked_at:  { type: timestamp }
+    updated_at: {type: timestamp, notnull: false }
+    
+#Langues des notices du projet
+
+EiProjectLang:
+  columns: 
+    lang: { type: string(255),  notnull: true, primary: true,autoincrement: false }
+    project_ref: {type: integer(8) ,  notnull: true, primary: true    }
+    project_id: {type: integer(8) ,  notnull: true, primary: true   } 
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref] 
+#Paramètres globaux du projet
+
+EiProjectParam:
+  columns: 
+    param_id: {type: integer(8) , primary: true, notnull: true  }
+    project_ref: {type: integer(8) ,  notnull: true   }
+    project_id: {type: integer(8) ,  notnull: true  }
+    param_type : {type: enum, values: [IN, OUT, SONDE], notnull: true ,default : "IN"}
+    param_visibility : {type: boolean ,notnull: true ,default :true }
+    ei_table_name : {type: string(255)  }
+    ei_column_name : {type: string(255)  }
+    name: {type: string(255) ,notnull: true }
+    description:  {type: clob() }    
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]   
+
+#Utilisateurs d'un projet
+
+EiProjectUser:
+  columns:
+    project_id: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true } 
+    project_ref: {type: integer(8) , notnull: true , primary: true }
+    user_ref:  {type: integer(8) , notnull: true , primary: true } 
+    role:  { type: string(255), notnull: true   }
+    delta :  { type: integer(8) }
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]  
+
+EiUser:
+  columns:
+    ref_id: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true }
+#    default_ticket_id: {type: integer(8) , notnull: false }
+#    default_ticket_ref:  {type: integer(8) , notnull: false}
+    guard_id:  {type: integer(8) , notnull: true  }
+    matricule:  { type: string(255), notnull: true   }
+    delta:  { type: integer(8) }
+    token_api:  { type: string(45) }
+
+EiUserDefaultPackage:
+  columns: 
+    user_ref: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true } 
+    project_ref: {type: integer(8) , notnull: true , primary: true }
+    project_id:  {type: integer(8) , notnull: true , primary: true } 
+    ticket_id: {type: integer(8) , notnull: false }
+    ticket_ref:  {type: integer(8) , notnull: false}
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]
+    ticket_id_index:
+      fields: [ticket_id]
+    ticket_ref_index:
+      fields: [ticket_ref]  
+EiUserSettings:
+  columns:
+    user_ref: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true }
+    firefox_path: {type: clob(), notnull: true}
+    excel_mode: { type: enum, values: [file,normal], notnull: true, default: normal}
+  indexes: 
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]
+EiProfil:
+  columns:
+    project_ref: {type: integer(8) , notnull: true , primary: true }
+    project_id:  {type: integer(8) , notnull: true , primary: true }
+    profile_ref: {type: integer(8) , notnull: true , primary: true }
+    profile_id:  {type: integer(8) , notnull: true , primary: true }
+    name:  { type: string(255), notnull: true , default: 'N_A' }
+    base_url: {type: clob() }
+    description: { type: clob()}
+    is_default: {type: integer(8) , notnull: true}
+    parent_id :  { type: integer(8)  }
+    parent_ref:  { type: integer(8)  }
+    delta :  { type: integer(8) }
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref] 
+      
+#Profil utilisateur par défaut sur compose  
+
+EiUserDefaultProfile:
+  columns:
+    user_ref: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true }
+    project_ref: {type: integer(8) , notnull: true , primary: true }
+    project_id:  {type: integer(8) , notnull: true , primary: true }
+    profile_ref: {type: integer(8) , notnull: true   }
+    profile_id:  {type: integer(8) , notnull: true   }  
+  indexes:  
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]    
+      
+EiProfileParam:
+  columns:
+    id: { type: integer(8), primary: true, notnull: true }
+    profile_ref: { type: integer(8),   notnull: true  }
+    profile_id: { type: integer(8),  notnull: true }
+    name: {type: string(45) , notnull: true }
+    description: {type: clob() }
+    value: { type: string(255), notnull: true}
+    #Numéro de version pour vérifier les rechargement de fonction
+    delta :  { type: integer(8) }
+  indexes:  
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]
+EiUserProfileParam:
+  columns:
+    id: { type: integer(8), notnull: true, primary: true,autoincrement: true }
+    user_ref: { type: integer(8),   notnull: true  }
+    user_id: { type: integer(8),  notnull: true }
+    profile_param_id: { type: integer(8),   notnull: true  } 
+    value: { type: string(255), notnull: false} 
+  indexes: 
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]   
+#  relations: 
+#    profileParam: { onDelete: RESTRICT , local: profile_param_id , class: EiProfileParam,  foreign: id, foreignAlias: usersprofileParam}
+
+EiUserParam:
+  columns:
+    id: { type: integer(8),notnull: true, primary: true,autoincrement: true }
+    user_ref: { type: integer(8),   notnull: true  }
+    user_id: { type: integer(8),  notnull: true }
+    name: {type: string(255) , notnull: true,unique:true }
+    description: {type: clob() }
+    value: { type: string(255), notnull: true}  
+  indexes: 
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref] 
+      
+EiTicket:
+
+  columns:
+    ticket_id: { type: integer(8), notnull: true , primary: true}
+    ticket_ref: { type: integer(8) ,notnull: true , primary: true}
+    project_ref: {type: integer(8) , notnull: true   }
+    project_id:  {type: integer(8) , notnull: true   }
+    name: { type: string(45), notnull: true  }
+    state: {type: string(45) , notnull: true }
+    is_active: { type: boolean, notnull: true }
+    creator_id: {type: integer(8) , notnull: true   }
+    creator_ref:  {type: integer(8) , notnull: true   }
+    #Numéro de version pour vérifier les rechargement des tickets
+    delta :  { type: integer(8) }   
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]
+    creator_id_index:
+      fields: [creator_id]
+    creator_ref_index:
+      fields: [creator_ref]
+      
+EiUserTicket:
+
+  columns:
+    ticket_id: { type: integer(8), notnull: true , primary: true}
+    ticket_ref: { type: integer(8) ,notnull: true , primary: true}
+    user_ref: {type: integer(8) , notnull: true  , primary: true }
+    user_id :  {type: integer(8) , notnull: true , primary: true  }
+    state: {type: string(45) , notnull: true }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) }    
+  indexes: 
+    ticket_id_index:
+      fields: [ticket_id]
+    ticket_ref_index:
+      fields: [ticket_ref]
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref] 
+    
+#Tables des arbres génériques de l'application
+EiNode:
+  actAs:
+    Timestampable:
+      created:
+        name: created_at
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: updated_at
+        type: timestamp
+        format: Y-m-d H:i:s
+    NestedSet:
+      hasManyRoots : true
+      rootColumnName: root_id
+  columns:
+    name: { type: string(45) ,notnull: true}
+    type: {type: string(45) ,notnull: true }
+    obj_id :  { type: integer(8),  notnull: true } 
+    is_root: { type: boolean, default : false}
+    is_shortcut: { type: boolean, default : false}
+    project_id :  { type: integer(8),  notnull: true }
+    project_ref:  { type: integer(8),  notnull: true }
+    position :  { type: integer(8),  notnull: true }
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref] 
+#table liste, pour chaque utilisateur, les noeuds qu'il a ouvert dans l'arbre des scenarios.
+EiNodeOpenedBy:
+  columns:
+    ei_node_id :  { type: integer(8),  notnull: true , primary: true}
+    user_id :  { type: integer(8),  notnull: true , primary: true}
+    ref_id :  { type: integer(8),  notnull: true , primary: true}
+  relations:
+      EiNode: { onDelete: CASCADE , local: ei_node_id , foreign: id, foreignAlias: EiNodesOpenedByUser}
+  indexes:  
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [ref_id]
+      
+EiFolder:
+  columns:
+    project_id: {type: integer(8)  , notnull: true    }
+    project_ref:  {type: integer(8)   , notnull: true   }
+    name: { type: string(255), notnull: true   }  
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref] 
+      
+EiScenario:
+  columns:
+    ei_node_id: { type: integer(8), notnull: true }
+    project_id: { type: integer(8)  , notnull: true    }
+    project_ref:  { type: integer(8)   , notnull: true }
+    nom_scenario: { type: string(255), notnull: true   }
+    nb_joue: { type: integer(8) , default: 0 }
+    description : { type: clob() }
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+  relations:
+    EiNode: { onDelete: CASCADE, local: ei_node_id, foreign: id } 
+    
+#Relation entre les version d'un scénario et les packages    
+EiScenarioPackage:
+  columns:
+    ei_scenario_id: { type: integer(8), notnull: true , primary: true }
+    package_id: { type: integer(8)  , notnull: true    , primary: true }
+    package_ref:  { type: integer(8)   , notnull: true  , primary: true}
+    ei_version_id: {type: integer(8) ), notnull: true     }
+  indexes: 
+    package_id_index:
+      fields: [package_id]
+    package_ref_index:
+      fields: [package_ref]
+    scenario_id_index:
+      fields: [ei_scenario_id]
+    version_id_index:
+      fields: [ei_version_id]
+  relations:
+    EiVersion: { onDelete: CASCADE, local: ei_version_id, foreign: id, foreignAlias: EiVersionPackage  }
+   
+EiScenarioOpenedBy:
+  columns:
+    ei_scenario_id: { type: integer(8), notnull: true , primary: true}
+    ref_id: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true }
+  indexes: 
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [ref_id]
+    scenario_id_index:
+      fields: [ei_scenario_id]  
+  relations:
+    EiScenario: { onDelete: CASCADE, local: ei_scenario_id, foreign: id } 
+      
+EiDataSet:
+  columns:
+    ei_node_id: { type: integer(8), notnull: true }
+    name: {type: string(255), notnull: true}
+    description: { type: clob(), notnull: false}
+    user_id: {type: integer(8), notnull: false}
+    user_ref: {type: integer(8), notnull: false}
+    ei_data_set_template_id: { type: integer(8), notnull: false }
+  indexes: 
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]
+    ei_data_set_template_id_index:
+      fields: [ei_data_set_template_id]  
+  relations:
+    EiNode: { onDelete: CASCADE, local: ei_node_id, foreign: id }
+    EiDataSetTemplate: { onDelete: CASCADE, local: ei_data_set_template_id, foreign: id, foreignAlias: EiDataSets } 
+
+EiDataSetTemplate:
+  actAs:
+    Timestampable: []
+  columns:
+    ei_node_id: { type: integer(8), notnull: true }
+    name: {type: string(255), notnull: true}
+    description: { type: clob(), notnull: false}
+    user_id: {type: integer(8), notnull: false}
+    user_ref: {type: integer(8), notnull: false}
+    ei_data_set_ref_id: { type: integer(8), notnull: false }
+  indexes: 
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]
+    ei_data_set_ref_id_index:
+      fields: [ei_data_set_ref_id]   
+  relations:
+    EiNode: { onDelete: CASCADE, local: ei_node_id, foreign: id }
+    EiDataSet: { onDelete: CASCADE, local: ei_data_set_ref_id, foreign: id, foreignAlias: EiDataSetTemplate, foreignType: one }
+    
+EiDataLine:
+  actAs:
+    Timestampable: []
+    NestedSet:
+      hasManyRoots: true
+      rootColumnName: root_id
+  columns:
+    ei_data_set_id: { type: integer(8), notnull: true }
+    ei_data_line_parent_id : { type: integer(8), notnull: false}
+    ei_data_set_structure_id: { type: integer(8), notnull: false }
+    valeur: { type: text, notnull: false}
+  relations:
+    EiDataSetStructure: { onDelete: CASCADE, local: ei_data_set_structure_id, foreign: id }
+    EiDataSet: { onDelete: CASCADE, local: ei_data_set_id, foreign: id }
+    EiDataLineRoot: { onDelete: CASCADE, local: root_id, foreign: id, foreignAlias: EiDataLines, class: EiDataLine }
+    EiDataLineParent: { onDelete: CASCADE, local: ei_data_line_parent_id, foreign: id, foreignAlias: EiDataLines, class: EiDataLine }
+
+###################################
+###     JEUX DE TESTS / LOGS    ###
+###################################
+    
+EiTestSet:
+  columns:
+    profile_ref: { type: integer(8), notnull: true }
+    profile_id: { type: integer(8) ,notnull: true  } 
+    ei_scenario_id: { type: integer(8) ,notnull: true  }
+    ei_version_id: { type: integer(8) ,notnull: true  } 
+    ei_data_set_id: { type: integer(8) ,notnull: false  }
+    mode: {type: enum, values: [Campaign,AutoPlay,Record,StepByStep], notnull: false}
+    author_id :  { type: integer(8),  notnull: false  }
+    device: { type: enum, values: [SeleniumIde,Ios,Android,Chrome,Firefox,InternetExplorer,Safari], notnull: true, default: SeleniumIde }
+    status: { type: string(25), notnull: true, default: "NA"}
+    termine: { type: boolean, notnull : false, default: false }
+    iteration_id: { type: integer(8) ,notnull: false  }
+  indexes: 
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]
+    scenario_id_index:
+      fields: [ei_scenario_id]
+    version_id_index:
+      fields: [ei_version_id]
+    data_set_id_index:
+      fields: [ei_data_set_id] 
+    author_id_index:
+      fields: [author_id]
+    iteration_index:
+      fields: [iteration_id]  
+  relations:
+    EiIteration: { onDelete: RESTRICT, local: iteration_id, foreign: id, foreignAlias: "Iteration"}  
+    EiScenario: { onDelete: CASCADE, local: ei_scenario_id, foreign: id }
+    EiVersion: { onDelete: CASCADE, local: ei_version_id, foreign: id }
+    EiDataSet: { onDelete: CASCADE, local: ei_data_set_id, foreign: id }
+    sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: testSetAuthor}
+
+EiTestSetState:
+  columns:
+    name :  { type: string(255),  notnull: true  }
+    color_code :  { type: string(255), notnull: true, default : "#36a9e1" }
+    state_code : { type: string(2), notnull: true}
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+  indexes: 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]
+    state_code_index:
+      fields: [state_code] 
+  
+EiTestSetFunction:
+  columns:
+    ei_test_set_id: { type: integer(8), notnull: true }
+    iteration_id: { type: integer(8) ,notnull: false  }
+    ei_fonction_id: { type: integer(8) }
+    function_ref: { type: integer(8), notnull: true }
+    function_id: { type: integer(8) ,notnull: true  } 
+    position: {type: integer(8), notnull: true}
+    xpath: { type: text, notnull: true}
+    log: { type: text, notnull: false}
+    date_debut: { type: timestamp, notnull: false}
+    date_fin: { type: timestamp, notnull: false}  
+    status: { type: string(25), notnull: true, default: "blank"}
+    duree: { type: string, notnull: false}
+  indexes: 
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref]
+    iteration_index:
+      fields: [iteration_id]
+    iteration_test_set_function_index:
+      fields: [function_ref,function_id,iteration_id]   
+    ei_test_set_ts_function_index:
+      fields: [ei_test_set_id]
+    ei_fonction_id_index:
+      fields: [ei_fonction_id]
+    status_index:
+      fields: [status]     
+  relations:
+    EiIteration: { onDelete: RESTRICT, local: iteration_id, foreign: id, foreignAlias: "Iteration"}    
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id, foreignAlias: EiTestSetFunctions }
+  
+EiTestSetParam:
+  columns:
+    ei_test_set_id: { type: integer(8), notnull: true }
+    iteration_id: { type: integer(8) ,notnull: false   }
+    function_id: { type: integer(8), notnull: false}
+    function_ref: { type: integer(8), notnull: false}
+    ei_test_set_function_id: { type: integer, notnull: true}
+    param_id: {type: integer, notnull: true }
+    valeur: { type: text, notnull: true}
+    param_type: {type: string, notnull: true, default: "IN" }
+  indexes: 
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref]
+    iteration_index:
+      fields: [iteration_id] 
+    iteration_test_set_param_index:
+      fields: [function_ref,function_id,iteration_id]   
+  relations:
+    EiIteration: { onDelete: RESTRICT, local: iteration_id, foreign: id, foreignAlias: "Iteration"}    
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id }
+    EiTestSetFunction: { onDelete: CASCADE, local: ei_test_set_function_id, foreign: id, foreignAlias: EiTestSetParams }
+    EiFunctionHasParam: { onDelete: CASCADE, local: param_id, foreign: param_id }
+
+EiTestSetDataSet:
+  actAs:
+    NestedSet:
+      hasManyRoots: true
+      rootColumnName: root_id
+    Timestampable: []
+  columns:
+    ei_test_set_id: { type: integer(8), notnull: true }
+    ei_data_set_structure_id: { type: integer(8), notnull: false }
+    parent_id: { type: integer(8), notnull: false }
+    parent_index_repetition: { type: integer(8), notnull: true, default: 0 }
+    index_repetition: { type: integer(8), notnull: true, default: 0 }
+#    path: { type: string(255), notnull: true}
+    type: { type: string(255), notnull: true}
+    name: { type: string(255), notnull: true}
+    slug: { type: string(255), notnull: false}
+    value: { type: text, notnull: true}
+    is_modified: { type: boolean, notnull: true, default: false }
+  relations:
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id, foreignAlias: EiTestSetDataSet }
+    EiDataSetStructure: { onDelete: CASCADE , local: ei_data_set_structure_id , foreign: id,class: EiDataSetStructure, foreignAlias: EiTestSetDataSetStructure }
+#    EiTestSetDataSetParent: { onDelete: CASCADE , local: parent_id , foreign: id,class: EiTestSetDataSet, foreignAlias: EiTestSetDataSetParent }
+
+EiTestSetBlockParam:
+  actAs:
+    NestedSet:
+      hasManyRoots: true
+      rootColumnName: root_id
+    Timestampable: []
+  columns:
+    ei_test_set_id: { type: integer(8), notnull: true }
+    ei_version_structure_id: { type: integer(8), notnull: false }
+    parent_id: { type: integer(8), notnull: false }
+    index_repetition: { type: integer(8), notnull: true, default: 0 }
+    path: { type: string(255), notnull: true}
+    type: { type: string(255), notnull: true}
+    name: { type: string(255), notnull: true}
+    slug: { type: string(255), notnull: false}
+    value: { type: text, notnull: true}
+  relations:
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id, foreignAlias: EiTestSetBlockParams }
+    EiVersionStructure: { onDelete: CASCADE , local: ei_version_structure_id , foreign: id,class: EiVersionStructure, foreignAlias: EiVersionStructureBlockParams }
+    EiTestSetBlockParamParent: { onDelete: CASCADE , local: parent_id , foreign: id,class: EiTestSetBlockParam, foreignAlias: EiTestSetBlockParamParent }
+  indexes:
+    uniqueStrEltRepeat:
+      type: unique
+      fields:
+        ei_test_set_id: []
+        ei_version_structure_id: []
+        parent_id: []
+        path: []
+
+EiTestSetBlockStack:
+  actAs:
+    Timestampable: []
+  columns:
+    ei_test_set_id: { type: integer(8), notnull: true }
+    ei_version_structure_id: { type: integer(8), notnull: false }
+    ei_block_param_id: { type: integer(8), notnull: false }
+    ei_test_set_dataset_id: { type: integer(8), notnull: false }
+    parent_id: { type: integer(8), notnull: false }
+    position: { type: integer(8), notnull: true, default: 1 }
+    repetition_index: { type: integer(8), notnull: true, default: 1 }
+    parts_count: { type: integer(8), notnull: true, default: 1 }
+    part_index: { type: integer(8), notnull: true, default: 1 }
+    path: { type: string(255), notnull: true}
+    executed: { type: boolean, notnull: true, default: false }
+  relations:
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id, foreignAlias: EiTestSetBlockStacks }
+    EiVersionStructure: { onDelete: CASCADE , local: ei_version_structure_id , foreign: id,class: EiVersionStructure }
+    EiTestSetBlockParam: { onDelete: CASCADE , local: ei_block_param_id , foreign: id,class: EiTestSetBlockParam }
+    EiTestSetDataSet: { onDelete: CASCADE , local: ei_test_set_dataset_id , foreign: id,class: EiTestSetDataSet}
+    EiTestSetBlockStackParent: { onDelete: CASCADE , local: parent_id , foreign: id,class: EiTestSetBlockStack, foreignAlias: EiTestSetBlockStackParent }
+  indexes:
+    uniqueBlock:
+      type: unique
+      fields:
+        ei_test_set_id: []
+        ei_block_param_id: []
+        parent_id: []
+        part_index: []
+  
+EiLog:
+  columns:
+    #références
+    ei_test_set_id: { type: integer(8), notnull: true}
+    ei_scenario_id: { type: integer(8) ,notnull: true  } 
+    ei_version_id: { type: integer(8) ,notnull: true  } 
+    ei_data_set_id: { type: integer(8) ,notnull: false }
+    #référence aux tables étrangère avec double clé
+    profile_id: {type: integer(8) ,notnull: false}
+    profile_ref: {type: integer(8) ,notnull: false}
+    user_id: {type: integer(8) ,notnull: false}
+    user_ref: {type: integer(8) ,notnull: false}
+    #attributes
+    iteration_id: {type: integer(8) ,notnull: false  }
+    log: { type: text, notnull: false}
+    date_debut: { type: timestamp, notnull: false}
+    date_fin: { type: timestamp, notnull: false}
+    duree: { type: string, notnull: false}    
+    status: { type: string, notnull: true, default: "NA"}
+  indexes:     
+    ei_test_set_log_index:
+      fields: [ei_test_set_id]
+    ei_scenario_id_index:
+      fields: [ei_scenario_id]
+    ei_version_index:
+      fields: [ei_version_id]
+    ei_data_set_id_index:
+      fields: [ei_data_set_id]
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]
+    iteration_index:
+        fields: [iteration_id]
+  relations:
+    EiIteration: { onDelete: RESTRICT, local: iteration_id, foreign: id, foreignAlias: "Iteration"}    
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id }
+    EiScenario: { onDelete: CASCADE, local: ei_scenario_id, foreign: id }
+    EiVersion: { onDelete: CASCADE, local: ei_version_id, foreign: id }
+    EiDataSet: { onDelete: CASCADE, local: ei_data_set_id, foreign: id }
+    
+EiLogFunction:
+  columns:
+    #références
+    ei_log_id: { type: integer(8), notnull: true }
+    ei_test_set_id: { type: integer(8), notnull: true}
+    function_id: { type: integer(8), notnull: false}
+    function_ref: { type: integer(8), notnull: false}
+    ei_scenario_id: { type: integer(8) ,notnull: true}
+    ei_test_set_function_id: { type: integer(8) ,notnull: false }
+    ei_fonction_id: { type: integer(8) ,notnull: false }
+    #attributs
+    position: {type: integer(8), notnull: true}
+    status: { type: string, notnull: true, default: "NA"}
+    date_debut: { type: timestamp, notnull: false}
+    date_fin: { type: timestamp, notnull: false}
+    duree: { type: string, notnull: false}
+    iteration_id: {type: integer(8) ,notnull: false  }
+  indexes:     
+    ei_test_set_log_function_index:
+      fields: [ei_test_set_id]
+    ei_scenario_id_index:
+      fields: [ei_scenario_id]
+    ei_log_id_log_function_index:
+      fields: [ei_log_id]
+    ei_test_set_function_id_index:
+      fields: [ei_test_set_function_id]
+    ei_fonction_id_index:
+      fields: [ei_fonction_id]   
+    iteration_ei_log_function_index:
+      fields: [function_ref,function_id,iteration_id]    
+  relations:
+    EiIteration: { onDelete: RESTRICT, local: iteration_id, foreign: id, foreignAlias: "Iteration"}  
+    EiLog: { onDelete: CASCADE, local: ei_log_id, foreign: id, foreignAlias: "EiLogFunctions" }
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id }
+    EiScenario: { onDelete: CASCADE, local: ei_scenario_id, foreign: id }
+    EiTestSetFunction: { onDelete: CASCADE, local: ei_test_set_function_id, foreign: id }
+    EiFonction: { onDelete: CASCADE, local: ei_fonction_id, foreign: id }
+
+EiLogFunctionSelenium:
+  columns:
+    #références
+    ei_log_id: { type: integer(8), notnull: true }
+    ei_test_set_id: { type: integer(8), notnull: true}
+    ei_scenario_id: { type: integer(8) ,notnull: true}
+    ei_test_set_function_id: { type: integer(8) ,notnull: false }
+    ei_fonction_id: { type: integer(8) ,notnull: false }
+    ei_log_function_id: { type: integer(8), notnull: true }
+    # attributs
+    message: { type: clob(), notnull: true, default: ""}
+  indexes:     
+    ei_test_set_log_function_selenium_index:
+      fields: [ei_test_set_id]
+    ei_scenario_id_index:
+      fields: [ei_scenario_id]
+    ei_log_id_log_function_selenium_index:
+      fields: [ei_log_id]
+    ei_log_function_id_index:
+      fields: [ei_log_function_id]  
+    ei_test_set_function_id_index:
+      fields: [ei_test_set_function_id]
+    ei_fonction_id_index:
+      fields: [ei_fonction_id]   
+  relations:
+    EiLog: { onDelete: CASCADE, local: ei_log_id, foreign: id }
+    EiLogFunction: { onDelete: CASCADE, local: ei_log_function_id, foreign: id }
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id }
+    EiScenario: { onDelete: CASCADE, local: ei_scenario_id, foreign: id }
+    EiTestSetFunction: { onDelete: CASCADE, local: ei_test_set_function_id, foreign: id }
+    EiFonction: { onDelete: CASCADE, local: ei_fonction_id, foreign: id }
+
+EiLogSensor:
+  columns:
+    ei_log_function_id: { type: integer(8), notnull: true }
+    app_memory_mean: { type: integer(8), notnull: false }
+    app_memory_min: { type: integer(8), notnull: false }
+    app_memory_max: { type: integer(8), notnull: false }
+    app_memory_start: { type: integer(8), notnull: false }
+    app_memory_end: { type: integer(8), notnull: false }
+    app_cpu_mean: { type: integer(8), notnull: false }
+    app_cpu_min: { type: integer(8), notnull: false }
+    app_cpu_max: { type: integer(8), notnull: false }
+    app_cpu_start: { type: integer(8), notnull: false }
+    app_cpu_end: { type: integer(8), notnull: false }
+    db_memory_mean: { type: integer(8), notnull: false }
+    db_memory_min: { type: integer(8), notnull: false }
+    db_memory_max: { type: integer(8), notnull: false }
+    db_memory_start: { type: integer(8), notnull: false }
+    db_memory_end: { type: integer(8), notnull: false }
+    db_cpu_mean: { type: integer(8), notnull: false }
+    db_cpu_min: { type: integer(8), notnull: false }
+    db_cpu_max: { type: integer(8), notnull: false }
+    db_cpu_start: { type: integer(8), notnull: false }
+    db_cpu_end: { type: integer(8), notnull: false }
+    client_memory_mean: { type: integer(8), notnull: false }
+    client_memory_min: { type: integer(8), notnull: false }
+    client_memory_max: { type: integer(8), notnull: false }
+    client_memory_start: { type: integer(8), notnull: false }
+    client_memory_end: { type: integer(8), notnull: false }
+    client_cpu_mean: { type: integer(8), notnull: false }
+    client_cpu_min: { type: integer(8), notnull: false }
+    client_cpu_max: { type: integer(8), notnull: false }
+    client_cpu_start: { type: integer(8), notnull: false }
+    client_cpu_end: { type: integer(8), notnull: false }
+  indexes:
+    ei_log_function_id_index:
+      fields: [ei_log_function_id]
+  relations:
+    EiLogFunction: { onDelete: CASCADE, local: ei_log_function_id, foreign: id }
+
+EiIteration:
+  columns:
+    #références
+    id: { type: integer(8), notnull: true , primary : true,autoincrement:true}
+    delivery_id: { type: integer(8), notnull: true}
+    author_id: { type: integer(8), notnull: false}
+    profile_id: { type: integer(8) ,notnull: true} 
+    profile_ref: { type: integer(8) ,notnull: true} 
+    project_id: { type: integer(8) ,notnull: true} 
+    project_ref: { type: integer(8) ,notnull: true} 
+    description: { type: clob(), notnull: true, default: null}
+  indexes:     
+    delivery_id_index:
+      fields: [delivery_id] 
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]  
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]   
+  relations:
+    sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: iterationAuthor}
+    EiDelivery: { onDelete: CASCADE, local: delivery_id, foreign: id, foreignAlias: "EiDelivery"} 
+    
+###Itération active (Une seule itération doit être acttive pour une livraison et une profil donné    
+EiActiveIteration:
+  columns:
+    #références 
+    project_id: { type: integer(8) ,notnull: true, primary : true} 
+    project_ref: { type: integer(8) ,notnull: true, primary : true} 
+    profile_id: { type: integer(8) ,notnull: true, primary : true} 
+    profile_ref: { type: integer(8) ,notnull: true, primary : true} 
+    #champs
+    iteration_id: { type: integer(8) ,notnull: false}
+  indexes:     
+    project_id_index:
+      fields: [project_id] 
+    project_ref_index:
+      fields: [project_ref]   
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]  
+    iteration_id_index:
+      fields: [iteration_id]   
+  relations: 
+    EiIteration: { onDelete: CASCADE, local: iteration_id, foreign: id, foreignAlias: "EiIteration"} 
+EiLogParam:
+  columns:
+    #références
+    ei_log_id: { type: integer(8), notnull: true }
+    function_id: { type: integer(8), notnull: false}
+    function_ref: { type: integer(8), notnull: false}
+    ei_test_set_id: { type: integer(8), notnull: true}
+    ei_log_function_id: { type: integer(8) ,notnull: true} 
+    ei_param_id: { type: integer(8) ,notnull: false}
+    #attributs
+    param_id: {type: integer(8) ,notnull: true}
+    iteration_id: {type: integer(8) ,notnull: false  }
+    param_name: { type: string, notnull: true}    
+    param_valeur: { type: string, notnull: true}
+    param_type: {type: string, notnull: true, default: "IN" }
+  indexes:     
+    ei_test_set_log_param_index:
+      fields: [ei_test_set_id] 
+    ei_log_id_log_param_index:
+      fields: [ei_log_id]
+    ei_log_function_id_index:
+      fields: [ei_log_function_id]  
+    ei_param_id_index:
+      fields: [ei_param_id]  
+    iteration_log_param_index:
+      fields: [function_ref,function_id,iteration_id]   
+  relations:
+    EiIteration: { onDelete: RESTRICT, local: iteration_id, foreign: id, foreignAlias: "Iteration"}
+    EiLog: { onDelete: CASCADE, local: ei_log_id, foreign: id, foreignAlias: "EiLogParams"}
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id }
+    EiLogFunction: { onDelete: CASCADE, local: ei_log_function_id, foreign: id , foreignAlias: "EiLogParams"}
+    EiParam: { onDelete: CASCADE, local: ei_param_id, foreign: id, foreignAlias: "EiLogParams" }
+    EiFunctionHasParam: { onDelete: CASCADE, local: param_id, foreign: param_id, foreignAlias: "EiLogParams" }
+
+
+#####################
+###     EXCEL     ###
+#####################
+
+EiExcelRequests:
+  actAs:
+    Timestampable: []
+  columns:
+    project_id: {type: integer(8) ,notnull: false}
+    project_ref: {type: integer(8) ,notnull: false}
+    profile_id: {type: integer(8) ,notnull: false}
+    profile_ref: {type: integer(8) ,notnull: false}
+    user_id: {type: integer(8) ,notnull: false}
+    user_ref: {type: integer(8) ,notnull: false}
+    ei_test_set_id: { type: integer(8), notnull: false }
+    ei_data_set_id: { type: integer(8), notnull: false }
+    ei_data_set_template_id: { type: integer(8), notnull: false }
+    state: {type: boolean, default: false}
+  indexes:     
+    ei_test_set_excel_index:
+      fields: [ei_test_set_id]
+    ei_data_set_id_index:
+      fields: [ei_data_set_id]
+    ei_data_set_template_id_index:
+      fields: [ei_data_set_template_id] 
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [user_ref]  
+  relations:
+    EiTestSet: { onDelete: CASCADE, local: ei_test_set_id, foreign: id, foreignAlias: "EiTestSetExcelRequests" }
+    EiDataSet: { onDelete: CASCADE, local: ei_data_set_id, foreign: id, foreignAlias: "EiDataSetExcelRequests" }
+    EiDataSetTemplate: { onDelete: CASCADE, local: ei_data_set_template_id, foreign: id }
+
+
+
+##################################
+###     STRUCTURE SCENARIO     ###
+##################################
+
+# Tables héritants de EiVersionStructure
+EiBlock:
+  inheritance:
+    type: column_aggregation
+    extends: EiVersionStructure
+    keyField: type
+    keyValue: "EiBlock"
+
+EiBlockForeach:
+  inheritance:
+    type: column_aggregation
+    extends: EiVersionStructure
+    keyField: type
+    keyValue: "EiBlockForeach"
+    
+EiBlockParam:
+  inheritance:
+    type: column_aggregation
+    extends: EiVersionStructure
+    keyField: type
+    keyValue: "EiBlockParam"
+    
+EiScenarioExecutable:
+  columns:
+    ei_scenario_id: { type: integer(8), notnull: true }
+    ei_data_set_id: { type: integer(8), notnull: true }
+  relations:
+    EiScenario: { onDelete: CASCADE , local: ei_scenario_id , foreign: id}
+    EiDataSet: { onDelete: CASCADE , local: ei_data_set_id , foreign: id}
+
+########################################
+###     STRUCTURE JEU DE DONNEES     ###
+########################################
+
+EiDataSetStructure:
+  actAs:
+    Timestampable: []
+    NestedSet:
+      hasManyRoots: true
+      rootColumnName: root_id
+  columns:
+    ei_scenario_id: { type: integer(8), notnull: true }
+    ei_dataset_structure_parent_id: { type: integer(8), notnull: false }
+    root_id : { type: integer(8), notnull: false}
+    project_id: { type: integer(8), notnull: true}
+    project_ref: { type: integer(8), notnull: true}
+    type: { type: string(255), notnull: true}
+    name: { type: string(255), notnull: true}
+    slug: { type: string(255), notnull: false}
+    description: { type: clob(), notnull: false}
+  indexes:     
+    scenario_index:
+      fields: [ei_scenario_id]  
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]   
+  relations:
+    EiScenario: { onDelete: CASCADE , local: ei_scenario_id , foreign: id, foreignAlias: EiDataSetStructures}
+    EiDataSetStructureParent: { onDelete: CASCADE , local: ei_dataset_structure_parent_id , foreign: id,class: EiDataSetStructure, foreignAlias: EiDataSetStructures}
+
+# Tables héritants de EiDataSetStructure
+EiNodeDataSet:
+  inheritance:
+    type: column_aggregation
+    extends: EiDataSetStructure
+    keyField: type
+    keyValue: "NodeDataSet"
+
+EiLeafDataSet:
+  inheritance:
+    type: column_aggregation
+    extends: EiDataSetStructure
+    keyField: type
+    keyValue: "LeafDataSet"
+
+
+###################################################
+###     MAPPING PARAMETRE DE BLOCK/FONCTION     ###
+###################################################
+
+EiParamBlockFunctionMapping:
+  actAs:
+    Timestampable: []
+  columns:
+    ei_function_id: { type: integer(8), notnull: true }
+    ei_param_function_id: { type: integer(8), notnull: true }
+    ei_param_block_id: { type: integer(8), notnull: false }
+    expression: { type: string(255), notnull: false }
+  relations:
+    EiFunction: { onDelete: CASCADE, local: ei_function_id, foreign: id, class: EiFonction, foreignAlias: EiFunctionMapping }
+    EiFunctionParamMapping: { onDelete: CASCADE, local: ei_param_function_id, foreign: param_id, class: EiFunctionHasParam, foreignAlias: EiFunctionParamMapping }
+    EiBlockParamMapping: { onDelete: CASCADE, local: ei_param_block_id, foreign: id, class: EiBlockParam, foreignAlias: EiBlockParamMapping }
+
+###################################################
+###     MAPPING STRUCTURE SCENARIO/DATA SET     ###
+###################################################
+
+
+EiBlockDataSetMapping:
+  actAs:
+    Timestampable: []
+  columns:
+    ei_version_structure_id: { type: integer(8), notnull: true }
+    ei_dataset_structure_id: { type: integer(8), notnull: true }
+    type: { type: string(255), notnull: true }
+  relations:
+    EiVersionStructureMapping: { onDelete: CASCADE, local: ei_version_structure_id, foreign: id, class: EiVersionStructure, foreignAlias: EiVersionStructureDataSetMapping}
+    EiDataSetStructureMapping: { onDelete: CASCADE, local: ei_dataset_structure_id, foreign: id, class: EiDataSetStructure, foreignAlias: EiDataSetStructureScenarioMapping}
+
+# Tables héritants de EiScenarioDataSetMapping
+EiMappingStructureSyncIn:
+  inheritance:
+    type: column_aggregation
+    extends: EiBlockDataSetMapping
+    keyField: type
+    keyValue: "SyncInParam"
+
+EiMappingStructureSyncOut:
+  inheritance:
+    type: column_aggregation
+    extends: EiBlockDataSetMapping
+    keyField: type
+    keyValue: "SyncOutParam"
+
+#############################################
+###     VERSIONS STRUCTURES SCENARIOS     ###
+#############################################
+
+EiVersion:
+  columns:
+    ei_scenario_id: { type: integer(8), notnull: true }
+    libelle: { type: string(255), notnull: true}
+    description: { type: clob()  }
+  relations:
+    EiScenario: { onDelete: CASCADE , local: ei_scenario_id , foreign: id, foreignAlias: EiVersions}
+
+EiVersionStructure:
+  actAs:
+    Timestampable: []
+    NestedSet:
+      hasManyRoots: true
+      rootColumnName: root_id
+  columns:
+    ei_version_id: { type: integer(8), notnull: true}
+    ei_fonction_id: { type: integer(8), notnull: false }
+    ei_scenario_executable_id: { type: integer(8), notnull: false }
+    ei_version_structure_parent_id: { type: integer(8), notnull: false }
+    type: { type: string(255), notnull: true}
+    name: { type: string(255), notnull: true}
+    slug: { type: string(255), notnull: false}
+    description: { type: clob(), notnull: false}
+  relations:
+    EiVersion: { onDelete: CASCADE , local: ei_version_id , foreign: id, foreignAlias: EiVersionStructures}
+    EiScenarioExecutable: { onDelete: CASCADE , local: ei_scenario_executable_id , foreign: id, foreignAlias: EiScenarioExecutables}
+    EiVersionStructureParent: { onDelete: CASCADE , local: ei_version_structure_parent_id , foreign: id, class: EiVersionStructure, foreignAlias: EiVersionStructures}
+
+EiProfilScenario:
+  columns:
+    profile_id:  {type: integer(8) , notnull: true , primary: true }
+    profile_ref: {type: integer(8) , notnull: true , primary: true }
+    ei_scenario_id: { type: integer(8), notnull: true  ,primary: true}
+    ei_version_id: { type: integer(8), notnull: true }
+  indexes:     
+    ei_scenario_index:
+      fields: [ei_scenario_id]
+    ei_version_index:
+      fields: [ei_version_id]   
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref] 
+  relations:
+    EiVersion: { onDelete: CASCADE , local: ei_version_id , foreign: id, foreignAlias: EiProfilScenarios}
+    EiScenario: { onDelete: CASCADE , local: ei_scenario_id , foreign: id, foreignAlias: EiProfilScenarios} 
+
+EiBlockType:
+    columns:
+      name :  { type: string(255),  notnull: true  }
+      position : { type: integer(8), notnull: true }
+
+EiFonction: 
+  columns:
+    ei_version_structure_id: { type: integer(8), notnull: true }
+    #Réference à la fonction sous script.kalifast
+    function_ref: { type: integer(8), notnull: true }
+    function_id: { type: integer(8) ,notnull: true  } 
+    description: {type: clob()  }
+    project_ref: {type: integer(8) , notnull: true}
+    project_id:  {type: integer(8) , notnull: true}
+  indexes:     
+    ei_version_structure_id_index:
+      fields: [ei_version_structure_id]  
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref] 
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref]   
+  relations:
+    EiVersionStructure: { onDelete: CASCADE , local: ei_version_structure_id , foreign: id, foreignType: one, foreignAlias: EiFonction}
+
+#Table de l'oracle d'une fonction      
+EiFunctionNotice:
+  columns:
+    ei_version_id: { type: integer(8), primary: true, notnull: true}
+    ei_fonction_id  : { type: integer(8), primary: true, notnull: true}
+    lang: { type: string(255) , primary: true, notnull: true  }
+    description:  { type: clob()}
+    expected:  { type: clob()}
+    result:  { type: clob()}
+  indexes:     
+    ei_version_id_index:
+      fields: [ei_version_id]  
+    ei_fonction_id_index:
+      fields: [ei_fonction_id]  
+  relations: 
+    EiFonction: { onDelete: CASCADE , local: ei_fonction_id , foreign: id, foreignAlias: EiFunctionNotices}
+    EiVersion: { onDelete: CASCADE , local: ei_version_id , foreign: id, foreignAlias: EiFunctionNotices}
+    
+EiParam:
+  columns:
+    id_fonction: { type: integer(8), notnull: true }
+    param_id: { type: integer(8) , notnull: true  }
+    valeur:  { type: clob()}
+    observation: {type: clob() } 
+  indexes:     
+    id_fonction_index:
+      fields: [id_fonction]  
+    param_id_index:
+      fields: [param_id]   
+  relations:
+    EiFonction: { onDelete: CASCADE , local: id_fonction , foreign: id, foreignAlias: EiParams}
+    EiFunctionHasParam: { onDelete: CASCADE , local: param_id , foreign: param_id, foreignType: one}
+    
+EiTreeOpenedBy:
+  columns:
+    ei_tree_id :  { type: integer(8),  notnull: true , primary: true}
+    user_id :  { type: integer(8),  notnull: true , primary: true}
+    ref_id :  { type: integer(8),  notnull: true , primary: true}
+  indexes:     
+    ei_tree_id_index:
+      fields: [ei_tree_id]    
+    user_id_index:
+      fields: [user_id]
+    user_ref_index:
+      fields: [ref_id]  
+  relations:
+      EiTree: { onDelete: CASCADE , local: ei_tree_id , foreign: id, foreignAlias: EiTreeOpenedByUsers}
+    
+EiTree:
+  columns:
+    id :  { type: integer(8),  notnull: true , primary: true}
+    name: { type: string(45) ,notnull: true}
+    type: {type: string(45) ,notnull: true }
+    obj_id :  { type: integer(8),  notnull: true }
+    ref_obj : { type: integer(8),  notnull: true }
+    is_root: { type: boolean, default : false}
+    project_id :  { type: integer(8),  notnull: true }
+    project_ref:  { type: integer(8),  notnull: true }
+    position :  { type: integer(8),  notnull: true }
+    path : { type: blob() ,notnull: false} 
+    root_id :  { type: integer(8),  notnull: true }
+    lft :  { type: integer(8), notnull: true, default: 1 }
+    rgt :  { type: integer(8), notnull: true, default: 2}
+    level :  { type: integer(8)  }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) , default : 0}
+  indexes:     
+    obj_id_index:
+      fields: [obj_id]  
+    ref_obj_index:
+      fields: [ref_obj]
+    project_ref_index:
+      fields: [project_ref] 
+    project_id_index:
+      fields: [project_id] 
+EiView:
+  columns:
+    view_id :  { type: integer(8),  notnull: true , primary: true}
+    view_ref :  { type: integer(8),  notnull: true , primary: true}
+    project_id :  { type: integer(8),  notnull: true }
+    project_ref:  { type: integer(8),  notnull: true }
+    description: {type: clob() }
+    is_active: { type: boolean, notnull: true }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) }    
+  indexes:     
+    view_id_index:
+      fields: [view_id]  
+    view_ref_index:
+      fields: [view_ref]
+    project_ref_index:
+      fields: [project_ref] 
+    project_id_index:
+      fields: [project_id] 
+    
+KalFunction:
+  columns:
+    function_ref: { type: integer(8), notnull: true , primary: true}
+    function_id: { type: integer(8) ,notnull: true , primary: true}
+    project_ref: {type: integer(8) , notnull: true}
+    project_id:  {type: integer(8) , notnull: true}
+    description: {type: clob() }
+    is_active: { type: boolean, notnull: true , default: true} 
+    criticity: {type: enum, values: [High,Medium, Low,Blank]}
+    #Numéro de version pour vérifier les rechargements du projet  
+    delta :  { type: integer(8) }
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }
+  indexes:     
+    function_id_index:
+      fields: [function_id]  
+    function_ref_index:
+      fields: [function_ref]
+    project_ref_index:
+      fields: [project_ref] 
+    project_id_index:
+      fields: [project_id]   
+    
+EiFunctionHasParam:
+  columns:
+    param_id: { type: integer(8) , notnull: true , primary: true}
+    function_ref: { type: integer(8), notnull: true  }
+    function_id: { type: integer(8) ,notnull: true  }
+    param_type : { type: string(45)  }  
+    name: { type: string(45), notnull: true  }
+    description: {type: clob() }
+    default_value: {type: clob() }
+    is_compulsory: { type: boolean, notnull: true  }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) }
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }
+  indexes:     
+    function_id_index:
+      fields: [function_id]  
+    function_ref_index:
+      fields: [function_ref]
+    param_id_index:
+      fields: [param_id]  
+EiScript:
+  columns:
+    script_id: { type: integer(8) , primary: true ,notnull: true  }
+    ticket_ref: { type: integer(8),  notnull: true}
+    ticket_id: { type: integer(8),  notnull: true}
+    num_version: { type: integer(8) , notnull: true}
+    description: {type: clob()  }
+    remark: { type: string(255) }
+    function_ref: {type: integer(8) , notnull: true  } 
+    function_id: { type: integer(8) ,notnull: true}
+    #Numéro de version pour vérifier les rechargements du projet 
+    delta :  { type: integer(8) }  
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }  
+  indexes:     
+    function_id_index:
+      fields: [function_id]  
+    function_ref_index:
+      fields: [function_ref]
+    ticket_id_index:
+      fields: [ticket_id] 
+    ticket_ref_index:
+      fields: [ticket_ref]    
+EiScriptVersion:
+  columns:
+    script_id: { type: integer(8), primary: true ,notnull: true} 
+    profile_ref: { type: integer(8) ,primary: true ,notnull: true}
+    profile_id: {type: integer(8) , primary: true , notnull: true}
+    num_version : { type: integer(8) , notnull: true}
+    project_ref: {type: integer(8) , notnull: true}
+    project_id: {type: integer(8) , notnull: true }
+    #Numéro de version pour vérifier les rechargements du projet 
+    delta :  { type: integer(8) }    
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) } 
+  indexes:     
+    profile_id_index:
+      fields: [profile_id]  
+    profile_ref_index:
+      fields: [profile_ref]
+    project_id_index:
+      fields: [project_id] 
+    project_ref_index:
+      fields: [project_ref]
+EiFunctionHasCommande:
+  columns:
+    id:  { type: integer(8) ,primary: true, notnull: true}
+    function_ref:  { type: integer(8) ,  notnull: true}
+    function_id: { type: integer(8) , notnull: true}
+    script_id: { type: integer(8) ,   notnull: true}
+    command_id: { type: integer(8) ,   notnull: true}
+    name: { type: string(255),notnull: true}
+    position: { type: integer(8) ,   notnull: true}
+    num_version : { type: integer(8) ,  notnull: true}
+    selenium_ref : { type: integer(8) , notnull: true }
+    command_target: { type : clob(),  notnull: true }
+    command_value: { type: clob() , notnull: true}
+    #Numéro de version pour vérifier les rechargements du projet 
+    delta :  { type: integer(8) }
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }
+  indexes:     
+    function_id_index:
+      fields: [function_id]  
+    function_ref_index:
+      fields: [function_ref]
+    script_id_index:
+      fields: [script_id]    
+    
+###classe de stockage des emails
+MailMessage :
+    columns :
+        message: {type : clob , notnull :true }
+        priority : { type: integer }

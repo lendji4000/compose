@@ -1,0 +1,218 @@
+---
+actAs: [Timestampable]
+options:
+  collate: utf8_general_ci
+  charset: utf8
+  type: InnoDB
+  
+ScriptEiProjet:
+  columns:
+    ref_id: {type: integer(8)  , notnull: true   ,primary: true }
+    project_id:  {type: integer(8)   , notnull: true ,   primary: true }
+    name: {type: string(90) ,  notnull: true  } 
+    description: { type: clob() ,notnull: true  }
+    state: { type: integer(8)   ,notnull: true }
+    default_notice_lang: {type: string(255) ,  notnull: true  } 
+    user_ref: {type: integer(8)   ,notnull: true  }
+    user_id:  { type: integer(8)  ,notnull: true  }
+    system_id: {type: integer(8), notnull: true }
+    version: {type: integer(8) ,  notnull: true  ,default: 1}
+    
+#Langues des notices du projet
+
+ScriptEiProjectLang:
+  columns: 
+    lang: { type: string(255),  notnull: true, primary: true,autoincrement: false }
+    project_ref: {type: integer(8) ,  notnull: true, primary: true   }
+    project_id: {type: integer(8) ,  notnull: true, primary: true   } 
+
+#Paramètres globaux du projet
+
+ScriptEiProjectParam:
+  columns: 
+    param_id: {type: integer(8) , primary: true, notnull: true  }
+    project_ref: {type: integer(8) ,  notnull: true   }
+    project_id: {type: integer(8) ,  notnull: true  }
+    name: {type: string(45) ,notnull: true }
+    description:  {type: clob() } 
+    
+ScriptEiProjectUser:
+  columns:
+    project_id: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true } 
+    project_ref: {type: integer(8) , notnull: true , primary: true }
+    user_ref:  {type: integer(8) , notnull: true , primary: true } 
+    role:  { type: string(255), notnull: true   }
+    delta :  { type: integer(8) } 
+
+ScriptEiUser:
+  columns:
+    ref_id: {type: integer(8) , notnull: true , primary: true }
+    user_id:  {type: integer(8) , notnull: true , primary: true } 
+    guard_id:  {type: integer(8) , notnull: true  }
+    matricule:  { type: string(255), notnull: true   }
+    delta :  { type: integer(8) }     
+      
+ScriptEiProfil:
+  columns:
+    project_ref: {type: integer(8) , notnull: true , primary: true }
+    project_id:  {type: integer(8) , notnull: true , primary: true }
+    profile_ref: {type: integer(8) , notnull: true , primary: true }
+    profile_id:  {type: integer(8) , notnull: true , primary: true }
+    name:  { type: string(255), notnull: true , default: 'N_A' }
+    base_url: {type: clob() }
+    description: { type: clob(), notnull: true }
+    is_default: {type: integer(8) , notnull: true}
+    parent_id :  { type: integer(8)  }
+    parent_ref:  { type: integer(8)  }
+    delta :  { type: integer(8) }
+    
+ScriptEiProfileParam:
+
+  columns:
+    id: { type: integer(8), primary: true, notnull: true }
+    profile_ref: { type: integer(8),   notnull: true  }
+    profile_id: { type: integer(8),  notnull: true }
+    name: {type: string(45) , notnull: true }
+    description: {type: clob() }
+    value: { type: string(255), notnull: true}
+    #Numéro de version pour vérifier les rechargement de fonction
+    delta :  { type: integer(8) }
+
+ScriptEiTicket:
+
+  columns:
+    ticket_id: { type: integer(8), notnull: true , primary: true}
+    ticket_ref: { type: integer(8) ,notnull: true , primary: true}
+    project_ref: {type: integer(8) , notnull: true   }
+    project_id:  {type: integer(8) , notnull: true   }
+    name: { type: string(45), notnull: true  }
+    state: {type: string(45) , notnull: true }
+    is_active: { type: boolean, notnull: true }
+    creator_id: {type: integer(8) , notnull: true   }
+    creator_ref:  {type: integer(8) , notnull: true   }
+    #Numéro de version pour vérifier les rechargement des tickets
+    delta :  { type: integer(8) }   
+    
+ScriptEiUserTicket:
+
+  columns:
+    ticket_id: { type: integer(8), notnull: true , primary: true}
+    ticket_ref: { type: integer(8) ,notnull: true , primary: true}
+    user_ref: {type: integer(8) , notnull: true  , primary: true }
+    user_id :  {type: integer(8) , notnull: true , primary: true  }
+    state: {type: string(45) , notnull: true }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) }     
+
+    
+ScriptEiTree:
+  columns:
+    id :  { type: integer(8),  notnull: true , primary: true}
+    name: { type: string(45) ,notnull: true}
+    type: {type: string(45) ,notnull: true }
+    obj_id :  { type: integer(8),  notnull: true }
+    ref_obj : { type: integer(8),  notnull: true }
+    is_root: { type: boolean, default : false}
+    project_id :  { type: integer(8),  notnull: true }
+    project_ref:  { type: integer(8),  notnull: true }
+    position :  { type: integer(8),  notnull: true }
+    root_id :  { type: integer(8),  notnull: true }
+    lft :  { type: integer(8) }
+    rgt :  { type: integer(8)}
+    level :  { type: integer(8)  }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) }
+
+ScriptEiView:
+  columns:
+    view_id :  { type: integer(8),  notnull: true , primary: true}
+    view_ref :  { type: integer(8),  notnull: true , primary: true}
+    project_id :  { type: integer(8),  notnull: true }
+    project_ref:  { type: integer(8),  notnull: true }
+    description: {type: clob() }
+    is_active: { type: boolean, notnull: true }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) }    
+    
+ScriptEiFunction:
+
+  columns:
+    function_ref: { type: integer(8), notnull: true , primary: true}
+    function_id: { type: integer(8) ,notnull: true , primary: true}
+    project_ref: {type: integer(8) , notnull: true}
+    project_id:  {type: integer(8) , notnull: true}
+    description: {type: clob() }
+    is_active: { type: boolean, notnull: true , default: true}
+    #Numéro de version pour vérifier les rechargements du projet  
+    delta :  { type: integer(8) }
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }
+    
+ScriptEiFunctionHasParam:
+
+  columns:
+    param_id: { type: integer(8) , notnull: true , primary: true}
+    function_ref: { type: integer(8), notnull: true  }
+    function_id: { type: integer(8) ,notnull: true  }
+    param_type : { type: string(45)  }  
+    name: { type: string(45), notnull: true  }
+    description: {type: clob()  }
+    default_value: { type: clob() }
+    is_compulsory: { type: boolean, notnull: true  }
+    #Numéro de version pour vérifier les rechargements du projet
+    delta :  { type: integer(8) }
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }
+ 
+ 
+ScriptEiScript:
+  columns:
+    script_id: { type: integer(8) , primary: true ,notnull: true  }
+    ticket_ref: { type: integer(8),  notnull: true}
+    ticket_id: { type: integer(8),  notnull: true}
+    num_version: { type: integer(8) , notnull: true}
+    description: {type: clob()  }
+    remark: { type: clob() }
+    function_ref: {type: integer(8) , notnull: true  } 
+    function_id: { type: integer(8) ,notnull: true}
+    #Numéro de version pour vérifier les rechargements du projet 
+    delta :  { type: integer(8) }  
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }  
+      
+ScriptEiScriptVersion:
+  columns:
+    script_id: { type: integer(8), primary: true ,notnull: true} 
+    profile_ref: { type: integer(8) ,primary: true ,notnull: true}
+    profile_id: {type: integer(8) , primary: true , notnull: true}
+    num_version : { type: integer(8) , notnull: true}
+    project_ref: {type: integer(8) , notnull: true}
+    project_id: {type: integer(8) , notnull: true }
+    #Numéro de version pour vérifier les rechargements du projet 
+    delta :  { type: integer(8) }    
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) } 
+    
+ScriptEiFunctionHasCommande:
+  columns:
+    id:  { type: integer(8) ,primary: true, notnull: true}
+    function_ref:  { type: integer(8) ,  notnull: true}
+    function_id: { type: integer(8) , notnull: true}
+    script_id: { type: integer(8) ,   notnull: true}
+    command_id: { type: integer(8) ,   notnull: true} 
+    position: { type: integer(8) ,   notnull: true}
+    num_version : { type: integer(8) ,  notnull: true}
+    selenium_ref : { type: integer(8) , notnull: true }
+    command_target: { type : clob(), notnull: true }
+    command_value: { type: clob() , notnull: true}
+    #Numéro de version pour vérifier les rechargements du projet 
+    delta :  { type: integer(8) }
+    #Numéro de version pour vérifier les rechargements de la fonction 
+    deltaf :  { type: integer(8) }
+      
+      
+      
+      
+      
+      

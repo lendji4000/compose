@@ -1,0 +1,281 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:43:55
+    Author     : LENINE
+*/
+
+@bodybgcolor :hsla(189, 88%, 13%, 0.6) ; 
+@gradientcolor1:#065260;
+ 
+@gradientcolor2 :#0e2425;
+@textcolor1 : #eeeeee; 
+@textcolor2 : #a6a6a3;
+@bordercolor1 : #4a4a4a; 
+@bordercolor2 : #656565;
+@bordercolor3 : #d4d4d4;
+@bordercolor4: #098095;
+@sidebarbgcolor1: #177A8B;
+@navIconColor2: #c8c8c8;
+@objectbgcolor : hsla(189, 72%, 32%, 0.53);
+
+#eiSideBar121MainObjects{
+      
+    a{ 
+        &.campaignIcon{
+            color:@gradientcolor1;
+            background-color:  @textcolor1;
+            &:hover{
+                color:@bodybgcolor;
+                background-color: @textcolor2;
+            }
+        }  
+    }
+} 
+.eiObjDesc{ 
+    &::-webkit-scrollbar { width: 0 !important } //Masquer la scrollbar sur chrome 
+                    word-break: breack-all;  
+                    display: inline-block;
+                    white-space: normal;
+                    
+                     text-overflow: ellipsis;
+                      -o-text-overflow: ellipsis;
+                      max-height:60px;  
+                      overflow-y: auto;
+                       
+}
+
+#tabStepFunctions{
+    .rightSideFunctionBloc{
+        .rightSideFunctionBlocHeader{ 
+            .col-lg-11,   .col-lg-1, .col-lg-6 , .col-lg-5 , .col-lg-3 , .col-lg-2 ,.col-lg-7 ,.col-lg-12,
+                            .col-md-11,   .col-md-1, .col-md-6 , .col-md-5 , .col-md-3,.col-md-2 ,.col-md-7 ,.col-md-12,
+                            .col-sm-11,   .col-sm-1, .col-sm-6 , .col-sm-5 , .col-sm-3,.col-sm-2 ,.col-sm-7 ,.col-sm-12 ,
+                            .col-xs-11,   .col-xs-1, .col-xs-6 , .col-xs-5 , .col-xs-3,.col-xs-2 ,.col-xs-7,.col-xs-12 , h6 { 
+                                margin-left : 0px;
+                                margin-right: 0px;
+                                margin-bottom: 1px;
+                                margin-top:1px;
+                                padding-left:0px;
+                                padding-right: 0px;
+                            } 
+            h6{
+                strong {  
+                    white-space: nowrap; 
+                    display: inline-block; 
+                    overflow: hidden;
+                    text-overflow: ellipsis; 
+                    @media all and (min-width: 1800px){ 
+                        max-width: 400px; 
+                    }
+                    @media all and (min-width: 1501px) and (max-width: 1799px){ 
+                        max-width: 300px; 
+                    }
+                    @media all and (min-width: 1301px) and (max-width: 1500px){ 
+                        max-width: 260px;
+
+                    }
+                    @media all and (min-width: 1201px) and (max-width: 1300px){ 
+                        max-width: 220px;
+                    }
+                    @media all and (min-width: 1101px) and (max-width: 1200px){  
+                        max-width: 180px;
+                    }
+                    @media all and (min-width: 993px) and (max-width: 1100px){  
+                        max-width: 160px;
+                    }
+                    @media all and (min-width: 871px) and (max-width: 992px){ 
+                        max-width: 140px;
+                    } 
+                    @media all and (max-width: 870px){  
+                        max-width: 140px;
+                    }
+                }
+
+
+            }
+        }
+    }
+
+}
+
+#rightSideDeliveryHeader{ 
+                            h6{
+                                 strong {  
+                                     white-space: nowrap; 
+                                     display: inline-block; 
+                                    overflow: hidden;
+                                    text-overflow: ellipsis; 
+                                    @media all and (min-width: 1800px){ 
+                                        max-width: 210px; 
+                                    }
+                                    @media all and (min-width: 1501px) and (max-width: 1799px){ 
+                                        max-width: 150px; 
+                                    }
+                                    @media all and (min-width: 1301px) and (max-width: 1500px){ 
+                                        max-width: 130px;
+
+                                    }
+                                    @media all and (min-width: 1201px) and (max-width: 1300px){ 
+                                        max-width: 110px;
+                                    }
+                                    @media all and (min-width: 1101px) and (max-width: 1200px){  
+                                        max-width: 90px;
+                                    }
+                                    @media all and (min-width: 993px) and (max-width: 1100px){  
+                                        max-width: 90px;
+                                    }
+                                    @media all and (min-width: 871px) and (max-width: 992px){ 
+                                        max-width: 90px;
+                                    } 
+                                    @media all and (max-width: 870px){  
+                                        max-width: 90px;
+                                    }
+                                 }
+                                     
+                                
+                            }
+}
+
+#subjectsPart{
+    div{
+        &.rightSideSubjectBloc{
+            div{
+                div{
+                    &.rightSideSubjectBlocHeader{
+                       .col-lg-11,   .col-lg-1, .col-lg-6 , .col-lg-5 , .col-lg-3 , .col-lg-2 ,.col-lg-7 ,.col-lg-12,
+                            .col-md-11,   .col-md-1, .col-md-6 , .col-md-5 , .col-md-3,.col-md-2 ,.col-md-7 ,.col-md-12,
+                            .col-sm-11,   .col-sm-1, .col-sm-6 , .col-sm-5 , .col-sm-3,.col-sm-2 ,.col-sm-7 ,.col-sm-12 ,
+                            .col-xs-11,   .col-xs-1, .col-xs-6 , .col-xs-5 , .col-xs-3,.col-xs-2 ,.col-xs-7,.col-xs-12 , h6 { 
+                                margin-left : 0px;
+                                margin-right: 0px;
+                                margin-bottom: 1px;
+                                margin-top:1px;
+                                padding-left:0px;
+                                padding-right: 0px;
+                            } 
+                            h6{
+                                 strong {  
+                                     white-space: nowrap; 
+                                     display: inline-block; 
+                                    overflow: hidden;
+                                    text-overflow: ellipsis; 
+                                    @media all and (min-width: 1800px){ 
+                                        max-width: 210px; 
+                                    }
+                                    @media all and (min-width: 1501px) and (max-width: 1799px){ 
+                                        max-width: 150px; 
+                                    }
+                                    @media all and (min-width: 1301px) and (max-width: 1500px){ 
+                                        max-width: 130px;
+
+                                    }
+                                    @media all and (min-width: 1201px) and (max-width: 1300px){ 
+                                        max-width: 110px;
+                                    }
+                                    @media all and (min-width: 1101px) and (max-width: 1200px){  
+                                        max-width: 90px;
+                                    }
+                                    @media all and (min-width: 993px) and (max-width: 1100px){  
+                                        max-width: 90px;
+                                    }
+                                    @media all and (min-width: 871px) and (max-width: 992px){ 
+                                        max-width: 90px;
+                                    } 
+                                    @media all and (max-width: 870px){  
+                                        max-width: 90px;
+                                    }
+                                 }
+                                     
+                                
+                            }
+                    }
+                }
+            }
+        }
+    }
+}
+
+   
+
+#rightSideCampaignsContent{
+    div{
+        &.rightSideStepsListOfCampaign   {
+            div{
+                div{ 
+                    &.rightSideStepsListOfCampaignHeader{
+                        .col-lg-11,   .col-lg-1, .col-lg-6 , .col-lg-5 , .col-lg-3 , .col-lg-2 ,.col-lg-7 ,.col-lg-12,
+                            .col-md-11,   .col-md-1, .col-md-6 , .col-md-5 , .col-md-3,.col-md-2 ,.col-md-7 ,.col-md-12,
+                            .col-sm-11,   .col-sm-1, .col-sm-6 , .col-sm-5 , .col-sm-3,.col-sm-2 ,.col-sm-7 ,.col-sm-12 ,
+                            .col-xs-11,   .col-xs-1, .col-xs-6 , .col-xs-5 , .col-xs-3,.col-xs-2 ,.col-xs-7,.col-xs-12 , h6 { 
+                                margin-left : 0px;
+                                margin-right: 0px;
+                                margin-bottom: 1px;
+                                margin-top:1px;
+                                padding-left:0px;
+                                padding-right: 0px;
+                            }
+                            
+                             h6{
+                                 strong {
+                                     border-bottom: solid 2px #EFBB11; 
+                                     text-underline-position: below;
+                                     white-space: nowrap; 
+                                     display: inline-block; 
+                                    overflow: hidden;
+                                    text-overflow: ellipsis; 
+                                    @media all and (min-width: 1800px){ 
+                                        max-width: 210px; 
+                                    }
+                                    @media all and (min-width: 1501px) and (max-width: 1799px){ 
+                                        max-width: 150px; 
+                                    }
+                                    @media all and (min-width: 1301px) and (max-width: 1500px){ 
+                                        max-width: 130px;
+
+                                    }
+                                    @media all and (min-width: 1201px) and (max-width: 1300px){ 
+                                        max-width: 110px;
+                                    }
+                                    @media all and (min-width: 1101px) and (max-width: 1200px){  
+                                        max-width: 90px;
+                                    }
+                                    @media all and (min-width: 993px) and (max-width: 1100px){  
+                                        max-width: 90px;
+                                    }
+                                    @media all and (min-width: 871px) and (max-width: 992px){ 
+                                        max-width: 90px;
+                                    } 
+                                    @media all and (max-width: 870px){  
+                                        max-width: 90px;
+                                    }
+                                 }
+                                     
+                                
+                            }
+                            
+                           
+                    }
+                    &.rightSideStepsListOfCampaignContent{ 
+                        .rightSideStep,.rightSideStepCheckAll
+                        {
+                            .col-lg-11,   .col-lg-1, .col-lg-6 , .col-lg-5 , .col-lg-3 , .col-lg-2 ,.col-lg-7 ,.col-lg-12,
+                            .col-md-11,   .col-md-1, .col-md-6 , .col-md-5 , .col-md-3,.col-md-2 ,.col-md-7 ,.col-md-12,
+                            .col-sm-11,   .col-sm-1, .col-sm-6 , .col-sm-5 , .col-sm-3,.col-sm-2 ,.col-sm-7 ,.col-sm-12 ,
+                            .col-xs-11,   .col-xs-1, .col-xs-6 , .col-xs-5 , .col-xs-3,.col-xs-2 ,.col-xs-7,.col-xs-12 , h6 { 
+                                margin : 0px;
+                                padding-bottom: 0px;
+                                padding-left:0px;
+                                padding-right: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

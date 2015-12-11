@@ -1,0 +1,8 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+all: 
+  stylesheets:    [eisubject/eigeneric.css,eisubject/eisubject.css,eifunction/eifunction.css, eitrees/eitree.css,eitrees/einode.css]
+  javascripts:    [eisubject/eisubject.js,eiscenario/eiscenario.js,eisubject/eibugcontext.js,eiscenario/eifolder/eifolder.js,eifunction/eikalfunction.js, eifunction/eiparam.js]
+  has_layout:     true
+  layout:         layout

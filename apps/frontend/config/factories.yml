@@ -1,0 +1,101 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/05-Factories
+
+prod:
+  mailer:
+    param:
+      delivery_strategy : spool
+      spool_class : Swift_DoctrineSpool
+      spool_arguments : [MailMessage,message,getSpooledMessages ]
+  logger:
+    class:   sfNoLogger
+    param:
+      level:   err
+      loggers: ~
+      
+
+test:
+  storage:
+    class: sfSessionTestStorage
+    param:
+      session_path: %SF_TEST_CACHE_DIR%/sessions
+
+  response:
+    class: sfWebResponse
+    param:
+      send_http_headers: false
+
+  mailer:
+    param:
+      delivery_strategy: none
+
+dev:
+  mailer:
+    param:
+#        delivery_strategy : spool
+#        spool_class : Swift_DoctrineSpool
+#        spool_arguments : [MailMessage,message,getSpooledMessages ]
+      delivery_strategy: single_address
+      delivery_address: jean-loup@eisge.com  
+  logger:
+    class:   sfAggregateLogger
+    param:
+      level:   DEBUG
+    loggers:
+      sf_web_debug:
+        class: sfWebDebugLogger
+        param:
+          level: debug
+          condition:       %SF_WEB_DEBUG%
+          xdebug_logging:  true
+          web_debug_class: sfWebDebug
+      sf_file_debug:
+        class: sfFileLogger
+        param:
+          level: debug
+          file: %SF_LOG_DIR%/%SF_APP%_%SF_ENVIRONMENT%.log
+
+all:
+  actions :
+    class : sfActionsKalifast
+  components :
+    class : sfComponentsKalifast 
+  routing:
+    class: sfPatternRouting
+    param:
+      generate_shortest_url:            true
+      extra_parameters_as_query_string: true
+
+  view_cache_manager:
+    class: sfViewCacheManager
+    param:
+      cache_key_use_vary_headers: true
+      cache_key_use_host_name:    true
+#  mailer: 
+#    class: sfMailer
+#    param:
+#      logging:           %SF_LOGGING_ENABLED%
+#      charset:           %SF_CHARSET%
+#      delivery_strategy: realtime
+#      transport:
+#        class: Swift_SmtpTransport
+#        param:
+#          host:       smtp.mail.yahoo.fr
+#          port:       465
+#          encryption: ssl
+#          username:   vladimir4000
+#          password:   Ilitch4000 
+  mailer: 
+    class: sfMailer
+    param:
+      logging:           %SF_LOGGING_ENABLED%
+      charset:           %SF_CHARSET%
+      delivery_strategy: realtime
+      transport:
+        class: Swift_SmtpTransport
+        param:
+          host:       mail.eisge.com
+          port:       587
+#          encryption: ssl
+          username:   admin.kalifast@eisge.com
+          password:   eisgeeisge2010        

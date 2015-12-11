@@ -1,0 +1,64 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/04-Settings
+
+prod:
+  .settings:
+    no_script_name:         true
+    logging_enabled:        false
+  
+dev:
+  .settings:
+#    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>  #before using php5.5.4
+    error_reporting:	    <?php echo ((E_ALL | E_STRICT) ^ E_DEPRECATED)."\n" ?>
+    web_debug:              true
+    cache:                  false
+    no_script_name:         false
+    etag:                   false
+    
+cache:
+  .settings:
+    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
+    web_debug:              true
+    cache:                  true
+    etag:                   false
+
+test:
+  .settings:
+#    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>  #before using php5.5.4
+    error_reporting:	    <?php echo ((E_ALL | E_STRICT) ^ E_DEPRECATED)."\n" ?>
+    cache:                  false
+    web_debug:              false
+    no_script_name:         false
+    etag:                   false
+
+all:
+  .actions:
+#    error_404_module:       erreur
+#    error_404_action:       error404
+#    error_404_module: erreurs
+#    error_404_action: error404
+    error_500_module: connexion
+    error_500_action: error500
+#    error_400_module: erreurs
+#    error_400_action: error400
+#    error_505_module: erreurs
+#    error_505_action: error505
+  .settings:
+    # Form security secret (CSRF protection)
+    csrf_secret:            ce85b2658676bda069bfb4b6344047ae33632902
+    enabled_modules:      [default, sfGuardAuth,sfGuardRegister,sfGuardForgotPassword]
+    standard_helpers : [Text , Partial, I18N , Cache , Url ,Helper , Date  , JavascriptBase,EiIcon ] # , jQuery]
+    # Output escaping settings
+    escaping_strategy:      true
+    escaping_method:        ESC_SPECIALCHARS
+#    login_module:           sfGuardAuth
+#    login_action:           signin
+    login_module:           connexion
+    login_action:           login
+
+#    secure_module:          sfGuardAuth
+#    secure_action:          secure
+    secure_module:          connexion
+    secure_action:          login
+    # Enable the database manager
+    use_database:           true

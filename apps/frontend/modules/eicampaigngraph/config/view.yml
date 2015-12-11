@@ -1,0 +1,8 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+all: 
+  stylesheets:    [eicampaign/eigeneric.css,eicampaign/eicampaign.css,eicampaign/eiCampaignGraph.css,eidataset/eidataset.css,eifunction/eifunction.css, eitrees/eitree.css,eitrees/einode.css,eisubject/eisubject.css]
+  javascripts:    [eiscenario/eiscenario.js,eicampaign/eicampaign.js,eicampaign/execution/execution.js,eicampaign/steps/steps.js,eicampaign/addStepsProcess.js,eiscenario/eidataset/eidataset.js,eifunction/eikalfunction.js,eiscenario/eifolder/eifolder.js,eisubject/eibugcontext.js]
+  has_layout:     true
+  layout:         layout

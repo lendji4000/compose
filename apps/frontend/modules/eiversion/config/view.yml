@@ -1,0 +1,11 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+all: 
+  stylesheets:    [eiscenario/eigeneric.css,eiscenario/eiscenario.css,eiversion/eiversion.css,eifunction/eifunction.css, eitrees/eitree.css,eitrees/einode.css, eidataset/eidataset.css]
+  javascripts:    [eiscenario/eiscenario.js, eiversion/eiversion.js,eiversion/eiversionEdit.js,eiversion/bloc/eibloc.js,eiversion/bloc/eiblocparam.js,eiscenario/eidataset/eidataset.js]
+  has_layout:     true
+  layout:         layout
+
+editSuccess :
+  javascripts : [ eifunction/eifunction.js,eifunction/eikalfunction.js,eifunction/einotice.js,eifunction/eiparam.js]

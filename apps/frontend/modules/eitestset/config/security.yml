@@ -1,0 +1,14 @@
+generateTestSet:
+  is_secure: false
+
+getFunctionsFromPosition:
+  is_secure: false
+  
+generateEiFunctionXML:
+  is_secure: false
+  
+getPreviousBlock:
+  is_secure: false
+  
+retrieveLogs:
+  is_secure: false

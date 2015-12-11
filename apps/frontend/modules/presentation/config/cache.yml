@@ -1,0 +1,6 @@
+#cache du module eiprojet
+
+all:
+  enabled:     true
+  with_layout: true
+  

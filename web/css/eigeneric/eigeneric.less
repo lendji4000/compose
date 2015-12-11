@@ -1,0 +1,1852 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:43:55
+    Author     : LENINE
+*/
+
+/* Global sideBar*/
+
+/* Intégration nouvelle présentation*/ 
+@bodybgcolor :hsla(189, 88%, 13%, 0.6) ; 
+@bodybgcolor :hsla(189, 88%, 99%, 1); 
+
+/*@gradientcolor1:#065260;*/
+@gradientcolor1:#04363f;
+@whitesmoke : whitesmoke;
+@gradientcolor2 :#0e2425;
+@textcolor1 : #eeeeee; 
+@textcolor2 : #a6a6a3;
+@bordercolor1 : #4a4a4a; 
+@bordercolor2 : #656565;
+@bordercolor3 : #d4d4d4;
+@bordercolor4: #098095;
+@sidebarbgcolor1: hsla(189, 72%, 32%, 1);
+@navIconColor2: #c8c8c8;
+@objectbgcolor : hsla(189, 72%, 32%, 1);
+
+@interventionWithImpactColor: #58a155;
+@interventionWithoutImpactColor: #d8473d;
+
+/* Gestion des tailles d'écrans */
+@xs-max: 767px;
+
+@sm-min: 768px;
+@sm-max: 991px;
+
+@md-min: 992px;
+@md-max: 1199px;
+
+@lg-min: 1200px;
+@lg-max: 1599px;
+
+@xlg-min: 1600px;
+@xlg-max: 3000px;
+
+body{
+    /*background-image:   url(/images/FondBlancBleuVert2.jpg)   ;*/
+    /*background-repeat: no-repeat;*/
+    /*saturation(hsl(90, 100%, 50%));*/
+    background-color:  @bodybgcolor;
+
+
+    background-attachment:fixed;
+}
+body.sidebar-minified .main{
+    
+    width:100%;padding-left:60px;
+} 
+
+#eicontent{ 
+    /*background: linear-gradient(to top, @textcolor1, #f7f7f7)   ;*/
+    height: 100%;
+    min-height: 600px;
+    position: relative;
+    width: 100%;
+    font-size: 12px;
+} 
+.row-no-padding {
+    [class*="col-"] { 
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+.no-padding { 
+    padding-left: 0 !important;
+    padding-right: 0 !important; 
+}
+
+#eiProjectDashboardNextDelInf {
+    .progress {
+        margin-bottom: 0px;
+    }
+    .info-box{
+        &.info{
+            color : @bordercolor1; 
+            background-color: @bodybgcolor;
+            border: 0px solid #39afea;
+            margin-bottom: 0px;
+            i{
+                color : @bordercolor1; 
+            }
+        }
+        padding-top: 5px;
+
+    } 
+} 
+
+#eiSideBar{
+    border-right: 0px solid @bordercolor1;
+}
+.sidebar{
+    /*    background:none;*/
+    background-color: @gradientcolor1;
+    width: 236px;
+    a{
+        color: @textcolor1; 
+    }
+    ul{
+        &.nav{
+            &.nav-sidebar{
+                li{
+                    a{ 
+                        border: 1px solid transparent; 
+                        i{
+                            color:@textcolor1;
+                        }
+                        &:hover,&:active,&:visited ,&.opened{
+                            background:@objectbgcolor;
+                            color:@textcolor1;
+                            border:1px solid @gradientcolor1;
+                        } 
+                    }
+                    &:hover,&:active,&:visited ,&.opened{
+                        background:@gradientcolor1;
+                        color:@textcolor1;
+                        border:1px solid @bordercolor1;
+                    } 
+                }
+            }
+        }
+    }  
+
+    .sidebar-footer{
+        padding-left:5px;  
+        background:none;
+        ul{
+            &.sidebar-footer-menu {
+                li{
+                    &:last-child {
+                        border-left: none;
+                    } 
+                    a {  
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: @textcolor1;
+                        &:hover{ 
+                            color:  @textcolor1;
+                        }
+                    }
+                    &:hover{ 
+                        background-color: @objectbgcolor;
+                    }
+                }
+            }
+        }
+
+    }
+    hr{
+        margin-right: 15px;
+    }
+    .sidebar-header  {
+        line-height: 39px;
+
+        padding: 1px; 
+        height: 39px;
+        img{
+            width: 35px;
+        }
+        .user-menu {
+            line-height: 40px;
+            a{
+                color: @textcolor1;
+                font-size: 24px;
+            } 
+        } 
+    }
+}   
+
+#sidebar-minify { 
+
+}  
+
+.navbar{  color:#ffffff;
+          background: @gradientcolor1;
+          /*background: linear-gradient(to left, @gradientcolor1, @gradientcolor2) repeat scroll 0 0 rgba(0, 255, 255, 0);*/
+          line-height:20px; 
+          border-width: 0px; 
+          height:auto;
+          .navbar-nav{
+              li{
+                  a{ 
+                      border-left:1px solid @bodybgcolor!important;
+                      height:40px;
+                      i{
+                          margin:15px 0 0 0;
+                          width:32px;
+                          text-align:center;
+                          color:@navIconColor2; 
+                          font-size:18px
+                      } 
+                      &:hover{
+                          background:@textcolor1;
+                          color : @bodybgcolor;
+                      }
+                  }
+
+              }
+          }
+          .navbar-actions{
+              a{border-right:1px solid @bodybgcolor; }
+          }
+
+}    
+#header1Part1, #header1Part2{
+    margin-left:0px;
+    padding-left:0px;
+    margin-bottom: 0px; 
+    padding-bottom: 0px;
+    padding-right:0px;
+    i{
+        color :@textcolor1; 
+    } 
+}
+
+#header1Part2 {
+    i{
+        margin-top: 5px;
+        margin-bottom: 5px; 
+        color :@textcolor1;
+    }
+    .navbar-nav{
+        &.navbar-right{ 
+            margin-right: 0px;
+        }
+        li {
+            a{ 
+                &:hover, &:visited,&:focus{
+                    background:@objectbgcolor;  
+                }   
+                i{color : @textcolor1;}
+            }
+            .dropdown-menu:not(.supportLi){
+                li{
+                    background-color: @objectbgcolor;
+                    a{
+                        background-color: @objectbgcolor; 
+                        &:hover{
+                            background:@objectbgcolor!important;; 
+                            i{color : @textcolor1;}
+                        }
+                    } 
+                    i{color : @bordercolor1;}
+                }
+            }
+
+        }
+    } 
+}
+
+
+/* Fin intégration nouvelle presentation*/
+
+
+#eiSideBar{
+
+}
+#eiSideBar1{
+
+}
+
+#eiSideBar11{
+
+}
+#eiSideBar12{
+
+} 
+#eiSideBar22BgManagement{
+
+}
+
+#eiSideBar122CurrentObject{
+    margin-top: 5px;
+    li{ 
+        padding-left : 2px;
+        margin-left : 2px;
+        &.active{
+            background-color: @objectbgcolor;
+        }
+    }
+}
+#eiSideBar123ObjectMenu{
+
+}
+
+#recentOpenDeliveriesTitle {
+    li{
+        padding-left : 2px;
+        margin-left : 2px;
+    }
+
+
+
+}
+
+#eiSideBar121MainObjects{
+    padding-top:5px;
+    border-top: 1px solid @bodybgcolor;
+    .mainButtonAccess{
+        /*background: none repeat scroll 0 0 @bodybgcolor;*/ 
+        margin-left:0px;
+        margin-right:0px;
+        margin-bottom : 2px; 
+        &:last-child{
+            margin-right:0px;
+        }
+        &:hover{
+            color:@textcolor1;
+            background-color: @objectbgcolor;
+        }
+    }
+}
+#eiSideBar2{ 
+    position:relative;
+    height: 110px; 
+    margin-bottom:15px;
+    padding-bottom: 0px;
+    padding-top:0px;
+}
+#supportContact{
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 10px 15px;
+}
+.supportLi{
+    color: black;
+    background-color: white;
+}
+#eiSideBar21BgManagement  {
+    border-bottom:1px solid @bordercolor2;
+    li {
+        display: inline-block;
+        width: 20%;
+        margin: 0 -2px;
+        text-align: center;
+        &:last-child{ border-left: 0px ; }
+        a{
+            &:hover,&:active,&:visited{
+                color:@textcolor1;
+                background-color: @objectbgcolor;
+                /*font-size: 16px;*/
+            } 
+        }
+    }
+}
+
+
+
+
+/* Global header */
+
+/* Global header1 */
+
+.row{
+    margin:0px;
+}
+
+
+
+
+#header1 { 
+    margin-bottom: 0px; 
+    padding-bottom: 0px;
+    border-bottom: 1px solid @bodybgcolor; 
+    background : none;
+
+    ol{ 
+        margin-bottom: 0px;
+    } 
+    .navbar{
+        margin:0;padding:0 0 0 235px;height:115px;border:0;
+        border-bottom:none; 
+    } 
+    .navbar-actions{font-size:18px}
+}
+
+#main-menu-toggle{
+    padding : 5px 5px 0px 5px;
+}
+#main-menu-toggle i{
+    margin-top:  7px ;
+    font-size: 20px;
+}
+
+/* Global header2*/
+#header{
+    .col-lg-9{
+        padding-left:0px;
+        margin-left :0px;
+    }
+    .divider-vertical{
+        margin-left: 5px;
+        margin-right: 5px; 
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff; 
+    }  
+    .caret{}
+    li {
+        vertical-align: middle; 
+        line-height: 35px;
+        a{
+            padding-top :1px; 
+            padding-bottom:0px;  
+        } 
+    }
+    .dropdown-menu{
+        li{
+            a{
+                padding-top :2px; 
+                padding-bottom:3px; 
+            }  
+        }
+    }
+    div.navbar{
+        .container-fluid{
+            border: 0px;
+            padding-right: 0px;
+        }
+    }
+} 
+
+
+#header2{   
+    height: 51px;
+    background: none repeat scroll 0 0 @bodybgcolor ;
+    /*    background:-webkit-linear-gradient(to left, @gradientcolor1, @gradientcolor2) repeat scroll 0 0 rgba(0, 255, 255, 0);
+        background:-o-linear-gradient(to left, @gradientcolor1, @gradientcolor2) repeat scroll 0 0 rgba(0, 255, 255, 0);
+        background:-moz-linear-gradient(to left, @gradientcolor1, @gradientcolor2) repeat scroll 0 0 rgba(0, 255, 255, 0);
+        background: linear-gradient(to left, @gradientcolor1, @gradientcolor2) repeat scroll 0 0 rgba(0, 255, 255, 0);*/
+    /*border-bottom: 1px solid @bordercolor1;*/
+    margin-left:0px;
+    padding-left:0px;
+    margin-top:0px;
+    .navbar-form{ 
+        padding-left:30px;
+    } 
+    div{
+        &.col-lg-10,&.col-md-10,&.col-sm-9, &.col-xs-9{
+            padding-left:0px;
+            padding-right:0px;
+        }
+    }
+}
+
+
+
+#eisge-object-actions{
+    margin-left: 8px; 
+    .nav-tabs{
+
+        /*border-bottom: none;*/
+        li{
+
+            a{  
+                font-size:11px; 
+                /*font-family: "Times New Roman", Georgia, Serif;*/
+                 padding-left:8px;  padding-right:8px;
+                /*border: none;*/
+                /*color : @textcolor1;*/
+                &:hover{
+                    color:@bordercolor1;
+                    background-color: @bodybgcolor;
+                }
+                span{
+
+                }
+                overflow-x : hidden;
+                white-space : nowrap;
+                text-overflow : ellipsis; 
+                list-style-position: inside;
+                @media all and (min-width: 1501px) and (max-width: 1799px){   
+                    max-width:220px;  
+                    font-size:13px; 
+                    padding-left:10px;  padding-right:10px; 
+                }
+                @media all and (min-width: 1401px) and (max-width: 1500px){  
+                    max-width: 200px;  font-size:12px; 
+                    padding-left:10px;  padding-right:10px; 
+                }
+                @media all and (min-width: 1300px) and (max-width: 1400px){  
+                    max-width:190px;  font-size:12px;     
+                    padding-left:10px;  padding-right:10px;  
+                }
+                @media all and (min-width: 1200px) and (max-width: 1300px){  
+                    max-width:170px;      font-size:12px; 
+                }
+                @media all and (min-width: 1100px) and (max-width: 1200px){  
+                    max-width:150px;   font-size:12px; 
+                }
+                @media all and (min-width: 1001px) and (max-width: 1100px){ 
+                    max-width:95px; 
+                    padding-left:5px;  padding-right:5px;
+                } 
+                @media all and (min-width: 901px) and (max-width: 1000px){ 
+                    max-width:145px; 
+                    padding-left:5px;  padding-right:5px;
+                } 
+                @media all and (min-width: 768px) and (max-width: 900px){ 
+                    max-width:120px;  
+                    padding-left:5px;  padding-right:5px;
+                } 
+                @media all and  (max-width: 767px){  
+                    .text{display:none} 
+                }
+                
+            }
+            &.active{
+                /*background-color: @bordercolor1;*/
+                color:@bordercolor4;
+                a{ 
+                    cursor: pointer;
+                    /*border: none;*/
+                    color: @bordercolor1;
+                    /*background-color: @bordercolor1;*/
+                    &:hover{
+                        color:@bordercolor1;
+                        /*background-color: @bodybgcolor;*/
+                    }
+                }
+            }
+            .dropdown-menu{
+
+                li{
+                    margin-top:2px;
+                    margin-bottom: 2px;
+                    a{
+                        font-size:12px;
+                        &:hover{
+                            background-color: @objectbgcolor;
+                            color:@textcolor1;
+                        }  
+                    } 
+                }
+            }
+        }
+    } 
+}  
+
+/* Formulaire de recherche global*/
+#divGlobalSearchForm{
+    padding-right: 1px; 
+    padding-left:2px;
+}
+#searchDeliveryByIdOrName,#searchCampaignByIdOrName, #globalSearchForm{
+    margin-top:10px;
+    margin-bottom: 0px;
+} 
+#globalSearchForm{ 
+    &.navbar-form{
+        margin-right: 1px;
+        marg-left:1px;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    .form-group{
+        .btn-primary{
+            background-color: @gradientcolor1;
+            border : 1px solid @bordercolor4;
+            i{
+                color:@textcolor1;
+            }
+        }
+    }
+}
+.container-fluid { 
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+
+
+/* Breadcrumb*/
+/*Breadcrumb du header */ 
+#headerBreadcrumbComplete {
+    .popover{ 
+        max-width: 500px; }
+    a{
+        i{
+            color: @bordercolor4;
+        }
+    }
+}
+#headerBreadcrumb{
+    overflow-x : hidden;
+    white-space : nowrap;
+    text-overflow : ellipsis; 
+    li{ 
+        color:@textcolor1;
+        &.active{ 
+            color: @bordercolor4;
+        }
+        i{
+            color: @textcolor1; 
+        }
+        a{ 
+            color: @textcolor1;
+            &:hover,&:active,&:focus{ 
+                text-decoration: none;
+            }
+        }
+        &:hover,&:active,&:focus{
+            background-color: @objectbgcolor;
+            color: @bodybgcolor;
+            text-decoration: none;
+        }
+    }
+
+    /* Gestion des media query pour adapté le rendu au responsive design */
+    @media all and (min-width: 1800px){
+        max-width: 1000px; 
+    }
+    @media all and (min-width: 1500px) and (max-width: 1799px){
+        max-width: 800px;
+    }
+    @media all and (min-width: 1300px) and (max-width: 1500px){
+        max-width: 660px; 
+    }
+    @media all and (min-width: 1200px) and (max-width: 1300px){
+        max-width: 595px; 
+    }
+    @media all and (min-width: 1100px) and (max-width: 1200px){
+        max-width: 410px; 
+    }
+    @media all and (min-width: 992px) and (max-width: 1100px){
+        max-width: 345px;   
+    }
+    @media all and (min-width: 870px) and (max-width: 992px){
+        max-width: 270px;  
+    } 
+    @media all and (max-width: 870px){
+        max-width: 260px;    
+    } 
+} 
+
+
+.openFunctionInScript,.panelHeaderTitle{
+    @media all and (min-width: 993px) and (max-width: 1100px){
+        font-size: 10px;
+        overflow-x : hidden;
+        white-space : nowrap;
+        text-overflow : ellipsis;
+        max-width: 75px;
+    }
+
+}
+.panelHeaderTitle{
+    @media all and (min-width: 993px) and (max-width: 1100px){
+        display:none;
+    }
+
+}
+
+#liCampaignExecutions{
+    @media all and (min-width: 993px) and (max-width: 1100px){
+        width:210px;
+    }
+}
+
+
+
+/* Main classes */
+.eiIcon{
+
+}
+.eiHyperlink{
+
+}
+.eiLi{
+
+}
+.eiNavBar{
+
+}
+.eiBtnGroup{
+
+}
+ 
+
+
+
+
+.panel{
+    &.eiPanel,.eiFluidPanel{
+        margin-top:10px;  
+        border:none; 
+        border : 1px solid @bordercolor1 ;
+        -moz-box-shadow: 1px 1px 1px 0px @bordercolor1;
+        -webkit-box-shadow: 1px 1px 1px 0px @bordercolor1;
+        -o-box-shadow: 1px 1px 1px 0px @bordercolor1;
+        box-shadow: 1px 1px 1px 0px @bordercolor1;
+        .panel-heading{ 
+            padding: 0 1px; 
+            padding-left:3px;
+            border-bottom: 1px solid @bordercolor3; 
+            a{color : @textcolor1}
+            background-color : @objectbgcolor ; 
+            /*border:none;*/
+            border-color:@bordercolor1;
+            -moz-box-shadow: 1px 1px 1px 0px @bordercolor1;
+            -webkit-box-shadow: 1px 1px 1px 0px @bordercolor1;
+            -o-box-shadow: 1px 1px 1px 0px @bordercolor1;
+            box-shadow: 1px 1px 1px 0px @bordercolor1;
+            color: @textcolor1;
+
+            i{
+                color:@textcolor1;
+            }
+            .panel-actions,.form-group{
+                border-color:@bordercolor1; 
+                border:none; 
+                margin-right: -1px; 
+                a{ 
+                    border:none;
+                    background-color: @gradientcolor1;
+                    border-color:@bordercolor1;
+                    -moz-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    -webkit-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    -o-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    color:  @textcolor1;
+                    margin-right:1px;
+                    i{
+                        color:  @textcolor1;
+                    }
+                    &:hover,&:focus{
+                        background-color:  @objectbgcolor;
+                        -moz-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                        -webkit-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                        -o-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                        box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                    }
+                    &.btn-default { 
+                    }
+                    @media all and (max-width: 992px){
+                        display: inline-block;
+                        height: 30px;
+                        width: 30px;
+                        line-height: 40px;
+                    }
+                }
+                i{
+                    @media all and (max-width: 992px){
+                        display: inline-block;
+                        color: @textcolor2; 
+                        width: 30px; 
+                        font-size: 10px;
+                    } 
+                }
+                @media all and (max-width: 992px){
+                    margin-right: -10px; 
+                    height: 30px; 
+                }
+            }
+
+            .nav-tabs{
+                border-color:@bordercolor1;
+                border-width: 0 0px; 
+                li{
+                    border-color:@bordercolor2; 
+                    a{
+                        border:none;
+                        background-color:  @gradientcolor1;
+                        -moz-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                        -webkit-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                        -o-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                        box-shadow: 0px 0px 0px 0px @bordercolor1;
+                        border-color:@bordercolor1;
+                        &:hover,&:focus{
+                            background-color:  @objectbgcolor;
+                            -moz-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                            -webkit-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                            -o-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                            box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                        }
+                    }
+                    &.active{
+                        a{
+                            background-color:  @objectbgcolor;
+                            -moz-box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                            -webkit-box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                            -o-box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                            box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                            color: @textcolor1;
+                            i{
+                                color: @bordercolor1;
+                            }
+                        }
+                    } 
+                }
+            }
+            .btn-group{
+                border-color:@bordercolor1;
+                border-width: 0 0px; 
+                border-color:@bordercolor2; 
+                a{
+                    border:none;
+                    background-color:  @gradientcolor1;
+                    -moz-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    -webkit-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    -o-box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    box-shadow: 0px 0px 0px 0px @bordercolor1;
+                    border-color:@bordercolor1;
+                    &:hover,&:focus{
+                        background-color:  @objectbgcolor;
+                        -moz-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                        -webkit-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                        -o-box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                        box-shadow: 0px 5px 5px 0px @gradientcolor2;
+                    }
+                    &.active{ 
+                        background-color:  @objectbgcolor;
+                        -moz-box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                        -webkit-box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                        -o-box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                        box-shadow: 0px 0px 5px 0px @gradientcolor2;
+                        color: @textcolor1;
+                        i{
+                            color: @bordercolor1;
+                        } 
+                    }  
+                }
+            }
+            h2{
+                color:@textcolor1; 
+ 
+                a{
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+            }
+
+        }
+        .panel-body{  
+            margin: 10px ; 
+            padding:0px;
+            overflow-x: auto ;
+            &.dateTimePickerFix{
+                overflow-x: visible ;
+            }
+            div{ 
+                .col-lg-6,.col-md-6, .col-sm-6, .col-xs-6{
+                    padding-left:0px;
+                    padding-right: 2px;
+                }
+                &.tabbable{
+                    .col-lg-2,   .col-lg-3, .col-lg-9 , .col-lg-10 ,
+                    .col-md-2,   .col-md-3, .col-md-9 , .col-md-10 , 
+                    .col-sm-2,   .col-sm-3, .col-sm-9 , .col-sm-10 ,  
+                    .col-xs-2,   .col-xs-3, .col-xs-9 , .col-xs-10   { 
+
+                        padding-left:0px;
+                        padding-right: 0px;
+                    }
+                }
+            } 
+        }
+    }
+    &.eiFluidPanel{ 
+/*        border : 1px solid #d4d4d4 ;
+        -moz-box-shadow: 1px 1px 1px 0px #d4d4d4 ;
+        -webkit-box-shadow: 1px 1px 1px 0px #d4d4d4 ;
+        -o-box-shadow: 1px 1px 1px 0px #d4d4d4 ;
+        box-shadow: 1px 1px 1px 0px #d4d4d4 ;*/
+        margin-bottom:6px;
+        margin-top:6px;
+/*        .panel-heading{ 
+            padding: 0 1px; 
+            padding-left:3px;
+            border-bottom: 1px solid #d4d4d4; 
+            a{color : @bordercolor1}
+            background-color : @whitesmoke ; 
+            border:none;
+            border-color:#d4d4d4;
+            -moz-box-shadow: 1px 1px 1px 0px @whitesmoke;
+            -webkit-box-shadow: 1px 1px 1px 0px @whitesmoke;
+            -o-box-shadow: 1px 1px 1px 0px @whitesmoke;
+            box-shadow: 1px 1px 1px 0px @whitesmoke; 
+            h2{
+                color:@bordercolor1; 
+                font-weight: bold;
+            }
+    }*/
+    }
+}
+
+
+#subjectAssignUsers{
+    .panel-body{
+        overflow:visible;
+    }
+    
+}
+
+.eiBtnSearch{
+
+} 
+.eiBtnPrimary{
+
+}
+.hiddenFields, fieldset.hiddenFields{
+    display: none;
+    padding:0;
+    margin:0;
+}
+.eiPagination{
+    padding-top:0px;
+    padding-bottom:0px;
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+.eiBtnAdd{
+
+}
+.eiBtnSave{
+
+}
+.eiPanelHeader{
+
+}
+.eiPanelBody{
+
+}
+.eiPanelActions{
+
+}
+.eiPanelFooter{
+
+}
+
+/* Module de gestion des projets */
+#eiProjectDashboardMainAccess{  
+}
+/* Module de gestion des livraisons */
+#eiProjectDeliveriesMainAccess { 
+
+}
+#eiCreateDeliveryByMainAccess{ 
+    /*padding: 0 7px 0 0;*/
+}
+#eiCreateBugByMainAccess{ 
+
+}
+#eiAccessToDoList{
+}
+#eiProjectCurrentDelivery{ 
+    color: #67c2ef; 
+}
+/* Module de gestion des bugs */
+#eiProjectSubjectMainAccess { 
+
+}
+#eiProjectCurrentSubject{
+    color: #ff5450; 
+}
+/* Module de gestion des scénarios */
+#eiProjectScenariosMainAccess{  
+
+}
+
+/* Module de gestion des fonctions */
+#eiProjectFunctionsMainAccess{  
+}
+/* Module de gestion des campagnes */
+#eiProjectCampaignsMainAccess{  
+
+}
+
+
+
+
+
+
+
+
+/* report du fichier corps.css*/
+
+
+#deliverySearchBoxForSteps .modal-dialog,
+#subjectSearchBoxForSteps .modal-dialog,
+#changeInterventionOnMigrationModal .modal-dialog,
+#campaignSearchBoxForSteps .modal-dialog,
+#campaignStep .modal-dialog,
+#contextModal .modal-dialog,
+#functionSearchBoxForSteps .modal-dialog,
+#editDataSetStepBox .modal-dialog,
+#functionNoticeModal .modal-dialog,
+#addKalFolderModal .modal-dialog ,
+#addKalFunctionModal .modal-dialog,
+#searchIterationForStatsModal .modal-dialog{  
+    font-size: 12px;
+    @media screen and (min-width: 1024px){
+        width: 1000px;   
+    }
+    @media screen and (min-width: 768px) and (max-width :1024px){
+        width: 800px; 
+    }
+    @media screen and (max-width :768px){
+        width: 600px;  
+    }
+
+} 
+
+
+#mm-1{
+    height: 115px;
+}
+#datetimepickerDeliveryStartDate{
+    /*z-index: 9900;*/
+}
+.eiLoading{
+    display: none;
+}
+
+
+
+
+#functionNoticeModal .modal-dialog { 
+    z-index: 10000;
+}
+
+.popoverObjDesc{  
+}
+.popover{
+    color :black;  
+}
+
+
+
+
+.panelHeaderTitle{
+    @media all and (max-width: 992px){
+        display:none;
+    }
+
+}
+
+.openFunctionInScript,.panelHeaderTitle{
+    @media all and (max-width: 992px){
+        font-size: 10px;
+        overflow-x : hidden;
+        white-space : nowrap;
+        text-overflow : ellipsis;
+        max-width: 75px;
+    }
+
+}
+
+/* Report du fichier eisge.css */
+.well{
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-bottom: 3px;
+} 
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #000;
+    &.fade{
+        filter: alpha(opacity=0);
+        opacity: 0;
+    }
+    &.in{
+        filter: alpha(opacity=50);
+        opacity: .5;
+    }
+} 
+
+#eisge-breadcrumb-navbar-actions{
+    margin-right:0px; 
+    padding-right:0px; 
+    padding-left: 0px;
+    .navbar-actions{
+        padding-left:0px;
+        padding-right: 0px;
+        margin-left:0px;
+        margin-right: 0px;
+    } 
+    .navbar-nav {
+        li{
+            a{
+                &:hover,&:active,&:focus{
+                    background:@objectbgcolor;   
+                }  
+            }
+        } 
+    }
+} 
+
+#eisge-breadcrumb{
+    margin-left:0px;
+    padding-left: 0px;
+    .breadcrumb{
+        padding: 0px;
+        margin:0px;
+        background:none;
+        border-radius: 0px;
+        li{
+            a{
+                &:hover{
+                    border-radius:0px;
+                    -moz-border-radius:0px;
+                    -webkit-border-radius:0px;
+                    -khtml-border-radius: 0px;
+                }
+            }
+        }
+    }
+
+} 
+
+
+
+
+.ei-add-top{
+    position:relative;
+    font-size:12px;
+    text-indent:1px;
+    top:3px; 
+    left:8px;
+}
+
+#recentOpenDeliveries{
+    &.nav{
+        &.nav-sidebar{
+            padding-left : 2px;
+            margin-left : 2px;
+            li { 
+                a{
+                    &:hover{ 
+                        font-size: 12px  ;
+                    } 
+                    i{
+                        color: @textcolor1 ;
+                    } 
+                }
+                &:hover,&:active ,&:visited,&:focus,&.opened{
+                    color:@textcolor1;
+                    background-color: @sidebarbgcolor1;
+                    border:1px solid @bordercolor1;
+                } 
+            }
+        } 
+    }
+
+}
+
+#usage{ 
+    /*background: #414141;*/ 
+    background: @gradientcolor1; 
+    /*background: linear-gradient(to left, @gradientcolor1, @gradientcolor2) repeat scroll 0 0 rgba(0, 255, 255, 0);*/ 
+    border-top:1px solid @bodybgcolor;
+    -webkit-box-shadow:0 -2px 1px -1px rgba(0,0,0,0.05);
+    -moz-box-shadow:0 -2px 1px -1px rgba(0,0,0,0.05);
+    box-shadow:0 -2px 1px -1px rgba(0,0,0,0.05);
+    padding-left:250px;
+    ul { 
+        li {  
+            border-right: 1px solid @bordercolor1;
+            &.subusage {  
+                border-right: 1px solid @bordercolor1; 
+                font-size: 12px; 
+                padding: 2px;
+                div{
+                    &.text{
+                        a{
+                            color : @textcolor1;
+                        }
+                    }
+                }
+                ul{ 
+                    li{
+                        color : @textcolor1;
+                        a{
+                            width: 100%;
+                            height: 100%;
+                            color : @textcolor1; 
+                            &:hover,&:active,&:focus,&:visited{
+                                background-color: @objectbgcolor;
+                            }
+                            margin-bottom: 0px;
+                            padding-top: 9px;
+                        }
+                        padding: 0px 0px 0px 0px;
+                        ul{
+                            &.dropdown-menu{
+                                margin: 0px 0px 2px 0px;
+                                li{
+                                    margin-bottom: 0px;
+                                    padding-top: 0px;
+                                }
+                                a{
+                                    color : @bordercolor1;
+                                    &:hover,&:active,&:focus,&:visited{
+                                        background-color: @objectbgcolor;
+                                    }
+                                    i{
+                                        color : @bordercolor1;
+                                        margin-right: 5px;
+                                    }
+                                    margin-bottom: 0px;
+                                    padding-top: 0px;
+                                }
+                            }  
+                        }
+                    }
+
+                }
+            }
+            a{
+                padding: 0 10px 0 10px;
+            }
+        }  
+    }
+    .subusage{
+        color : @textcolor1;
+        i{
+            color: @textcolor1;
+        } 
+    }
+}   
+#usage ul li.profile_item{
+    padding: 2px 0px 2px 0px;
+}
+
+/* Default package */
+#ulDefaultPackage{ 
+    div{
+        padding-right :0px;
+        padding-top :0px;
+        padding-bottom:0px;
+        &:first-child{
+            padding-left:0px;
+        }
+    }
+}
+#eiSideBar22BgManagement{ 
+    li{
+        padding-bottom: 0px;
+    }
+
+}
+/*Lien non cliquable*/
+.unclickedLink{
+    color:@bordercolor1;
+    cursor: default;
+    text-decoration: none;
+    &:hover{
+        color:@bordercolor2;
+        text-decoration:underline; 
+    }
+}
+.ei-label{
+    font-size: 11px;
+  padding: 7px 6px 8px ;
+} 
+/* Label pour les states de bug */ 
+.label{
+    &.label-state-new {
+        background-color: #36A9E1;
+    }
+    &.label-state-in-dev {
+        background-color: #ff5450;
+    }
+    &.label-state-in-test {
+        background-color: #af5454;
+    }
+    &.label-state-in-dispute {
+        background-color: #67c2ef;
+    }
+    &.label-state-valid {
+        background-color: #40A497;
+    }
+    &.label-state-invalid {
+        background-color: #fabb3d;
+    }
+    &.label-state-closed {
+        background-color: #bdea74;
+    }
+
+}
+.label-state-new {
+    background-color: #36A9E1;
+    &:hover , &:focus{
+        background-color: #36A9E1;
+    }
+}
+.label-state-in-dev {
+    background-color: #ff5450;
+    &:hover , &:focus{
+        background-color: #ff5450;
+    }
+}
+.label-state-in-test {
+    background-color: #af5454;
+    &:hover , &:focus{
+        background-color: #af5454;
+    }
+}
+.label-state-in-dispute {
+    background-color: #67c2ef;
+    &:hover , &:focus{
+        background-color: #67c2ef;
+    }
+}
+.label-state-valid {
+    background-color: #40A497;
+    &:hover , &:focus{
+        background-color: #40A497;
+    }
+}
+.label-state-invalid {
+    background-color: #fabb3d;
+    &:hover , &:focus{
+        background-color: #fabb3d;
+    }
+}
+.label-state-closed {
+    background-color: #bdea74;
+    &:hover , &:focus{
+        background-color: #bdea74;
+    }
+}
+
+/* Masquer les icones permettants d'ouvrir ou fermer un ei_tree_node dans le cas ou ce dernier ne possède pas d'enfants */
+.ei-fa-disabled{
+    visibility: hidden;
+}
+
+
+#eisge-object{
+    margin-left: 8px;
+    h1,h2,h3{ 
+        
+        /*font-family: "Times New Roman", Georgia, Serif;*/
+        margin-top:3px;
+        margin-bottom: 10px; 
+        i{
+            color: @sidebarbgcolor1;
+        }
+
+        color:@bordercolor4;
+        text-decoration: none ; 
+
+        overflow-x : hidden;
+        white-space : nowrap;
+
+        text-overflow : ellipsis;   
+        @media all and (min-width: 1800px){
+            max-width: 1000px;
+            width: 1000px ; 
+            font-size:16px;  
+        }
+        @media all and (min-width: 1500px) and (max-width: 1799px){
+            max-width: 800px;
+            width: 800px ; 
+            font-size:16px;  
+        }
+        @media all and (min-width: 1300px) and (max-width: 1500px){
+            max-width: 650px;
+            width: 650px ;
+            font-size:15px;  
+        }
+        @media all and (min-width: 1200px) and (max-width: 1300px){
+            max-width: 500px;
+            width: 500px ; font-size:15px; 
+        }
+        @media all and (min-width: 1100px) and (max-width: 1200px){
+            max-width: 450px;
+            width: 450px ; font-size:14px; 
+        }
+        @media all and (min-width: 992px) and (max-width: 1100px){
+            max-width: 350px;
+            width: 350px ;  
+            font-size:14px;  
+        }
+        @media all and (min-width: 870px) and (max-width: 992px){
+            max-width: 300px; font-size:13px;  
+            width: 300px ; 
+        } 
+        @media all and (max-width: 870px){
+            max-width: 250px;    
+            font-size:13px; 
+        }  
+
+    }
+}
+
+#usersToAssignToSubject{ 
+    .combobox-container{ 
+        ul{
+            &.typeahead{  
+                height: 150px;
+                overflow-y: scroll;    
+            }
+        }
+    }   
+}
+
+#bugDetailsDesc{   
+    ol{  
+        li{ 
+            /*list-style: decimal;*/
+        }
+
+    } 
+}
+
+.eiObjName{   
+    display: inline-block; 
+    overflow: hidden; 
+    word-break: break-all;   
+
+    @media all and (min-width: 1800px){ 
+        width: 350px;
+    }
+    @media all and (min-width: 1501px) and (max-width: 1799px){ 
+        width: 300px;
+    }
+    @media all and (min-width: 1301px) and (max-width: 1500px){ 
+        width: 250px;
+
+    }
+    @media all and (min-width: 1201px) and (max-width: 1300px){ 
+        width: 200px;
+    }
+    @media all and (min-width: 1101px) and (max-width: 1200px){  
+        width: 150px;
+    } 
+    @media all and (max-width: 1100px){  
+        width: 100px;
+    } 
+}
+.troncObjName {
+    overflow-x : hidden;
+
+    word-break : break-all;  
+    white-space: nowrap; 
+    display: inline-block; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    @media all and (min-width: 1800px){ 
+        max-width: 210px; 
+    }
+    @media all and (min-width: 1501px) and (max-width: 1799px){ 
+        max-width: 150px; 
+    }
+    @media all and (min-width: 1301px) and (max-width: 1500px){ 
+        max-width: 130px;
+
+    }
+    @media all and (min-width: 1201px) and (max-width: 1300px){ 
+        max-width: 110px;
+    }
+    @media all and (min-width: 1101px) and (max-width: 1200px){  
+        max-width: 90px;
+    }
+    @media all and (min-width: 993px) and (max-width: 1100px){  
+        max-width: 90px;
+    }
+    @media all and (min-width: 871px) and (max-width: 992px){ 
+        max-width: 90px;
+    } 
+    @media all and (max-width: 870px){  
+        max-width: 90px;
+    }   
+}
+
+
+#eisge-object{
+    .popover{
+        min-width:500px;
+    }
+    .popover-content{
+
+        p{
+            max-width: 500px;
+            white-space: nowrap; 
+            display: inline-block; 
+            overflow: hidden;
+            text-overflow: ellipsis;  
+            word-break: break-all;  
+        }   
+    }
+}
+
+
+#eiProjectDashboardProgress{
+    .eiProjectDashboardProgress{
+        div{
+            &.eiPanel{
+                .panel-body{
+                    margin:0px; 
+                    div{
+                        &.eiProjectDashboardProgressSmItem{
+                            div{
+                                padding: 0px;
+                                margin:0px;
+                                div{ 
+                                }
+                                h6{
+                                    margin-bottom: 0px;
+                                    margin-top: 1px;
+                                    margin-bottom: 2px;
+                                }
+                            } 
+                        }
+                    }
+                } 
+            }
+        }
+    }   
+}
+
+
+  
+#dataTableDefects,#dataTableKalifasts,#dataTableEnhancements,#dataTableServiceRequest ,
+#campaignsList,#sortCampaignSteps,#EiPaginateList,#eiProjectList,#EiPaginateBugHistoryList,#eiDeliveryListTable{
+    &.dataTable{ 
+        overflow-x: scroll; 
+        @media all and (max-width:850px){   
+            display: inline-block  ;
+        }   
+    } 
+}
+#EiExecutionStats,#campaignListTable ,#campaignListTableBox  {
+    &.dataTable{ 
+        overflow-x: scroll; 
+        @media all and (max-width:1200px){   
+            display: inline-block;
+        }   
+    } 
+}
+#subjectList .dataTable{
+    overflow-x: scroll; 
+    @media all and (max-width:1200px){   
+        display: inline-block;
+    }  
+}
+
+.ei-info-box{
+    padding-top: 10px;
+    min-height: 100px;
+    i{  
+        height: 80px; 
+        margin-right: 10px;
+        padding-right: 10px; 
+        width: 70px; 
+    }
+    .count{
+        margin-top: -10px;
+        font-size: 28px; 
+    }
+    .title{
+        font-size: 10px;  
+    }
+}
+/* Loader pour la mise à jour d'une version de notice de fonction '*/
+#noticeLoader{
+    display:none; 
+}
+#functionNoticeModal .modal-content,#functionNoticeModal .modal-body , #functionNoticeModal .modal-footer{
+    padding-top:1px;
+    padding-bottom: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+ #EiGeneralStatsFunctionsLoader{display:none; }
+
+#projectProfilesAlerts{
+    display:none;
+    &.alert{
+        margin-top:0px;
+        margin-bottom: 0px;
+        padding-top:2px;
+        padding-bottom:2px;
+    }
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #E7F0EF;
+ }
+
+@media all and (max-width: @xs-max){
+  .hidden-xs{
+    display: none !important;
+  }
+}
+
+@media all and (min-width: @sm-min) and (max-width: @sm-max){
+  .hidden-sm{
+    display: none !important;
+  }
+}
+
+@media all and (min-width: @md-min) and (max-width: @md-max){
+  .hidden-md{
+    display: none !important;
+  }
+}
+
+@media all and (min-width: @lg-min) and (max-width: @lg-max){
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+@media all and (min-width: @xlg-min) and (max-width: @xlg-max){
+  .hidden-xlg {
+    display: none !important;
+  }
+}
+
+/*******************************************************/
+/**********          BARRE EXECUTION          **********/
+/*******************************************************/
+
+#executionStackPanel{
+  width: 440px;
+  height: 100%;
+  position: fixed;
+  background-color: white;
+  top: 40px;
+  right: 0;
+  bottom: 20px;
+  z-index: 50000;
+  border-left: solid 1px black;
+  border-top: solid 1px black;
+  margin-bottom: 70px;
+  display: none;
+  overflow: scroll;
+}
+
+#executionStackPanel > h2{
+  background-color: #177b8c;
+  padding: 10px;
+  line-height: 30px;
+  color: white;
+  margin-top: 0;
+}
+
+#executionStackPanel > h2 > a {
+  color: white;
+}
+
+#btnSwitchExecutionStackPaneContainer, #btnSwitchExecutionMenuContainer{
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+#btnSwitchExecutionStackPaneContainer.open, #btnSwitchExecutionMenuContainer.open{
+  background: #177b8c;
+}
+
+#btnSwitchExecutionStackPane i{
+  color: #177b8c;
+}
+
+#btnSwitchExecutionStackPane.open i{
+  color: white;
+}
+
+.disabledOracle{
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.excelIcon{
+  opacity: 0.85;
+}
+
+.excelIcon:hover, .excelIcon:focus{
+  opacity: 1;
+}
+
+@media all and (max-width: @xs-max){
+  #usage ul li .text{
+    padding: 0;
+  }
+}
+
+@media all and (min-width: @sm-min) and (max-width: @sm-max){
+  #usage ul li .text{
+    padding: 0;
+  }
+}
+
+@media all and (min-width: @md-min) and (max-width: @md-max){
+  #usage ul li .text{
+    padding: 0 2px 0 2px;
+  }
+}
+
+@media all and (min-width: @lg-min) and (max-width: @lg-max){
+  #usage ul li .text{
+    padding: 0 5px 0 5px;
+  }
+}
+
+@media all and (min-width: @xlg-min) and (max-width: @xlg-max){
+  #usage ul li .text{
+    padding: 0 10px;
+  }
+}
+
+#usage #webDriverDropdown{
+  width: 250px;
+}
+
+#usage #webDriverDropdown li{
+  line-height: 20px;
+  height: 30px;
+  vertical-align: middle;
+  padding: 5px;
+
+  display: block;
+  border-right: none;
+  font-size: black;
+}
+
+#webDriverDropdown li input{
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+#usage ul#webDriverDropdown li{
+    cursor: pointer;
+}
+
+#usage ul#webDriverDropdown li.choice{
+    color: black;
+    cursor: pointer;
+}
+
+#usage ul#webDriverDropdown li:hover{
+    //color: #b37905;
+    cursor: pointer;
+}
+
+#usage ul#webDriverDropdown li.choice *:hover{
+    //color: #b37905;
+    cursor: pointer;
+}
+
+#usage li.subusage div.text.dropup{
+    height: 100%;
+    border-right: 1px solid #4a4a4a;
+}
+
+.titleChoiceDevices, .titleChoiceDrivers{
+    background-color: #04363f;
+}
+
+.titleChoiceBrowsers{
+    background-color: #177b8c;
+}
+
+#btnPlayScenarioInWebDrivers:hover{
+    text-decoration: none;
+}
+
+#btnPlayScenarioInWebDrivers{
+    text-decoration: none;
+}
+
+.iconExpand{
+    float: right;
+    margin: 4px 6px 0 0;
+}
+
+ul#webDriverDropdown li img.driverBrowserLogo{
+    float: right;
+}
+#executionMenu{
+  border-top: solid 1px black;
+  position: fixed;
+  background-color: white;
+  //top: 40px;
+  height: 200px;
+  right: 0;
+  left:236px;
+  bottom: 50px;
+  padding: 20px 30px 30px 30px;
+  z-index: 100;
+  display: none;
+}
+#titleExecutionMenu{
+    display:inline-block;
+}
+#closeExecutionMenu{
+    float: right;
+}
+/* .smallstat (overwritting)
+=================================================================== */
+.ei-smallstat-group{
+    .smallstat{
+        height: 40px;
+        padding:5px;
+        margin-bottom: 5px;
+        i{
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            line-height: 30px;
+        }
+        .title {
+            color: @bordercolor1;
+        }
+    }
+}
+.smallstat {
+  background: white;
+  position: relative;
+ 
+  height: 80px;
+  border: 1px solid #d4d4d4;
+  padding: 15px;
+  -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+}
+
+.function_folder_node{
+    color:#CEC156; 
+}
+.interventionWithoutImpact{
+    background-color: @interventionWithoutImpactColor ;
+    padding:8px;
+}
+.interventionWithImpact{
+    background-color: @interventionWithImpactColor ;
+    padding:8px;
+}

@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10 déc. 2014, 09:39:40
+    Author     : LENINE
+*/
+@media all and (max-width: 992px) {
+  li .arbo_tree {
+    padding-left: 5px;
+  }
+}
+.hide_node_childs,
+.show_node_childs {
+  cursor: pointer;
+}

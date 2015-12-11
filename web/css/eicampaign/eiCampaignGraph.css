@@ -1,0 +1,462 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:43:55
+    Author     : LENINE
+*/
+
+#editContentGlobalActions{
+    margin-top:10px;
+}
+
+#editContentMainMenu{
+    border-right: 2px #DDD solid;
+    padding-top: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#editContentMainMenu li{
+    padding-bottom: 5px;
+    margin-left:0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#stepSearchGlobalBox{
+    margin-bottom: 10px;
+}
+/* Campaigns*/
+#campaignCoverageProgress{
+    height: 35px;
+}
+#campaignForm .control-label{
+  /*float: left;*/
+  /*width: 110px;*/ 
+  /*text-align: justify;*/  
+} 
+#campaignForm .control-group{
+    padding:5px;
+}
+#campaignForm .controls{
+    margin-left: 5px;
+}
+
+#campaignForm .control-group   ,#campaignForm input , #campaignForm textarea {   
+    margin-bottom: 0px;
+}
+
+#campaignList .pagination{
+    margin-top: 0px;
+}
+#campaignForm .col-lg6 {
+    margin-left :5px;
+} 
+
+#campaignForm h4 ,#campaignGraphForm h4{
+    text-align: left; 
+    padding-left: 0px;
+    margin-left: 0px;
+} 
+.show_camp_steps , .hide_camp_steps ,.hide_sub_camps ,.show_sub_camps ,#hide_del_camps,.hide_del_camps,.show_del_camps {
+    cursor: pointer
+}
+.popover-content{
+    word-break: break-all;
+    -o-text-overflow: ellipsis; /* pour Opera 9 */
+    text-overflow: ellipsis; /* pour le reste du monde */
+    max-height: 300px; 
+    overflow-y: auto;
+   display: block;  
+   overflow-x: hidden; /* les dépassements seront masqués */
+   overflow-style: panner;
+}
+#subjectCampaignsList .popover{
+    width: 400px; 
+}
+
+#subjectLeftSideMenu ul li.activeItem > a  , #DeliveryLeftSideMenu ul li.activeItem > a {
+    background: #75af29; 
+    font-weight: bold ;
+    color: #221414;  
+}
+
+
+#rightSideDeliveryContent h6 , #rightSideDeliveryContent .col-lg1 {
+    margin : 0px;
+    padding-bottom: 0px;
+} 
+
+/* Campaign graph*/
+#campaignGraphTestSuiteAddBox,#campaignGraphDataSetAddBox {
+    display: none;
+}
+#campaignGraphTestSuite , #campaignGraphDataSet{
+ /*display: none;*/   
+} 
+#campaignGraphForm .fileupload{
+    margin-bottom: 0px;
+}
+#campaignGraphForm .control-label{
+  float: left;
+  width: 100px;
+  padding-top: 5px;
+  text-align: left;
+} 
+#campaignGraphForm .controls{
+    margin-left: 0px;   
+}
+
+#rightSideDeliveryBloc{ 
+    
+}
+ 
+#rightSideCampaignsBloc .col-lg11{
+    /*margin : 0px;*/
+}
+.rightSideStepsListOfCampaign .col-lg11 , .rightSideSubjectBloc .col-lg11{
+    margin-bottom: 2px;
+    margin-top: 2px
+}
+#rightSideLonelyCampaignsBloc{ }
+#rightSideCampaignsContent{  }
+#rightSideCampaignsContent .rightSideStepsListOfCampaign ,
+#campaignsPart .rightSideStepsListOfCampaign,
+.campaignsPart .rightSideStepsListOfCampaign,
+#subjectsPart .rightSideSubjectBloc{
+   margin-left: 10px; 
+} 
+.stepLineInContentDesc .stepLineInContentDescNotif{
+    height: 10px;
+    display: none;
+} 
+#subjectsPart{
+    /*margin-left: 10px;*/ 
+}
+#rightSideDeliveryContent ,.rightSideStepsListOfCampaignContent,.rightSideSubjectBlocContent{
+    /*border-left: 1px #DDD dashed ;*/
+    /*background-color: white;*/
+}
+.rightSideSubjectBlocContent{
+    margin-top: 10px;
+}
+#rightSideDeliveryContent{
+    /*margin-left: 20px;*/
+}
+#rightSideDeliveryHeader strong{border-bottom: solid 2px #910BA4; text-underline-position: below;}
+.rightSideSubjectBlocHeader strong{border-bottom:  solid 2px #2592F4; text-underline-position: below;}
+
+.rightSideStep strong{border-bottom:  solid 2px #99B433; text-underline-position: below;}
+
+.stepLineInContentBoxMoinsInfo {
+    cursor: pointer;
+    display: none;
+}
+.stepLineInContentBoxPlusInfo {
+    cursor: pointer; 
+}
+
+/* Fenetre modale d'ajout des steps */
+
+/*#campaignStep  {
+     new custom width 
+    width: 600px;
+     must be half of the width, minus scrollbar on the left (30px) 
+    margin-left: -600px; 
+}*/
+#deliverySearchBoxForSteps,#subjectSearchBoxForSteps,#campaignSearchBoxForSteps{
+    /* new custom width */
+    /*width: 900px;*/
+/*     must be half of the width, minus scrollbar on the left (30px) 
+    margin-left: 300px;
+    margin-top: 100px;
+    height: 600px;
+    max-height: 600px;
+    overflow-y: auto;*/
+}
+
+.bug_icon > a{
+    color: black;
+}
+
+/* Edition des steps d'une campagne  */ 
+
+.stepLineInContent{ 
+margin-left: 10px;
+-webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.75);
+box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.75);
+/*background-color: #eeeeee;*/
+ 
+}
+ 
+.checked_place_to_add_in_camp_content{
+    cursor: pointer;
+    background: url("/images/boutons/fleche-insert-empty.png") no-repeat scroll 0 transparent;
+    height: 20px;
+}
+#campaignContent,.rightSideStepsListOfCampaignContent{  
+    /*background-color: #fefefe;*/  
+    color: black;  
+} 
+#editCampaignContentMenu{
+    margin-left:0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #fefefe; 
+}
+#lighter_in_camp_content{
+    background : url('/images/boutons/fleche-insert-long.png') no-repeat;
+    height: 20px;
+}
+.stepLineInContentDesc{
+    margin-left: 10px;
+    padding: 0;
+    display: none;
+}
+.stepLineInContentDesc textArea{
+    width: 100%;
+    height: 3em;
+    margin-top: 7px;
+    resize: vertical;
+    white-space: nowrap;
+}
+.rightSideStepsListOfCampaignContent .col-lg-12,.rightSideStepsListOfCampaignContent .col-md-12,.rightSideStepsListOfCampaignContent .col-sm-12 { 
+margin-left:0px;
+padding-left:0px;
+padding-right: 0px;
+}
+.stepLineInContentDataSet{
+}
+/* Have ideas for improving this CSS for the general community? Submit your changes at: https://github.com/Valums-File-Uploader/file-uploader */
+.qq-uploader {
+	position: relative;
+	width: 100%;
+}
+.qq-upload-button {
+	display: block;
+	/*or inline-block*/
+	width: 105px;
+	padding: 7px 0;
+	text-align: center;
+	background: #880000;
+	border-bottom: 1px solid #DDD;
+	color: #FFF;
+}
+.qq-upload-button-hover {
+	background: #CC0000;
+}
+.qq-upload-button-focus {
+	outline: 1px dotted #000000;
+}
+.qq-upload-drop-area, .qq-upload-extra-drop-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 30px;
+	z-index: 2;
+	background: #FF9797;
+	text-align: center;
+}
+.qq-upload-drop-area span {
+	display: block;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	margin-top: -8px;
+	font-size: 12px;
+}
+.qq-upload-extra-drop-area {
+	position: relative;
+	margin-top: 50px;
+	font-size: 12px;
+	padding-top: 30px;
+	height: 20px;
+	min-height: 40px;
+}
+.qq-upload-drop-area-active {
+	background: #FF7171;
+}
+.qq-upload-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.qq-upload-list li {
+	margin: 0;
+	padding: 9px;
+	line-height: 15px;
+	font-size: 12px;
+	background-color: #FFF0BD;
+}
+.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+	margin-right: 12px;
+}
+.qq-upload-file {
+}
+.qq-upload-spinner {
+	display: inline-block;
+	background: url("loading.gif");
+	width: 15px;
+	height: 15px;
+	vertical-align: text-bottom;
+}
+.qq-upload-size, .qq-upload-cancel {
+	font-size: 12px;
+	font-weight: normal;
+}
+.qq-upload-failed-text {
+	display: none;
+}
+.qq-upload-fail .qq-upload-failed-text {
+	display: inline;
+}
+.qq-upload-list li.qq-upload-success {
+	background-color: #5DA30C;
+	color: #FFFFFF;
+}
+.qq-upload-list li.qq-upload-fail {
+	background-color: #D60000;
+	color: #FFFFFF;
+}
+
+
+/** CAMPAIGN NAVBAR **/
+
+#campaignHeader .navbar{
+    margin-bottom: 0px !important;
+}
+
+#campaignHeader ~ ul.nav{
+    margin-top: 20px !important;
+}
+
+#campaignSubHeader .navbar-inner{
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    border-top: none;
+
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-radius: 0 0 4px 4px;
+}
+
+#campaignSubHeader.scrolled{
+    margin-bottom: 70px;
+}
+
+#campaignSubHeader.scrolled .navbar{
+    position: fixed;
+    top: 0;
+    left: -50%;
+    right: -50%;
+    background: #f8f9f9;
+    z-index: 1500;
+}
+
+#sortCampaignSteps tr.success td, #sortCampaignSteps tr.success th{
+    background-color: #dff0d8 !important;
+}
+
+#sortCampaignSteps tr.error td, #sortCampaignSteps tr.error th{
+    background-color: #f2dede !important;
+}
+
+#sortCampaignSteps tr.aborted td, #sortCampaignSteps tr.aborted th{
+    background-color: #B9B5AF !important;
+}
+
+#sortCampaignSteps tr.process td, #sortCampaignSteps tr.process th{
+    background-color: #fcf8e3 !important;
+}
+
+th.radioStart, th.radioEnd{
+    width: 20px !important;
+}
+
+td.radioStart, td.radioEnd{
+    text-align: center !important;
+    width: 20px !important;
+}
+
+li#liPlayAllCampaign ,li#liCampaignExecutions, li#liOnError{ 
+    margin-left:1px;
+    margin-right: 1px;
+    padding-left:1px;
+    padding-right: 1px;
+}
+#campaignExecutionNavbar{
+    margin-left: 5px;
+}
+#libtnResetCampaignGraphStates, #libtnRefreshCampaignGraphStates, #liCampaignExecutions{
+    margin-top: 4px;
+   padding-top:3px; 
+}
+
+li#liCampaignExecutions{
+    /*width: 150px;*/
+}
+
+li#liOnError{
+    /*width: 250px;*/  
+} 
+
+li#liOnError select, li#liCampaignExecutions select{ 
+}
+
+li#liOnError label, li#liCampaignExecutions label{ 
+}
+
+#btnPlayAllCampaign{
+    /*vertical-align: middle;*/
+}
+
+.disabledOracle{
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.excelIcon{
+    opacity: 0.85;
+}
+
+.excelIcon:hover, .excelIcon:focus{
+    opacity: 1;
+}
+
+td.CampaignGraphBlockType  {
+    z-index: 542;
+    position: relative;
+}
+table#sortCampaignSteps  {
+    /*z-index: 540;*/
+    position: relative
+} 
+.rightSideStepOk{
+    background-color: #C8F0C8;
+}
+
+.fa-mini {
+  font-size: 0.6em;
+  line-height: 0.55em;
+  vertical-align: -15%; 
+}
+.fa-red{
+    color : #da4f49;
+}
+.fa-green{
+    color : #5bb75b;
+}
+.fa-warning-yellow{
+    color : #f89406;
+}

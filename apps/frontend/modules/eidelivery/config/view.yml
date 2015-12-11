@@ -1,0 +1,14 @@
+all: 
+#  stylesheets:    [eidelivery/eigeneric.css,eidelivery/eidelivery.css]
+  stylesheets:    [eidelivery/eigeneric.css,eidelivery/eidelivery.css,eideliverysubject/eideliverysubject.css]
+  javascripts:    [eidelivery/eidelivery.js,eideliverysubject/eideliverysubject.js]
+  has_layout:     true
+  layout:         layout
+  
+newSuccess: 
+  stylesheets:    [eidelivery/newDelivery.css] 
+impactsSuccess : 
+  stylesheets: [eitrees/eitree.css,eitrees/einode.css]
+statisticsSuccess : 
+  stylesheets: [eitrees/eitree.css,eitrees/einode.css,eifunction/eifunction.css]  
+  javascripts:    [eifunction/eikalfunction.js] 

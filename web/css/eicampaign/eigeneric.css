@@ -1,0 +1,406 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:43:55
+    Author     : LENINE
+*/
+#eiSideBar121MainObjects a.campaignIcon {
+  color: #065260;
+  background-color: #eeeeee;
+}
+#eiSideBar121MainObjects a.campaignIcon:hover {
+  color: rgba(4, 54, 62, 0.6);
+  background-color: #a6a6a3;
+}
+.eiObjDesc {
+  word-break: breack-all;
+  display: inline-block;
+  white-space: normal;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  max-height: 60px;
+  overflow-y: auto;
+}
+.eiObjDesc::-webkit-scrollbar {
+  width: 0 !important;
+}
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-11,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-1,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-6,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-5,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-3,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-2,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-7,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-lg-12,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-11,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-1,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-6,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-5,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-3,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-2,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-7,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-md-12,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-11,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-1,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-6,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-5,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-3,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-2,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-7,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-sm-12,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-11,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-1,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-6,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-5,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-3,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-2,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-7,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader .col-xs-12,
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media all and (min-width: 1800px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 400px;
+  }
+}
+@media all and (min-width: 1501px) and (max-width: 1799px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 300px;
+  }
+}
+@media all and (min-width: 1301px) and (max-width: 1500px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 260px;
+  }
+}
+@media all and (min-width: 1201px) and (max-width: 1300px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 220px;
+  }
+}
+@media all and (min-width: 1101px) and (max-width: 1200px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 180px;
+  }
+}
+@media all and (min-width: 993px) and (max-width: 1100px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 160px;
+  }
+}
+@media all and (min-width: 871px) and (max-width: 992px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 140px;
+  }
+}
+@media all and (max-width: 870px) {
+  #tabStepFunctions .rightSideFunctionBloc .rightSideFunctionBlocHeader h6 strong {
+    max-width: 140px;
+  }
+}
+#rightSideDeliveryHeader h6 strong {
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media all and (min-width: 1800px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 210px;
+  }
+}
+@media all and (min-width: 1501px) and (max-width: 1799px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 150px;
+  }
+}
+@media all and (min-width: 1301px) and (max-width: 1500px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 130px;
+  }
+}
+@media all and (min-width: 1201px) and (max-width: 1300px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 110px;
+  }
+}
+@media all and (min-width: 1101px) and (max-width: 1200px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (min-width: 993px) and (max-width: 1100px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (min-width: 871px) and (max-width: 992px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (max-width: 870px) {
+  #rightSideDeliveryHeader h6 strong {
+    max-width: 90px;
+  }
+}
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-11,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-1,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-6,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-5,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-3,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-2,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-7,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-lg-12,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-11,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-1,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-6,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-5,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-3,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-2,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-7,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-md-12,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-11,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-1,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-6,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-5,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-3,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-2,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-7,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-sm-12,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-11,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-1,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-6,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-5,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-3,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-2,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-7,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader .col-xs-12,
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media all and (min-width: 1800px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 210px;
+  }
+}
+@media all and (min-width: 1501px) and (max-width: 1799px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 150px;
+  }
+}
+@media all and (min-width: 1301px) and (max-width: 1500px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 130px;
+  }
+}
+@media all and (min-width: 1201px) and (max-width: 1300px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 110px;
+  }
+}
+@media all and (min-width: 1101px) and (max-width: 1200px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (min-width: 993px) and (max-width: 1100px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (min-width: 871px) and (max-width: 992px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (max-width: 870px) {
+  #subjectsPart div.rightSideSubjectBloc div div.rightSideSubjectBlocHeader h6 strong {
+    max-width: 90px;
+  }
+}
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-lg-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-md-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-sm-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader .col-xs-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+  border-bottom: solid 2px #EFBB11;
+  text-underline-position: below;
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media all and (min-width: 1800px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 210px;
+  }
+}
+@media all and (min-width: 1501px) and (max-width: 1799px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 150px;
+  }
+}
+@media all and (min-width: 1301px) and (max-width: 1500px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 130px;
+  }
+}
+@media all and (min-width: 1201px) and (max-width: 1300px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 110px;
+  }
+}
+@media all and (min-width: 1101px) and (max-width: 1200px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (min-width: 993px) and (max-width: 1100px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (min-width: 871px) and (max-width: 992px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 90px;
+  }
+}
+@media all and (max-width: 870px) {
+  #rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignHeader h6 strong {
+    max-width: 90px;
+  }
+}
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-lg-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-lg-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-md-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-md-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-sm-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-sm-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-11,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-1,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-5,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-3,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-2,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-7,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep .col-xs-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll .col-xs-12,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStep h6,
+#rightSideCampaignsContent div.rightSideStepsListOfCampaign div div.rightSideStepsListOfCampaignContent .rightSideStepCheckAll h6 {
+  margin: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}

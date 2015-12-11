@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 déc. 2014, 18:43:55
+    Author     : LENINE
+*/
+#eiSideBar121MainObjects a.functionIcon {
+  color: #065260;
+  background-color: #eeeeee;
+}
+#eiSideBar121MainObjects a.functionIcon:hover {
+  color: rgba(4, 54, 62, 0.6);
+  background-color: #a6a6a3;
+}
+#propertiesFunctionStats {
+  margin-top: 10px;
+}
+.propertiesFunctionStatsPanelTitle {
+  margin-bottom: 2px;
+}
+.info-box.info-muted {
+  background-color: #F1F6F5;
+  border-color: #ADB3B2;
+}
+.info-box.info-muted .text-info {
+  color: #046380;
+}
+.info-box.info-muted .text-success {
+  color: #195018;
+}
+.info-box.info-muted .text-danger {
+  color: #B9121B;
+}
+.info-box.info-muted .text-muted {
+  color: #414941;
+}
+.info-box.info-muted i {
+  color: #999;
+}
+.eiPanelHeight {
+  height: 200px;
+  overflow-y: hidden;
+}
+.eiPanelHeight2 {
+  height: 100px;
+  overflow-y: hidden;
+}
+#functionStatsPercents .info-box {
+  padding-top: 10px;
+  min-height: 100px;
+}
+#functionStatsPercents i {
+  height: 80px;
+  margin-right: 10px;
+  padding-right: 10px;
+  width: 70px;
+}
+#functionStatsPercents .count {
+  margin-top: -10px;
+  font-size: 20px;
+}
+#functionStatsPercents .title {
+  font-size: 8px;
+}
+.paramsForm {
+  margin-bottom: 3px;
+}

@@ -1,0 +1,20 @@
+sendEiDataLine:
+  is_secure: false
+  
+editEiDataLine:
+  is_secure: false
+  
+createEmpty:
+  is_secure: false
+
+lightCreateFromXml:
+  is_secure: false
+  
+createEiDataLine:
+  is_secure: false
+  
+deleteEiDataLine:
+  is_secure: false
+  
+getAvailableBlocks:
+  is_secure: false

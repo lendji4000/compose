@@ -1,0 +1,96 @@
+all:
+  #Nombre max de livraisons par page 
+  max_delivery_per_page: 15
+  max_subject_per_page : 30
+  max_campaign_per_page : 30
+#Type de fichiers attachés à un sujet
+  bug_attachment_description : "bugAttachmentDescription"
+  bug_attachment_details : "bugAttachmentDetails"
+  bug_attachment_solution : "bugAttachmentSolution"
+  bug_attachment_migration : "bugAttachmentMigration" 
+  
+  bug_description_message : "bugDescriptionMessage"
+  bug_details_message : "bugDetailsMessage"
+  bug_solution_message : "bugSolutionMessage"
+  bug_migration_message : "bugMigrationMessage"
+
+  # Etats utilisés dans les étapes d'une campagne.
+  campaignGraphStateBlank : "Blank"
+  campaignGraphStateOk : "Ok"
+  campaignGraphStateKo : "Ko"
+  campaignGraphStateProcessing : "Processing"
+  campaignGraphStateAborted : "Aborted"
+
+  # Type identifiant le type d'étape d'une campagne.
+  campaignGraphStepManuel : 1
+  campaignGraphStepScenario : 2
+
+  # Nom du cookie utilisé pour stocker les jdds sélectionnés pour les scénarios en vue du play.
+  nomCookieJddScenariosPlay: "jdds_scenarios_to_play"
+
+  loader_play_button: "<img src='/images/icones/ajax-loader-transparent_small.gif' id='loaderPlayInIde' alt='Loading...' class='hide' />"
+  loader_excel_button: "<img src='/images/icones/ajax-loader-transparent_small.gif' class='loaderPlayInExcel hide' alt='Loading...' />"
+  
+  logo_kalifast: /images/logos/picto_compose_2.png"
+  logo_kalifast_webdriver: /images/logos/picto_compose_2.png"
+  
+  icone_excel_24x24_path: "/images/icones/excel-icon-24.png"
+  icone_selide_24x24_path: "/images/icones/selenium-ide.ico"
+  icone_selenium_24x24_path: "/images/icones/selenium.png"
+  icone_apple_16x16_path: "/images/icones/apple.png"
+  icone_windows_24x24_path: "/images/icones/windows.png"
+  icone_linux_24x24_path: "/images/icones/linux.png"
+  icone_android_16x16_path: "/images/icones/android.png"
+  icone_chrome_24x24_path: "/images/icones/chrome.png"
+  icone_firefox_24x24_path: "/images/icones/firefox.png"
+  icone_safari_24x24_path: "/images/icones/safari.png"
+  icone_ie_24x24_path: "/images/icones/internet-explorer.png"
+  icone_ie_2_24x24_path: "/images/icones/Internet_Explorer.png"
+  icone_edge_24x24_path: "/images/icones/edge.png"
+  icone_opera_24x24_path: "/images/icones/opera.png"
+  icone_java_24x24_path: "/images/icones/java.png"
+  icone_raspberry_24x24_path: "/images/icones/raspberry.png"
+  
+  # Ressources externes
+  firefox_resources: "https://download.mozilla.org/?product=firefox-stub&os=win&lang=fr"
+  selenium_ide_ressources: "http://release.seleniumhq.org/selenium-ide/2.8.0/selenium-ide-2.8.0.xpi"
+  selblocks_ressources: "https://addons.mozilla.org/firefox/downloads/latest/301309/addon-301309-latest.xpi?src=dp-btn-primary"
+  
+  test_suite_type: EiScenario
+  folder_type: EiFolder
+  domain : localhost
+  sf_guard_extra_plugin:
+    mail_from:        admin.kalifast@eisge.com
+    name_from:        Kalifast administrator
+    subject_confirm:  Confirm Registration
+    subject_complete: Request complete
+    subject_request:  Request to reset password
+    subject_success:  Password reset successfully
+    reset_type:       set # set to `ask` for asking (see above)
+  xml:
+    seleniumIDEVersion: "1.2.0"
+
+  excel:
+      plateforme: http://dl.kalifast.com
+      version: "1.17.0"
+      download_dir: /excel/
+      download_latest: KalifastForOffice-latest.exe
+      download_pattern: KalifastForOffice-v${VERSION_ID}.exe
+      download_key: ${VERSION_ID}
+
+  kalifast_service:
+      plateforme: http://dl.kalifast.com
+      download_dir: /kalifast_service/
+      download_latest: kalifast_service.exe
+
+  plugin_ide:
+      plateforme: http://dl.kalifast.com
+      version_required: "7.27"
+      version_optimal: "7.27"
+      download_dir: /selenium-ide/
+      download_latest: kalifast_selenium-ide@EISGE.xpi
+      download_pattern: kalifast_selenium-ideV${VERSION_ID}@EISGE.xpi
+      download_key: ${VERSION_ID}
+#activation de la route pour l'inscription
+  sf_guard_plugin:
+    routes_register: true

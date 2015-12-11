@@ -1,0 +1,231 @@
+#eiProjectDashboardMainAccess{  
+    color: #00734F;  
+}
+ 
+
+
+.add_projet , .edit_projet , .delete_projet , .download_kalprojet , .download_kalfonction{
+    cursor: pointer;
+}
+.show_project {
+    margin-top:3px;
+}
+.title_project{
+    color:white;
+    text-align:center;
+}
+
+/* Vérification du statut des projets*/
+#verifiedProjectState{
+    
+}  
+/* thème du bouton generate */
+.ei-generate{
+	position:absolute;
+	width:5%;
+	left:80px;
+	border-radius:10px;
+	border:5px inset black;
+	box-shadow: 0px 0px 1.5px 1px black inset;
+}
+
+/* Cases où sont renseignés les actions*/
+.ei-action{
+	border:2px solid red;
+}
+
+/* Cases où sont renseignés les objects */
+
+.ei-object{
+	border:2px solid Blue;
+}
+
+
+/* permet de mettre le texte en bleu comme sur kalifast */
+.ei-lien{
+	color:#08C;
+}
+
+
+
+
+/* texte de couleur noir */
+.ei-black{
+	color:black;
+}
+
+
+/* root */
+
+.ei-herbe{
+	background-color:#00A600;
+	width: 30px;
+	height:5px;
+	position:relative;
+	top:1px;
+	border-radius:5px;
+	right:1px;
+}
+
+.ei-fond{
+	background-color:#EAEAEA;
+	width: 20px;
+	height:20px;
+	border-top-right-radius:10px;
+	border-top-left-radius:10px;
+	border-bottom-right-radius:7px;
+	border-bottom-left-radius:7px;
+	position:relative;
+	right:30.5px;
+}
+
+.ei-porte{
+	background-color:#7C7C7C;
+	width: 7px;
+	height:10px;
+	position:relative;
+	right:48.5px;
+}
+
+.ei-toit1{
+	background-color:#B38080;
+	width: 5px;
+	height:20px;
+	position:relative;
+	transform:rotate(-40deg);
+	right:52px;
+	bottom:7px;
+}
+.ei-toit2{
+	background-color:#B38080;
+	width: 5px;
+	height:20px;
+	position:relative;
+	transform:rotate(40deg);
+	right:74px;
+	bottom:7px;
+}
+
+/* Couleur du logo Kalifast */
+
+.ei-color-kalifast{
+	color:#75AF29;
+}
+
+
+/* Enleve toute les décorations du texte */
+
+.ei-none-decoration{
+	text-decoration:none;
+}
+
+/***************************************** Search ***************************************/
+.ei-search{
+	position:relative;
+	font-size:13px;
+	text-indent:-35px;
+	bottom:14px;
+	right:6px;
+	color:black;
+}
+
+/***************************************** Refresh ***************************************/
+
+
+
+/***************************************** Create/add ***************************************/
+
+.ei-add-scenario-top{
+	position:relative;
+	font-size:8px;
+	text-indent:2px;
+	bottom:9px;
+	color:black;
+	right:9px;
+}
+
+.ei-add{
+	color:RGB(0,255,0);
+	font-size:10px;
+	position:relative;
+	right:21px;
+	top:5px;
+}
+.ei-fond-add{
+	position:relative;
+	right:10px;
+	top:5px;
+	width:7px;
+	height:7px;
+	background-color:white;
+	border-radius:5px;
+}
+
+/***************************************** Remove ***************************************/
+.ei-remove{
+	position:relative;
+	font-size:13px;
+	text-indent:-35px;
+	bottom:14px;
+	color:black;
+	right:6px;
+}
+
+/***************************************** Delete ***************************************/
+.ei-delete{
+	position:relative;
+	font-size:13px;
+	text-indent:-35px;
+	bottom:14px;
+	color:black;
+	right:6px;
+}
+
+/***************************************** Edit ***************************************/
+.ei-edit{
+	position:relative;
+	font-size:13px;
+	text-indent:-35px;
+	bottom:14px;
+	color:black;
+	right:6px;
+}
+
+
+/***************************************** Open content ***************************************/
+.ei-open{
+	color:RGB(215,215,215);
+	background-image:radial-gradient(80% 50%,RGB(60,160,60),white);
+}
+
+.ei-open-content{
+	font-size:10px;
+ 	position:relative;
+ 	right:5px;
+ 	top:5px;
+}
+
+
+
+/***************************************** Propriétés ***************************************/
+.ei-property{
+	position:relative;
+	font-size:13px;
+	text-indent:-35px;
+	bottom:14px;
+	color:black;
+}
+
+
+/***************************************** Play ***************************************/
+
+
+
+/***************************************** Copy ***************************************/
+.ei-copy{
+ 	font-size:15px;
+ 	position:relative;
+ 	right:40px;
+ 	bottom:15px;
+	right:28px;
+}

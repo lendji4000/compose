@@ -1,0 +1,6 @@
+all:  
+  stylesheets:    [eidelivery/eigeneric.css,eidelivery/eideliverystate.css]
+  javascripts:    [eidelivery/eideliverystate.js]
+  has_layout:     true
+  layout:         layout
+   

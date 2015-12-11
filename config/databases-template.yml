@@ -1,0 +1,23 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=compose'
+      username: root
+      password: root
+      port: 3306
+      attributes:
+        default_table_type:    InnoDB  
+        default_table_charset: utf8
+        default_table_collate: utf8_general_ci
+test:
+  doctrine:
+    class: sfdoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=v4compose_test'
+      username: root
+      password: root
+      attributes:
+        default_table_type:    InnoDB  
+        default_table_charset: utf8
+        default_table_collate: utf8_general_ci

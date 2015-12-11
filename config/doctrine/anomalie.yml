@@ -1,0 +1,785 @@
+---
+actAs: [Timestampable]
+options:
+  collate: utf8_general_ci
+  charset: utf8
+  type: InnoDB
+
+###
+### Livraisons
+###
+#Table des statuts de livraisons
+EiDeliveryState:
+  columns: 
+    name :  { type: string(255),  notnull: true  }   
+    color_code :  { type: string(255),  notnull: true  ,default : "#36a9e1"}
+    display_in_home_page : { type: boolean , notnull: true, default : true}
+    display_in_search : { type: boolean , notnull: true, default : true} 
+    close_state : { type: boolean , notnull: true, default : false} 
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+
+#Table des  contextes (contexte d'execution ou de création d'un intervention)
+EiBugContext: 
+  columns: 
+    author_id :  { type: integer(8),  notnull: true  } 
+    delivery_id :  { type: integer(8) } 
+    campaign_graph_id :  { type: integer(8) }
+    campaign_id :  { type: integer(8) }
+    subject_id :  { type: integer(8),  notnull: true }
+    scenario_id :  { type: integer(8) }
+    ei_fonction_id :  { type: integer(8) }
+    ei_test_set_id :  { type: integer(8) }
+    ei_data_set_id : { type: integer(8) }
+    profile_id :  { type: integer(8) }
+    profile_ref :  { type: integer(8) } 
+  indexes:
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]  
+  relations: 
+      bugContextAuthor: { onDelete: CASCADE , local: author_id , class: sfGuardUser,  foreign: id, foreignAlias: bugContextAuthor}
+      bugContextDelivery: { onDelete: CASCADE , local: delivery_id , class: EiDelivery,  foreign: id, foreignAlias: bugContextDelivery}
+      bugContextCampaignStep: { onDelete: CASCADE , local: campaign_graph_id , class: EiCampaignGraph,  foreign: id, foreignAlias: bugContextCampaignStep}
+      bugContextCampaign: { onDelete: CASCADE , local: campaign_id , class: EiCampaign,  foreign: id, foreignAlias: bugContextCampaign}
+      bugContextSubject: { onDelete: CASCADE , local: subject_id , class: EiSubject,  foreign: id, foreignAlias: bugContextSubject}
+      bugContextScenario: { onDelete: CASCADE , local: scenario_id , class: EiScenario,  foreign: id, foreignAlias: bugContextScenario}
+      bugContextTestSet: { onDelete: CASCADE , local: ei_test_set_id , class: EiTestSet,  foreign: id, foreignAlias: bugContextTestSet}
+      bugContextJdd: { onDelete: CASCADE , local: ei_data_set_id , class: EiDataSet,  foreign: id, foreignAlias: bugContextJdd}
+      bugContextFunction: { onDelete: CASCADE , local: ei_fonction_id , class: EiFonction,  foreign: id, foreignAlias: bugContextFunction}
+
+#Table des  livraisons  
+EiDelivery: 
+  columns: 
+    author_id :  { type: integer(8),  notnull: true  } 
+    delivery_state_id :  { type: integer(8),  notnull: true  } 
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+    name :  { type: string(255),  notnull: true  }
+    delivery_date : { type: timestamp ,  notnull: true ,format : yyyy/MM/dd hh:mm:ss } 
+    description :  { type: clob()  } 
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+  relations: 
+      EiDeliveryState: { onDelete: CASCADE , local: delivery_state_id , foreign: id, foreignAlias: deliveryState} 
+      #Une livraison a un auteur
+      sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: deliveryAuthor}
+
+###
+### Campagnes de tests
+###    
+#Table des campages de test  
+EiCampaign: 
+  columns: 
+    name :  { type: string(255),  notnull: true  }
+    description :  { type: clob()  }
+    author_id : { type: integer(8),  notnull: true  } 
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+    on_error: { type: integer(8), notnull: false }
+    coverage: { type: integer(2), notnull: false }
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+  relations: 
+      #Une campagne de tests a un auteur
+      sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: campaignAuthor}
+      EiBlockType: {onDelete: CASCADE, local: on_error, foreign: id, foreignAlias: errorActionType}
+      
+EiCampaignGraphType:
+  columns: 
+    name :  { type: string(255),  notnull: true  } 
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }  
+    automate : { type: boolean , notnull: true}
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+    
+    
+#Flag d'une campagne 
+EiFlag :
+  columns:  
+    campaign_id : { type: integer(8),  primary: true,  notnull: true }  
+    flag_campaign_id :  { type: integer(8),  primary: true,  notnull: true }    
+    state: {type: enum, values: [Blank, Ok ,Ko ,Warning]}
+    description :  { type: clob()  }
+  indexes:
+    campaign_id_index:
+      fields: [campaign_id]
+    flag_campaign_id_index:
+      fields: [flag_campaign_id]  
+  relations:  
+      Campaign: { onDelete: CASCADE , local: campaign_id , class: EiCampaign ,foreign: id, foreignAlias: currentFlagCampaign}
+      flagCampaign: { onDelete: CASCADE , local: flag_campaign_id , class: EiCampaign , foreign: id, foreignAlias: flagCampaigns} 
+
+#Flag d'une livraison  
+EiFlagDelivery :
+  columns:  
+    campaign_id : { type: integer(8),  primary: true,  notnull: true }  
+    delivery_id :  { type: integer(8),  primary: true,  notnull: true}    
+    state: {type: enum, values: [Blank, Ok ,Ko ,Warning]}
+    description :  { type: clob()  }
+  relations:  
+      Campaign: { onDelete: CASCADE , local: campaign_id , class: EiCampaign, foreign: id, foreignAlias: currentFlagCampaignDel}
+      flagDelivery: { onDelete: CASCADE , local: delivery_id , class: EiDelivery,foreign: id, foreignAlias: flagDeliverys}
+
+#Flag sur les sujets
+EiFlagSubject :
+  columns:  
+    campaign_id : { type: integer(8),  primary: true,  notnull: true }  
+    subject_id :  { type: integer(8),  primary: true,  notnull: true }    
+    state: {type: enum, values: [Blank, Ok ,Ko ,Warning]}
+    description :  { type: clob()  }
+  relations:  
+      Campaign: { onDelete: CASCADE , local: campaign_id , class: EiCampaign, foreign: id, foreignAlias: currentFlagCampaignSub}
+      flagSubject: { onDelete: CASCADE , local: subject_id , class: EiSubject,foreign: id, foreignAlias: flagSubjects}
+#Flag sur les scénarios    
+EiFlagScenario :
+  columns:  
+    campaign_id : { type: integer(8),  primary: true,  notnull: true  }  
+    scenario_id :  { type: integer(8),  primary: true ,  notnull: true    }    
+    state: {type: enum, values: [Blank, Ok ,Ko ,Warning]}
+    description :  { type: clob()  }
+  relations:  
+      Campaign: { onDelete: CASCADE , local: campaign_id , class: EiCampaign, foreign: id, foreignAlias: currentFlagCampaignScenario}
+      flagScenario: { onDelete: CASCADE , local: scenario_id , class: EiScenario,foreign: id, foreignAlias: flagScenarios}    
+
+#Flag sur une fonction
+EiFlagFunction:
+  columns:  
+    campaign_id : { type: integer(8),  primary: true,  notnull: true  }
+    function_id : { type: integer(8),  primary: true,  notnull: true  }  
+    function_ref :  { type: integer(8),  primary: true ,  notnull: true    }    
+    state: {type: enum, values: [Blank, Ok ,Ko ,Warning]}
+    description :  { type: clob()  }
+  relations:  
+      Campaign: { onDelete: CASCADE , local: campaign_id , class: EiCampaign, foreign: id, foreignAlias: currentFlagCampaignFunction}
+      
+#Steps d'une campagne
+EiCampaignGraph :
+  columns:  
+    campaign_id : { type: integer(8),  notnull: true  }  
+    scenario_id :  { type: integer(8)    } 
+    data_set_id :  { type: integer(8)  } 
+    step_type_id :  { type: integer(8), notnull: true }
+    filename :  { type: string(255) }
+    path :  { type: string(1000)}
+    mime_type :  { type: string(255) } 
+    state: {type: enum, values: [Blank, Ok ,Ko , Processing]}
+    description :  { type: clob()  }
+  relations: 
+      #Les 3 éléments constitutifs d'une campagne de tests
+      EiCampaign: { onDelete: CASCADE , local: campaign_id , foreign: id, foreignAlias: graphCampaign}
+      EiScenario: { onDelete: CASCADE , local: scenario_id , foreign: id, foreignAlias: graphScenario}
+      EiDataSet: { onDelete: CASCADE , local: data_set_id , foreign: id, foreignAlias: graphDataSet}
+      EiCampaignGraphType: { onDelete: CASCADE , local: step_type_id , foreign: id, foreignAlias: stepType}
+      
+#Relations de parentés permettant de modeliser le graphe d'une campagne de tests
+
+EiCampaignGraphHasGraph :
+  columns:
+    parent_id :  { type: integer(8),  primary: true}  
+    child_id : { type: integer(8),   notnull: true , primary: true  }  
+    campaign_id :  { type: integer(8),  notnull: true   } 
+    position :  { type: integer(8)  }
+  relations:  
+      CampaignParent: { onDelete: CASCADE , local: parent_id , class: EiCampaignGraph , foreign: id, foreignAlias: graphCampaignParents}
+      CampaignChild: { onDelete: CASCADE , local: child_id , class: EiCampaignGraph , foreign: id, foreignAlias: graphCampaignChildren}
+      EiCampaign: { onDelete: CASCADE , local: campaign_id , foreign: id, foreignAlias: graphCampaign}
+      
+#Relation entre les campagnes de tests et les livraisons
+EiDeliveryHasCampaign:
+  columns:      
+    delivery_id :  { type: integer(8),  notnull: true , primary: true }
+    campaign_id :  { type: integer(8),  notnull: true, primary: true  }
+  relations: 
+    EiDelivery: { onDelete: CASCADE , local: delivery_id , foreign: id, foreignAlias: DeliveryCampaigns} 
+    EiCampaign: { onDelete: CASCADE , local: campaign_id , foreign: id, foreignAlias: CampaignDeliveries} 
+    
+###
+### Sujets ( interventions, anomalies, evolutions , etc... )
+###    
+EiSubject:
+  columns: 
+    author_id :  { type: integer(8),  notnull: true  }
+    delivery_id :  { type: integer(8),  notnull: false  }
+    subject_type_id :  { type: integer(8),  notnull: true  }
+    subject_state_id :  { type: integer(8),  notnull: true  }
+    subject_priority_id :  { type: integer(8),  notnull: true  }
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+    name :  { type: string(255),  notnull: true  }
+    description :  { type: clob()  } 
+    alternative_system_id :  { type: string(255),  notnull: false }
+    package_id :  { type: integer(8),  notnull: false }
+    package_ref :  { type: integer(8),  notnull: false }
+    development_time :  { type: integer(8),  notnull: false }
+    development_estimation :  { type: integer(8),  notnull: false }
+    test_time :  { type: integer(8),  notnull: false }
+    test_estimation :  { type: integer(8),  notnull: false }
+    expected_date : { type: timestamp ,  notnull: false ,format : yyyy/MM/dd hh:mm:ss } 
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]
+    package_id_index:
+      fields: [package_id]
+    package_ref_index:
+      fields: [package_ref]  
+    author_id_index:
+      fields: [author_id]
+    delivery_id_index:
+      fields: [delivery_id]
+    subject_type_id_index:
+      fields: [subject_type_id]
+    subject_state_id_index:
+      fields: [subject_state_id]
+    subject_priority_id_index:
+      fields: [subject_priority_id]  
+  relations:
+      EiSubjectType: { onDelete: CASCADE , local: subject_type_id , foreign: id, foreignAlias: subjectType}
+      EiSubjectState: { onDelete: CASCADE , local: subject_state_id , foreign: id, foreignAlias: subjectState}
+      EiSubjectPriority: { onDelete: CASCADE , local: subject_priority_id , foreign: id, foreignAlias: subjectPriority}
+      sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: subjectAuthor}
+      EiDelivery: { onDelete: CASCADE , local: delivery_id , foreign: id, foreignAlias: subjectDelivery}
+
+#Sujets (intervention) d'une fonction
+EiSubjectFunctions:
+  columns:  
+    subject_id :  { type: integer(8),  notnull: true ,  primary: true  } 
+    function_id :  { type: integer(8),  notnull: true ,  primary: true  }
+    function_ref :  { type: integer(8),  notnull: true ,  primary: true   } 
+    automate : { type: boolean , notnull: true , default : false}
+  indexes:
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref]
+    subject_id_index:
+      fields: [subject_id]  
+  relations:
+      EiSubject: { onDelete: CASCADE , local: subject_id ,class: EiSubject,  foreign: id, foreignAlias: subjectFunctions} 
+
+#Campagnes d'une fonction
+EifunctionCampaigns:
+  columns:  
+    campaign_id :  { type: integer(8),  notnull: true ,  primary: true  } 
+    function_id :  { type: integer(8),  notnull: true ,  primary: true }
+    function_ref :  { type: integer(8),  notnull: true ,  primary: true  } 
+  indexes:
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref]  
+  relations:
+      EiCampaign: { onDelete: CASCADE , local: campaign_id ,class: EiCampaign,  foreign: id, foreignAlias: campaignFunctions} 
+
+#Détails sur le sujet
+EiSubjectDetails:
+  columns: 
+    details :  { type: blob()  }  
+    subject_id :  { type: integer(8),  notnull: true  }
+  relations :
+    EiSubject:
+      local: subject_id
+      foreign: id
+      type: one
+      foreignType: one
+#Solution sur le sujet    
+EiSubjectSolution:
+  columns: 
+    solution :  { type: blob()  }  
+    subject_id :  { type: integer(8),  notnull: true  }
+  relations :
+    EiSubject:
+      local: subject_id
+      foreign: id
+      type: one
+      foreignType: one  
+#Migration sur le sujet    
+EiSubjectMigration:
+  columns: 
+    migration :  { type: blob()  }   
+    subject_id :  { type: integer(8),  notnull: true  }
+  relations :
+    EiSubject:
+      local: subject_id
+      foreign: id
+      type: one
+      foreignType: one
+      
+#Relation entre les campagnes de tests et les sujets
+EiSubjectHasCampaign:
+  columns:      
+    campaign_id :  { type: integer(8),  notnull: true , primary: true }
+    subject_id :  { type: integer(8),  notnull: true, primary: true  }
+    is_tnr : { type: boolean , notnull: true , default : false}
+  relations: 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: subjectCampaigns} 
+    EiCampaign: { onDelete: CASCADE , local: campaign_id , foreign: id, foreignAlias: Campaigns} 
+      
+EiSubjectType:
+  columns: 
+    name :  { type: string(255),  notnull: true  }  
+    display_in_home_page : { type: boolean , notnull: true , default : true}
+    display_in_search : { type: boolean , notnull: true, default : true} 
+    display_in_todolist : { type: boolean , notnull: true, default : true}  
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+EiSubjectCategory:
+  columns: 
+    name :  { type: string(255),  notnull: true  }  
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }    
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]   
+EiSubjectState:
+  columns: 
+    name :  { type: string(255),  notnull: true  }      
+    color_code :  { type: string(255),  notnull: true ,default : "#36a9e1" }
+    display_in_home_page : { type: boolean , notnull: true , default : true}
+    display_in_search : { type: boolean , notnull: true, default : true} 
+    display_in_todolist : { type: boolean , notnull: true, default : true}
+    close_del_state : { type: boolean , notnull: true, default : false} 
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]  
+    
+EiSubjectPriority:
+  columns: 
+    name :  { type: string(255),  notnull: true  }    
+    color_code :  { type: string(255),  notnull: true ,default : "#E8DC0D" }
+    display_in_home_page : { type: boolean , notnull: true , default : true}
+    display_in_search : { type: boolean , notnull: true, default : true} 
+    display_in_todolist : { type: boolean , notnull: true, default : true}  
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  }
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref] 
+EiSubjectMessageType:
+  columns: 
+    name :  { type: string(255),  notnull: true  }      
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  } 
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref] 
+    
+EiSubjectMessage:
+  actAs:
+    Timestampable:
+      created:
+        name: created_at
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: updated_at
+        type: timestamp
+        format: Y-m-d H:i:s
+    NestedSet:
+      hasManyRoots : true
+      rootColumnName: root_id
+  columns:
+    
+    guard_id :  { type: integer(8),  notnull: true } 
+    subject_id :  { type: integer(8),  notnull: true  }
+    message_type_id :  { type: integer(8),  notnull: true   }
+    message:  { type:  clob(),  notnull: true }
+    type: {type: enum, values: [bugDescriptionMessage,bugDetailsMessage, bugSolutionMessage,bugMigrationMessage,bugCampaignMessage]}
+    position :  { type: integer(8),  notnull: true }    
+    
+  relations: 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: Subject}
+    sfGuardUser: { onDelete: CASCADE , local: guard_id , foreign: id, foreignAlias: MessageAuthor}
+    EiSubjectMessageType: { onDelete: CASCADE , local: message_type_id , foreign: id, foreignAlias: Subject}  
+
+EiApplicationObject:
+  columns: 
+    name :  { type: string(255),  notnull: true  }      
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  } 
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref] 
+      
+EiSubjectAttachment:
+  columns: 
+    subject_id :  { type: integer(8),  notnull: true  }
+    author_id : { type: integer(8),  notnull: true  }
+    description : { type:  clob() }
+    filename :  { type: string(255),  notnull: true  }
+    path :  { type: string(255),  notnull: true  }
+    type: {type: enum, values: [bugAttachmentDescription,bugAttachmentDetails, bugAttachmentSolution,bugAttachmentMigration]}
+  relations: 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: AttachmentSubject}
+    sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: AttachmentAuthor}
+    
+EiSubjectHasTask:
+  columns:      
+    task_id :  { type: integer(8),  notnull: true , primary: true }
+    subject_id :  { type: integer(8),  notnull: true, primary: true  }
+  relations: 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: Subjects} 
+    EiTasks: { onDelete: CASCADE , local: task_id , foreign: id, foreignAlias: Tasks} 
+    
+EiSubjectAssignment:
+  columns:      
+    guard_id :  { type: integer(8),  notnull: true , primary: true }
+    subject_id :  { type: integer(8),  notnull: true, primary: true  }
+    author_id :  { type: integer(8),  notnull: true  }
+  relations: 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: subjectAssignments} 
+    AssignmentUser: { onDelete: CASCADE , local: guard_id , foreign: id, class: sfGuardUser, foreignAlias: userAssignmentsSubjects}
+    AssignmentAuthor: { onDelete: CASCADE , local: author_id , foreign: id, class: sfGuardUser,  foreignAlias: subjectAssignmentAuthor}
+    
+EiSubjectHasCategory:
+  columns:      
+    category_id :  { type: integer(8),  notnull: true , primary: true }
+    subject_id :  { type: integer(8),  notnull: true, primary: true  } 
+  relations: 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: Subjects}  
+    EiSubjectCategory: { onDelete: CASCADE , local: category_id , foreign: id, foreignAlias: Categories}
+    
+EiSubjectHasApplicationObject:
+  columns:      
+    application_object_id :  { type: integer(8),  notnull: true , primary: true }
+    subject_id :  { type: integer(8),  notnull: true, primary: true  }     
+  relations: 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: AttachmentSubject}
+    EiApplicationObject: { onDelete: CASCADE , local: application_object_id , foreign: id, foreignAlias: ApplicationObjects}
+
+
+##
+## Historisation des sujets( anomalies , interventions , evolutions , etc ...
+##    
+
+#Historique des assignations de sujet 
+EiSubjectAssignmentHistory:
+  columns:      
+    subject_id :  { type: integer(8),  notnull: true , primary: true }
+    author_of_assignment :  { type: integer(8),  notnull: true, primary: true  } 
+    assign_to :  { type: integer(8),  notnull: true, primary: true  }
+    date :  { type: timestamp,  notnull: true, primary: true  }
+    is_assignment : { type  : boolean , default :true }
+  relations: 
+    AssignmentAuthor: { onDelete: CASCADE , local: author_of_assignment , class: sfGuardUser, foreign: id, foreignAlias: AuthorOfAssignment} 
+    AssignTo: { onDelete: CASCADE , local: assign_to , class: sfGuardUser , foreign: id, foreignAlias: AssignToUser} 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: Subject}   
+
+#Historique des changements d'auteur sur un sujet   
+EiSubjectAuthorHistory:
+  columns:      
+    subject_id :  { type: integer(8),  notnull: true , primary: true }
+    new_author :  { type: integer(8),  notnull: true, primary: true  }
+    date :  { type: timestamp,  notnull: true, primary: true  }
+    author_of_change :  { type: integer(8),  notnull: true  } 
+    last_author :  { type: integer(8),  notnull: true }
+    
+  relations: 
+    NewAuthor: { onDelete: CASCADE , local: new_author , class: sfGuardUser , foreign: id, foreignAlias: NewAuthor} 
+    AuthorOfChange: { onDelete: CASCADE , local: author_of_change , class: sfGuardUser , foreign: id, foreignAlias: AuthorOfChange} 
+    LastAuthor: { onDelete: CASCADE , local: last_author , class: sfGuardUser , foreign: id, foreignAlias: LastAuthor} 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: Subject} 
+    
+#Historique des changements de priorité sur un sujet   
+EiSubjectPriorityHistory:
+  columns:      
+    subject_id :  { type: integer(8),  notnull: true , primary: true }
+    new_priority :  { type: integer(8),  notnull: true, primary: true  }
+    date :  { type: timestamp,  notnull: true, primary: true  }
+    author_of_change :  { type: integer(8),  notnull: true  } 
+    last_priority :  { type: integer(8),  notnull: true }
+    
+  relations: 
+    NewPriority: { onDelete: CASCADE , local: new_priority , class: EiSubjectPriority , foreign: id, foreignAlias: NewPriority} 
+    sfGuardUser: { onDelete: CASCADE , local: author_of_change , foreign: id, foreignAlias: AuthorOfChange} 
+    LastPriority: { onDelete: CASCADE , local: last_priority , class: EiSubjectPriority , foreign: id, foreignAlias: LastPriority} 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: Subject}     
+
+#Historique des changements de priorité sur un sujet   
+EiSubjectStateHistory:
+  columns:      
+    subject_id :  { type: integer(8),  notnull: true , primary: true }
+    new_state :  { type: integer(8),  notnull: true, primary: true  }
+    date :  { type: timestamp,  notnull: true, primary: true  }
+    author_of_change :  { type: integer(8),  notnull: true  } 
+    last_state :  { type: integer(8),  notnull: true }
+    
+  relations: 
+    NewState: { onDelete: CASCADE , local: new_state , class: EiSubjectState ,foreign: id, foreignAlias: NewState} 
+    sfGuardUser: { onDelete: CASCADE , local: author_of_change , foreign: id, foreignAlias: AuthorOfChange} 
+    LastState: { onDelete: CASCADE , local: last_state , class: EiSubjectState , foreign: id, foreignAlias: LastState} 
+    EiSubject: { onDelete: CASCADE , local: subject_id , foreign: id, foreignAlias: Subject} 
+
+###
+### Taches 
+###
+
+#Table des tâches 
+EiTask:
+  columns: 
+    author_id :  { type: integer(8),  notnull: true  }
+    task_state_id  : { type: integer(8),  notnull: true  }
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  } 
+    name :  { type: string(255),  notnull: true  }
+    description :  { type: clob(),  notnull: true  }
+    expected_start_date :  { type: float  }
+    expected_end_date :  { type: float  }
+    expected_delay :  { type: float  } 
+    expected_duration :  { type: float  }
+    to_plan :  { type: boolean  }
+    plan_start_date :  { type: timestamp,  notnull: false }
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]   
+  relations: 
+      EiTaskState: { onDelete: CASCADE , local: task_state_id , foreign: id, foreignAlias: TaskState}
+      sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: subjectAuthor} 
+
+#Statut des tâches 
+
+EiTaskState:
+  columns: 
+    name :  { type: string(255),  notnull: true  }      
+    project_id :  { type: integer(8),  notnull: true  }
+    project_ref :  { type: integer(8),  notnull: true  } 
+  indexes:
+    project_id_index:
+      fields: [project_id]
+    project_ref_index:
+      fields: [project_ref]   
+#Assignations des tâches aux utilisateurs
+EiTaskAssignment:
+  columns:      
+    task_id :  { type: integer(8),  notnull: true , primary: true }
+    author_id :  { type: integer(8),  notnull: true, primary: true  }
+  relations: 
+    EiTask: { onDelete: CASCADE , local: task_id , foreign: id, foreignAlias: Task} 
+    sfGuardUser: { onDelete: CASCADE , local: author_id , foreign: id, foreignAlias: User} 
+ 
+  
+##
+## Historisation des tâches
+##
+
+#Historique des assignations (A une date, un utilisateur assigne une tache à un autre utilisateur )
+
+EiTaskAssignmentHistory:
+  columns:      
+    task_id :  { type: integer(8),  notnull: true , primary: true }
+    author_of_assignment :  { type: integer(8),  notnull: true, primary: true  } 
+    assign_to :  { type: integer(8),  notnull: true, primary: true  }
+    date :  { type: timestamp,  notnull: true, primary: true  }
+  relations: 
+    GuardAssignAuthor: { onDelete: CASCADE , local: author_of_assignment , class: sfGuardUser,  foreign: id, foreignAlias: AuthorOfAssignment} 
+    GuardAssignTo: { onDelete: CASCADE , local: assign_to , class: sfGuardUser, foreign: id, foreignAlias: AssignToUser} 
+    EiTask: { onDelete: CASCADE , local: task_id , foreign: id, foreignAlias: Task} 
+    
+    
+#Historique des changements d'auteur sur une tâche   
+EiTaskAuthorHistory:
+  columns:      
+    task_id :  { type: integer(8),  notnull: true , primary: true }
+    new_author :  { type: integer(8),  notnull: true, primary: true  }
+    date :  { type: timestamp,  notnull: true, primary: true  }
+    author_of_change :  { type: integer(8),  notnull: true  } 
+    last_author :  { type: integer(8),  notnull: true }
+    
+  relations: 
+    GuardNewAuthor: { onDelete: CASCADE , local: new_author , class: sfGuardUser, foreign: id, foreignAlias: NewAuthor} 
+    GuardAuthorOfChange: { onDelete: CASCADE , local: author_of_change , class: sfGuardUser, foreign: id, foreignAlias: AuthorOfChange} 
+    GuardLastAuthor: { onDelete: CASCADE , local: last_author , class: sfGuardUser, foreign: id, foreignAlias: LastAuthor} 
+    EiTask: { onDelete: CASCADE , local: task_id , foreign: id, foreignAlias: Task} 
+    
+#Historique des changements de statut d'une tâche   
+EiTaskStateHistory:
+  columns:      
+    task_id :  { type: integer(8),  notnull: true , primary: true }
+    new_state :  { type: integer(8),  notnull: true, primary: true  }
+    date :  { type: timestamp,  notnull: true, primary: true  }
+    author_of_change :  { type: integer(8),  notnull: true  } 
+    last_state :  { type: integer(8),  notnull: true }
+    
+  relations: 
+    NewState: { onDelete: CASCADE , local: new_state , class: EiTaskState, foreign: id, foreignAlias: NewState} 
+    sfGuardUser: { onDelete: CASCADE , local: author_of_change , foreign: id, foreignAlias: AuthorOfChange} 
+    LastState: { onDelete: CASCADE , local: last_state , class: EiTaskState, foreign: id, foreignAlias: LastState} 
+    EiTask: { onDelete: CASCADE , local: task_id , foreign: id, foreignAlias: Task} 
+    
+#Gestion des conflits sur les fonctions lors d'une migration de livraison 
+EiPackageFunctionConflict:
+  columns:      
+    function_id :  { type: integer(8),  notnull: true , primary: true }
+    function_ref :  { type: integer(8),  notnull: true , primary: true }
+    delivery_id :  { type: integer(8),  notnull: true , primary: true } 
+    package_id :  { type: integer(8),  notnull: true   }
+    package_ref :  { type: integer(8),  notnull: true }
+    resolved_date :  { type: timestamp,  notnull: true  }
+    resolved_author :  { type: integer(8),  notnull: true  } 
+  indexes:
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref] 
+    package_id_index:
+      fields: [package_id]
+    package_ref_index:
+      fields: [package_ref]   
+  relations: 
+    EiDelivery: { onDelete: CASCADE , local: delivery_id , class: EiDelivery, foreign: id, foreignAlias: EiDelivery} 
+    sfGuardUser: { onDelete: CASCADE , local: resolved_author , foreign: id, foreignAlias: resolvedAuthor}  
+    
+#Historique de gestion des conflits sur les fonctions    
+EiPackageFunctionConflictHistory:
+  columns:      
+    function_id :  { type: integer(8),  notnull: true , primary: true }
+    function_ref :  { type: integer(8),  notnull: true , primary: true }
+    delivery_id :  { type: integer(8),  notnull: true , primary: true } 
+    resolved_date :  { type: timestamp,  notnull: true  , primary: true}
+    package_id :  { type: integer(8),  notnull: true   }
+    package_ref :  { type: integer(8),  notnull: true } 
+    resolved_author :  { type: integer(8),  notnull: true  } 
+  indexes:
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref] 
+    package_id_index:
+      fields: [package_id]
+    package_ref_index:
+      fields: [package_ref]  
+  relations: 
+    EiDelivery: { onDelete: CASCADE , local: delivery_id , class: EiDelivery, foreign: id, foreignAlias: EiDelivery} 
+    sfGuardUser: { onDelete: CASCADE , local: resolved_author , foreign: id, foreignAlias: resolvedAuthor} 
+    
+    
+#Gestion des conflits sur les scénarios lors d'une migration de livraison 
+EiPackageScenarioConflict:
+  columns:      
+    ei_scenario_id :  { type: integer(8),  notnull: true , primary: true } 
+    delivery_id :  { type: integer(8),  notnull: true , primary: true } 
+    package_id :  { type: integer(8),  notnull: true   }
+    package_ref :  { type: integer(8),  notnull: true }
+    resolved_date :  { type: timestamp,  notnull: true  }
+    resolved_author :  { type: integer(8),  notnull: true  } 
+  indexes:  
+    package_id_index:
+      fields: [package_id]
+    package_ref_index:
+      fields: [package_ref]  
+  relations: 
+    EiScenario: { onDelete: CASCADE , local: ei_scenario_id , class: EiScenario, foreign: id, foreignAlias: EiScenario}   
+    EiDelivery: { onDelete: CASCADE , local: delivery_id , class: EiDelivery, foreign: id, foreignAlias: EiDelivery} 
+    sfGuardUser: { onDelete: CASCADE , local: resolved_author , foreign: id, foreignAlias: resolvedAuthor}  
+    
+#Historique de gestion des conflits sur les scénarios    
+EiPackageScenarioConflictHistory:
+  columns:      
+    ei_scenario_id :  { type: integer(8),  notnull: true , primary: true }  
+    delivery_id :  { type: integer(8),  notnull: true , primary: true } 
+    resolved_date :  { type: timestamp,  notnull: true  , primary: true}
+    package_id :  { type: integer(8),  notnull: true   }
+    package_ref :  { type: integer(8),  notnull: true } 
+    resolved_author :  { type: integer(8),  notnull: true  } 
+  indexes:  
+    package_id_index:
+      fields: [package_id]
+    package_ref_index:
+      fields: [package_ref]  
+  relations: 
+    EiScenario: { onDelete: CASCADE , local: ei_scenario_id , class: EiScenario, foreign: id, foreignAlias: EiScenario}    
+    EiDelivery: { onDelete: CASCADE , local: delivery_id , class: EiDelivery, foreign: id, foreignAlias: EiDelivery} 
+    sfGuardUser: { onDelete: CASCADE , local: resolved_author , foreign: id, foreignAlias: resolvedAuthor}
+
+EiDeviceUser:
+  columns:
+    device_id: { type: integer(8), notnull: true }
+    name: { type: string(255), notnull: true }
+    owner: { type: integer(8), notnull: true }
+    device_user_visibility_id: { type: integer(8), notnull: true }
+  relations:
+    EiDevice: { onDelete: CASCADE , local: device_id , foreign: id}
+    EiDeviceUserVisibility: { onDelete: CASCADE , local: device_user_visibility_id, foreign: id}
+    sfGuardUser: { onDelete: CASCADE , local: owner , foreign: id}
+
+EiDeviceUserVisibility:
+  columns:
+    name: { type: string(255), notnull: true }
+    
+EiDevice:
+  columns:
+    device_identifier: { type: string(255), notnull: true }
+    device_type_id: { type: integer(8), notnull: true }
+  relations:
+    EiDeviceType: { onDelete: CASCADE , local: device_type_id, foreign: id}
+    
+EiDeviceType:
+  columns:
+    name: { type: string(255), notnull: true }
+    hidden_name: { type: string(255), notnull: true }
+    logo_path: { type: string(255), notnull: true }
+    
+EiDriverType:
+  columns:
+    name: { type: string(255), notnull: true }
+    hidden_name: { type: string(255), notnull: true }
+    logo_path: { type: string(255), notnull: true }
+    
+EiDeviceDriver:
+  columns:
+    device_id : { type: integer(8), notnull: true }
+    driver_type_id: { type: integer(8), notnull: true }  
+  relations:
+    EiDevice: { onDelete: CASCADE , local: device_id, foreign: id}
+    EiDriverType: { onDelete: CASCADE , local: driver_type_id, foreign: id}
+
+EiBrowserType:
+  columns:
+    name: { type: string(255), notnull: true }
+    hidden_name: { type: string(255), notnull: true }
+    logo_path: { type: string(255), notnull: true }
+    
+EiDriverBrowser:
+  columns:
+    device_driver_id: { type: integer(8), notnull: true }  
+    browser_type_id : { type: integer(8), notnull: true }
+  relations:
+    EiDeviceDriver: { onDelete: CASCADE , local: device_driver_id, foreign: id}
+    EiBrowserType: { onDelete: CASCADE , local: browser_type_id, foreign: id}

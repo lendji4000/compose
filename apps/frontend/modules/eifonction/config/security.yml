@@ -1,0 +1,6 @@
+all:
+  is_secure: true
+generateXML : 
+  is_secure : false 
+generateRobotCode : 
+  is_secure : false   

@@ -1,0 +1,118 @@
+---
+actAs: [Timestampable]
+options:
+  collate: utf8_general_ci
+  charset: utf8
+  type: InnoDB
+## Modèle d'interface pour le chargement des notices par web service
+
+## Schéma de la notice en soit
+
+ScriptEiNotice:
+  actAs: { Timestampable: ~ }
+ 
+  columns: 
+    notice_id: { type: integer(8), primary: true, notnull: true }
+    notice_ref: { type: integer(8),  primary: true, notnull: true  }
+    function_id: { type: integer(8)  }
+    function_ref: { type: integer(8) }
+    name: {type: string(45) , notnull: true  }
+    
+## Schéma pour les versions de notice :  une notice possèdera plusieurs versions   
+
+ScriptEiVersionNotice:
+  actAs: { Timestampable: ~ }
+  
+  columns: 
+    version_notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_ref: { type: integer(8) , primary: true, notnull: true  }
+    lang: { type: string(255) , primary: true, notnull: true  }
+    name: {type: string(45) , notnull: true  } 
+    description: { type: clob() }
+    expected: { type : clob() }
+    result: { type : clob() }
+    is_active: { type: boolean, notnull: true , default: true}
+ 
+    
+## Schéma pour les liaisons entre notice et profils du projet
+## Cette relation va permettre de lier une version de notice à un ou plusieurs profils
+
+ScriptEiNoticeProfil:
+  actAs: { Timestampable: ~ }
+  
+  columns: 
+    version_notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_ref: { type: integer(8) , primary: true, notnull: true  }
+    profile_id: { type: integer(8) , primary: true , notnull: true }
+    profile_ref: { type: integer(8) , primary: true, notnull: true  }
+ 
+
+## Modèle permettant l'utilisation des notices pour les fonctions dans test
+
+## Schéma de la notice en soit
+
+EiNotice:
+  actAs: { Timestampable: ~ }
+ 
+  columns:
+    notice_id: { type: integer(8), primary: true, notnull: true }
+    notice_ref: { type: integer(8),  primary: true, notnull: true  }
+    function_id: { type: integer(8)  }
+    function_ref: { type: integer(8) }
+    name: {type: string(45) , notnull: true  }
+  indexes:
+    notice_id_index:
+      fields: [notice_id]
+    notice_ref_index:
+      fields: [notice_ref] 
+    function_id_index:
+      fields: [function_id]
+    function_ref_index:
+      fields: [function_ref]  
+## Schéma pour les versions de notice :  une notice possèdera plusieurs versions   
+
+EiVersionNotice:
+  actAs: { Timestampable: ~ }
+  
+  columns: 
+    version_notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_ref: { type: integer(8) , primary: true, notnull: true  }
+    lang: { type: string(255) , primary: true, notnull: true  }
+    name: {type: string(45) , notnull: true  } 
+    description: { type: clob() }
+    expected: { type : clob() }
+    result: { type : clob() }
+    is_active: { type: boolean, notnull: true , default: true}
+  indexes: 
+    notice_id_index:
+      fields: [notice_id]
+    notice_ref_index:
+      fields: [notice_ref]    
+## Schéma pour les images d'une version de notice :
+## Une version de notice contiendra des images représentant les etapes d'execution de la fonction
+  
+EiNoticeProfil:
+  actAs: { Timestampable: ~ }
+  
+  columns:
+    version_notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_id: { type: integer(8) , primary: true, notnull: true }
+    notice_ref: { type: integer(8) , primary: true, notnull: true  }
+    profile_id: { type: integer(8) , primary: true , notnull: true }
+    profile_ref: { type: integer(8) , primary: true, notnull: true  }
+  indexes: 
+    notice_id_index:
+      fields: [notice_id]
+    notice_ref_index:
+      fields: [notice_ref]
+    profile_id_index:
+      fields: [profile_id]
+    profile_ref_index:
+      fields: [profile_ref]  
+# Table permettant de generer des Id pour des objets nouvellement crées.
+#Cette table sera surtout utilisé dans le cadre des notice et notamment pour les versions de notice et images de notice
+
+ 

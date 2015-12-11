@@ -1,0 +1,140 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 déc. 2014, 10:21:37
+    Author     : LENINE
+*/
+#eiProjectScenariosMainAccess {
+  color: #36a9e1;
+}
+/*Arbre de navigation pour les dossiers et scénarios*/
+#scenario_structure li {
+  padding-left: 7px;
+  margin: 0px;
+}
+#children_blocks .well,
+#children_blocks .well-sm,
+#children_blocks .well-lg {
+  margin: 0px;
+}
+h4 {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.update_block .btn-group {
+  /*margin-left : 340px;*/
+}
+.new_block {
+  width: 98%;
+}
+#xsl_helper {
+  display: block;
+  position: relative;
+}
+.folder_detail {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 3px;
+}
+.padding-left {
+  padding-left: 12px;
+}
+/* Gestion de l'arbre des jeux de données d'un scénario */
+li.liBtnPlayScenario {
+  padding: 15px 10px 9px 35px;
+}
+/*  Reproduction Menu.css */
+#functions_menu {
+  margin-right: 5px;
+}
+#functions_menu .function_menu {
+  background-color: #fefefe;
+}
+#scenario_structure > ul {
+  /*margin-left : -12px;*/
+}
+#scenario_structure ul {
+  padding-left: 0px;
+}
+.invisible {
+  visibility: hidden;
+}
+.edit_mode_button {
+  margin-left: 5px;
+  margin-top: -30px;
+  padding: 5px 10px 5px 10px;
+}
+.brand-margin {
+  padding: 10px 0 0 20px;
+}
+.brand-width {
+  width: 180px;
+}
+.sortable .opened {
+  margin-left: 15px;
+}
+.open_block,
+.close_block {
+  cursor: pointer;
+}
+#ei_scenario_menu_left li.active_version > a,
+#ei_scenario_menu_left div.current_block,
+#ei_scenario_menu_left div.current_datasetstructure_node {
+  color: #75AF29;
+  font-weight: bold;
+  background: none;
+  text-shadow: none;
+}
+#ei_scenario_menu_left div.current_block a,
+#ei_scenario_menu_left div.current_datasetstructure_node a {
+  color: #75AF29;
+  font-weight: bold;
+}
+.small-padding {
+  padding-left: 10px;
+  padding-right: 0px;
+}
+#reloading #reloading_img {
+  background: #f2f5f6;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f5f6), color-stop(37%, #e3eaed), color-stop(100%, #c8d7dc));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f5f6', endColorstr='#c8d7dc', GradientType=0);
+  /* IE6-9 */
+  opacity: 0.7;
+  display: block;
+  margin: 0;
+  padding: 0;
+  margin-left: -4px;
+  margin-top: -5px;
+  height: 717px;
+  position: absolute;
+  text-align: center;
+}
+#reloading #reloading_img img {
+  padding-top: 50%;
+}
+#notReloading #reloading_img {
+  display: none;
+}
+#version_loader_div {
+  display: inline-block;
+  float: right;
+}
+#version_loader {
+  display: none;
+}

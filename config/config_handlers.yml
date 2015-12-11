@@ -1,0 +1,9 @@
+config/project.yml:
+  class: sfDefineEnvironmentConfigHandler
+  param:
+    prefix: project_
+
+config/kalifast.yml:
+  class: sfDefineEnvironmentConfigHandler
+  param:
+    prefix: kalifast_
